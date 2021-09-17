@@ -5,7 +5,7 @@ import Event from './Event';
 function CardList(props) {
   const dispatch = useDispatch()
   const {events} = useSelector(store => store.eventsReducer.events)
-  console.log(events)
+
   
   return (
  

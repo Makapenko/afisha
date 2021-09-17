@@ -66,7 +66,7 @@ const example = {
       address: 'просп. Добролюбова, 18',
       type: 'Концертный зал',
       coordX: 59.950402922548605,
-      coordX: 30.291927108257962,
+      coordY: 30.291927108257962,
       openingHours: '',
       site: 'https://www.yubi.ru/',
       vk: 'https://vk.com/yubiarena',
@@ -81,7 +81,30 @@ const example = {
       urlImg1: 'https://via.placeholder.com/350x150',
       urlImg2: 'https://via.placeholder.com/200x100',
       urlImg3: 'https://via.placeholder.com/200x100'
-    }
+    },
+    {
+      id: 2,
+      title: 'Aurora',
+      description: 'AURORA – это современная площадка для выступления артистов разных жанров и поколений.',
+      address: 'Пироговская наб., 5/2',
+      type: 'Концертный зал',
+      coordX: 59.956994,
+      coordY: 30.341353,
+      openingHours: '',
+      site: 'https://aurora.fm/',
+      vk: 'https://vk.com/aurora_fm_spb',
+      fb: 'https://www.facebook.com/aurorafmspb',
+      instagram: 'https://www.instagram.com/aurora.fm_spb/',
+      whatsapp: '',
+      telegram:'',
+      viber: '',
+      email: '',
+      tel1: '8 812 407 37 70',
+      tel2: '',
+      urlImg1: 'https://via.placeholder.com/350x150',
+      urlImg2: 'https://via.placeholder.com/200x100',
+      urlImg3: 'https://via.placeholder.com/200x100'
+    },
   ]
     
 };
