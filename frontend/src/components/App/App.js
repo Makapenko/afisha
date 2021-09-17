@@ -8,10 +8,11 @@ import Main from '../Main/Main';
 import CardList from '../CardList/CardList';
 import Map from '../Map/Map';
 import Favorites from '../Favorites/Favorites';
+import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
 
 function App() {
   return (
-    <Provider store= { store } >
+    <Provider store={store} >
       <Router>
         <Navigation />
 
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/favorites">
             <Favorites />
+          </Route>
+          <Route path="/addEventAndPlace">
+            <AddEventAndPlace />
           </Route>
         </Switch>
       </Router>
