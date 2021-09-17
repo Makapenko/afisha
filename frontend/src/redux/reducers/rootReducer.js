@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import cardReducer from './cardReducer'
+import eventsReducer from './eventsReducer'
 const rootReducer = combineReducers({
-  cardReducer,
+  eventsReducer,
 })
 
 export default rootReducer
