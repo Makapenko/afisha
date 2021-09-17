@@ -1,7 +1,8 @@
 import React from 'react';
 import { YMaps, Map, Placemark, ZoomControl, Clusterer } from 'react-yandex-maps';
 import { useState } from 'react';
-import points from './points.json';
+import points from './points';
+import myIcon from '../../svg/icon1.svg';
 
 function YandexMap() {
   const [lat, setLat] = useState(0);
@@ -45,7 +46,15 @@ function YandexMap() {
       <div>
       <Map state={mapState} >
       <ZoomControl options={{ float: 'left' }} />
-      <Placemark  geometry={[lat, lng]} />
+      <Placemark  geometry={[lat, lng]} 
+        options={{
+          iconLayout: 'default#image',
+          iconImageHref: myIcon,
+          iconImageSize: [15, 15],
+          iconImageOffset: [-50, -18],
+          preset: "islands#invertedVioletClusterIcons",
+        }}
+      />
       <Clusterer
             options={{
               preset: "islands#invertedVioletClusterIcons",
