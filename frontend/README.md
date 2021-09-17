@@ -1,3 +1,4 @@
+google-chrome --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=http://localhost:3000/
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
