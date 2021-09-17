@@ -6,10 +6,12 @@ import store from "../../redux/store.js"
 import Navigation from '../Layout/Navigation';
 import Main from '../Main/Main';
 import CardList from '../CardList/CardList';
-import Map from '../Map/Map';
+import YandexMap from '../YandexMap/YandexMap';
 import Favorites from '../Favorites/Favorites';
 
+
 function App() {
+
   return (
     <Provider store= { store } >
       <Router>
@@ -23,14 +25,14 @@ function App() {
             <CardList />
           </Route>
           <Route path="/map">
-            <Map />
+            <YandexMap />
           </Route>
           <Route path="/favorites">
             <Favorites />
           </Route>
         </Switch>
       </Router>
-    </Provider >
+    </Provider>
   );
 }
 
