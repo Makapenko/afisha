@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const HOST = 'localhost';
 
-// const indexRouter = require('./src/routes/index.router');
+const indexRouter = require('./src/routes/index.router');
 
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,7 +32,7 @@ app.use(session({
   },
 }));
 
-// app.use('/', indexRouter);
+app.use('/', indexRouter);
 
 app.listen(PORT, async () => {
   /* eslint-disable no-console */
