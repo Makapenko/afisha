@@ -16,39 +16,40 @@ import Places from '../Places/Places';
 
 function App() {
   return (
-    <Provider store={store} >
-      <Router>
-        <Navigation />
+    <>Hello</>
+    // <Provider store={store} >
+    //   <Router>
+    //     <Navigation />
 
-        <Switch>
-          <Route path="/" exact>
-            <Main />
-          </Route>
-          <Route path="/events/place/:id" exact>
-            <PlaceInfo />
-          </Route>
-          <Route path="/events/:id" exact>
-            <EventInfo />
-          </Route>
-          <Route path="/events" exact>
-            <Events />
-          </Route>
+    //     <Switch>
+    //       <Route path="/" exact>
+    //         <Main />
+    //       </Route>
+    //       <Route path="/events/place/:id" exact>
+    //         <PlaceInfo />
+    //       </Route>
+    //       <Route path="/events/:id" exact>
+    //         <EventInfo />
+    //       </Route>
+    //       <Route path="/events" exact>
+    //         <Events />
+    //       </Route>
 
-          <Route path="/places" exact>
-            <Places />
-          </Route>
-          <Route path="/map">
-            <Map />
-          </Route>
-          <Route path="/favorites">
-            <Favorites />
-          </Route>
-          <Route path="/addEventAndPlace">
-            <AddEventAndPlace />
-          </Route>
-        </Switch>
-      </Router>
-    </Provider >
+    //       <Route path="/places" exact>
+    //         <Places />
+    //       </Route>
+    //       <Route path="/map">
+    //         <Map />
+    //       </Route>
+    //       <Route path="/favorites">
+    //         <Favorites />
+    //       </Route>
+    //       <Route path="/addEventAndPlace">
+    //         <AddEventAndPlace />
+    //       </Route>
+    //     </Switch>
+    //   </Router>
+    // </Provider >
   );
 }
 
