@@ -5,8 +5,8 @@ import { Provider } from "react-redux"
 import store from "../../redux/store.js"
 import Navigation from '../Layout/Navigation';
 import Main from '../Main/Main';
+import YandexMap from '../YandexMap/YandexMap';
 import Events from '../CardList/Events';
-import Map from '../Map/Map';
 import Favorites from '../Favorites/Favorites';
 import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
 import EventInfo from '../CardList/EventInfo';
@@ -14,7 +14,9 @@ import Place from '../Places/Place';
 import PlaceInfo from '../Places/PlaceInfo';
 import Places from '../Places/Places';
 
+
 function App() {
+
   return (
     <>Hello</>
     // <Provider store={store} >
@@ -35,21 +37,22 @@ function App() {
     //         <Events />
     //       </Route>
 
-    //       <Route path="/places" exact>
-    //         <Places />
-    //       </Route>
-    //       <Route path="/map">
-    //         <Map />
-    //       </Route>
-    //       <Route path="/favorites">
-    //         <Favorites />
-    //       </Route>
-    //       <Route path="/addEventAndPlace">
-    //         <AddEventAndPlace />
-    //       </Route>
-    //     </Switch>
-    //   </Router>
-    // </Provider >
+
+          <Route path="/places" exact>
+            <Places />
+          </Route>
+          <Route path="/map">
+            <YandexMap />
+          </Route>
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+          <Route path="/addEventAndPlace">
+            <AddEventAndPlace />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 

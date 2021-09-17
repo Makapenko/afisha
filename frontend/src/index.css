@@ -47,17 +47,16 @@ a {
 }
 
 .margin-1 {
-  margin: 1vh;
+  margin: 1vh 1vw;
 }
 
 .margin-2 {
-  margin: 2vh;
+  margin: 2vh 2vw;
 }
 
-.padding-1 {
-  padding: 1vh;
+.padding-1{
+  padding: 1vh 1vw;
 }
+.padding-2{
+  padding: 2vh 2vw;
 
-.padding-2 {
-  padding: 2vh;
-}
