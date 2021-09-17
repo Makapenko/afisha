@@ -8,27 +8,23 @@ function AddEvent(props) {
     const body = {
       title: e.target.title.value,
       description: e.target.description.value,
-      address: e.target.address.value,
-      type: e.target.type.value,
-      site: e.target.site.value,
-      vk: e.target.vk.value,
-      fb: e.target.fb.value,
-      instagram: e.target.instagram.value,
-      whatsapp: e.target.whatsapp.value,
-      telegram: e.target.telegram.value,
-      viber: e.target.viber.value,
-      email: e.target.email.value,
-      tel1: e.target.tel1.value,
-      tel2: e.target.tel2.value,
+      subcategory: e.target.subcategory.value,
+      price: e.target.price.value,
+      startTime: e.target.startTime.value,
+      endTime: e.target.endTime.value,
+      doorsOpen: e.target.doorsOpen.value,
+      startTime: e.target.startTime.value,
+      endDate: e.target.endDate.value,
+      linkToRegister: e.target.linkToRegister.value,
+      linkToBuy: e.target.linkToBuy.value,
+      linkToEvent: e.target.linkToEvent.value,
     }
 
     console.log(body);
 
     // fetch ('lockalhost:3000/addPlace', {
     //   method: 'POST',
-    //   body: {
-    //     title, description, address, type, site, vk, fb, instagram, whatsapp, telegram, viber, email, tel1, tel2
-    //   }
+    //   body: body
     // })
   }
 
@@ -63,8 +59,36 @@ function AddEvent(props) {
           <option value="Обучение - Разное">Экскурсии</option>
         </select> <br />
 
-        ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА ОДИНАКОВЫХ СОБЫТИЯ
+        Цена события (price):
+        <input type="text" name="price" /> <br />
 
+        Время начала (startTime):
+        <input type="text" name="startTime" /> <br />
+
+        Время окончания (endTime):
+        <input type="text" name="endTime" /> <br />
+
+        Двери открыты до (для концертов) (doorsOpen):
+        <input type="text" name="doorsOpen" /> <br />
+
+        Дата начала (startDate):
+        <input type="text" name="startDate" /> <br />
+
+        Дата окончания (endDate):
+        <input type="text" name="endDate" /> <br />
+
+        Ссылка на регистрацию (linkToRegister):
+        <input type="text" name="linkToRegister" /> <br />
+
+        Ссылка на покупку билета (linkToBuy):
+        <input type="text" name="linkToBuy" /> <br />
+
+        Ссылка на событие (linkToEvent):
+        <input type="text" name="linkToEvent" /> <br />
+
+
+        ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА ОДИНАКОВЫХ СОБЫТИЯ
+        <br />
         <button> Сохранить </button>
       </form>
     </div>

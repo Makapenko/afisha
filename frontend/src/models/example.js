@@ -66,7 +66,7 @@ const example = {
       address: 'просп. Добролюбова, 18',
       type: 'Концертный зал',
       coordX: 59.950402922548605,
-      coordX: 30.291927108257962,
+      coordY: 30.291927108257962,
       openingHours: '',
       site: 'https://www.yubi.ru/',
       vk: 'https://vk.com/yubiarena',
