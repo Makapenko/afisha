@@ -4,18 +4,18 @@ import { Link } from "react-router-dom"
 function Navigation() {
   return (
     <nav>
-      <ul>
+      <ul className="flex row jus-center">
         <Link to="/">
-          <li>Главное меню</li>
+          <li className="margin-1 padding-1">Главное меню</li>
         </Link>
-        <Link to="/cardList">
-          <li>События</li>
+        <Link to="/events">
+          <li className="margin-1 padding-1">События</li>
         </Link>
         <Link to="/map">
-          <li>Карта</li>
+          <li className="margin-1 padding-1">Карта</li>
         </Link>
         <Link to="/favorites">
-          <li>Избранное</li>
+          <li className="margin-1 padding-1">Избранное</li>
         </Link>
       </ul>
     </nav>
