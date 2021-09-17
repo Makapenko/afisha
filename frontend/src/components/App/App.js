@@ -5,10 +5,11 @@ import { Provider } from "react-redux"
 import store from "../../redux/store.js"
 import Navigation from '../Layout/Navigation';
 import Main from '../Main/Main';
-import CardList from '../CardList/CardList';
+import Events from '../CardList/Events';
 import Map from '../Map/Map';
 import Favorites from '../Favorites/Favorites';
 import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
+import EventInfo from '../CardList/EventInfo';
 
 function App() {
   return (
@@ -20,8 +21,11 @@ function App() {
           <Route path="/" exact>
             <Main />
           </Route>
-          <Route path="/cardList">
-            <CardList />
+          <Route path="/events/:id" exact>
+            <EventInfo />
+          </Route>
+          <Route path="/events" exact>
+            <Events />
           </Route>
           <Route path="/map">
             <Map />
