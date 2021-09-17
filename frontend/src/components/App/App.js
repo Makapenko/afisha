@@ -8,6 +8,7 @@ import Main from '../Main/Main';
 import Events from '../CardList/Events';
 import Map from '../Map/Map';
 import Favorites from '../Favorites/Favorites';
+import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
 import EventInfo from '../CardList/EventInfo';
 import Place from '../Places/Place';
 import PlaceInfo from '../Places/PlaceInfo';
@@ -15,7 +16,7 @@ import Places from '../Places/Places';
 
 function App() {
   return (
-    <Provider store= { store } >
+    <Provider store={store} >
       <Router>
         <Navigation />
 
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/favorites">
             <Favorites />
+          </Route>
+          <Route path="/addEventAndPlace">
+            <AddEventAndPlace />
           </Route>
         </Switch>
       </Router>
