@@ -10,6 +10,9 @@ import Map from '../Map/Map';
 import Favorites from '../Favorites/Favorites';
 import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
 import EventInfo from '../CardList/EventInfo';
+import Place from '../Places/Place';
+import PlaceInfo from '../Places/PlaceInfo';
+import Places from '../Places/Places';
 
 function App() {
   return (
@@ -21,11 +24,18 @@ function App() {
           <Route path="/" exact>
             <Main />
           </Route>
+          <Route path="/events/place/:id" exact>
+            <PlaceInfo />
+          </Route>
           <Route path="/events/:id" exact>
             <EventInfo />
           </Route>
           <Route path="/events" exact>
             <Events />
+          </Route>
+
+          <Route path="/places" exact>
+            <Places />
           </Route>
           <Route path="/map">
             <Map />

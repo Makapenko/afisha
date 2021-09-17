@@ -1,7 +1,7 @@
 import events from '../../models/example'
-
+import places from '../../models/example'
 const initialState = {
-  cardList:[],
+  places,
   events, 
 }
 
