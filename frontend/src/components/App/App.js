@@ -18,26 +18,23 @@ import Places from '../Places/Places';
 function App() {
 
   return (
-    <>Hello</>
-    // <Provider store={store} >
-    //   <Router>
-    //     <Navigation />
+    <Provider store={store} >
+      <Router>
+        <Navigation />
 
-    //     <Switch>
-    //       <Route path="/" exact>
-    //         <Main />
-    //       </Route>
-    //       <Route path="/events/place/:id" exact>
-    //         <PlaceInfo />
-    //       </Route>
-    //       <Route path="/events/:id" exact>
-    //         <EventInfo />
-    //       </Route>
-    //       <Route path="/events" exact>
-    //         <Events />
-    //       </Route>
-
-
+        <Switch>
+          <Route path="/" exact>
+            <Main />
+          </Route>
+          <Route path="/events/place/:id" exact>
+            <PlaceInfo />
+          </Route>
+          <Route path="/events/:id" exact>
+            <EventInfo />
+          </Route>
+          <Route path="/events" exact>
+            <Events />
+          </Route>
           <Route path="/places" exact>
             <Places />
           </Route>
