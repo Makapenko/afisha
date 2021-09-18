@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Event.init({
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     description: {
       type: DataTypes.TEXT,
@@ -41,7 +41,37 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
+    },
+    subcategory: {
+      type: DataTypes.TEXT,
+    },
+    timeStart: {
+      type: DataTypes.TEXT,
+    },
+    timeEnd: {
+      type: DataTypes.TEXT,
+    },
+    dorsOpen: {
+      type: DataTypes.TEXT,
+    },
+    dateStart: {
+      type: DataTypes.TEXT,
+    },
+    dateEnd: {
+      type: DataTypes.TEXT,
+    },
+    postAuthor: {
+      type: DataTypes.TEXT,
+    },
+    linkToRegister: {
+      type: DataTypes.TEXT,
+    },
+    linkToBuy: {
+      type: DataTypes.TEXT,
+    },
+    linkToEvent: {
+      type: DataTypes.TEXT,
     },
   }, {
     sequelize,

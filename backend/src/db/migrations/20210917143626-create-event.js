@@ -7,8 +7,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       title: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       description: {
         type: Sequelize.TEXT,
@@ -32,8 +33,39 @@ module.exports = {
         },
       },
       price: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.TEXT,
       },
+      subcategory: {
+        type: Sequelize.TEXT,
+      },
+      timeStart: {
+        type: Sequelize.TEXT,
+      },
+      timeEnd: {
+        type: Sequelize.TEXT,
+      },
+      dorsOpen: {
+        type: Sequelize.TEXT,
+      },
+      dateStart: {
+        type: Sequelize.TEXT,
+      },
+      dateEnd: {
+        type: Sequelize.TEXT,
+      },
+      postAuthor: {
+        type: Sequelize.TEXT,
+      },
+      linkToRegister: {
+        type: Sequelize.TEXT,
+      },
+      linkToBuy: {
+        type: Sequelize.TEXT,
+      },
+      linkToEvent: {
+        type: Sequelize.TEXT,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
