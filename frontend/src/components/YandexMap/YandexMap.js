@@ -2,7 +2,8 @@ import React from 'react';
 import { YMaps, Map, Placemark, ZoomControl, Clusterer } from 'react-yandex-maps';
 import { useState } from 'react';
 import points from './points';
-import myIcon from '../../svg/icon1.svg';
+import myIcon from '../../svg/bars.png';
+import myIcon2 from '../../svg/quests.png'; 
 
 function YandexMap() {
   const [lat, setLat] = useState(0);
@@ -22,7 +23,10 @@ function YandexMap() {
 
   const getPointOptions = () => {
     return {
-      preset: "islands#violetIcon"
+      preset: "islands#violetIcon",
+      iconImageHref: myIcon2,
+      iconImageSize: [30, 30],
+      iconLayout: 'default#image'
     };
   };
 
@@ -50,9 +54,7 @@ function YandexMap() {
         options={{
           iconLayout: 'default#image',
           iconImageHref: myIcon,
-          iconImageSize: [15, 15],
-          iconImageOffset: [-50, -18],
-          preset: "islands#invertedVioletClusterIcons",
+          iconImageSize: [30, 30]
         }}
       />
       <Clusterer
