@@ -6,14 +6,14 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
-// const db = require('./src/db/models');
+const db = require('./src/db/models');
 
 const app = express();
 
 const PORT = process.env.PORT || 4000;
 const HOST = 'localhost';
 
-const indexRouter = require('./src/routes/index.router');
+// const indexRouter = require('./src/routes/index.router');
 
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,16 +32,18 @@ app.use(session({
   },
 }));
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
+
+// sequelize.authenticate();
 
 app.listen(PORT, async () => {
   /* eslint-disable no-console */
   console.log(`Server listens http://${HOST}:${PORT}`);
-  // try {
-  // await db.sequelize.authenticate();
-  //   console.log('Connection has been established successfully.');
-  // } catch (error) {
-  //   console.error('Unable to connect to the database:', error);
-  // }
+  try {
+    await db.sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
   /* eslint-enable no-console */
 });
