@@ -1,3 +1,59 @@
+const arrEventPhoto = [
+  {
+    id: 1,
+    EventId: 1,
+    url: '/img/eventsPic/event-1.jpg',
+  },
+  {
+    id: 2,
+    EventId: 1,
+    url: '/img/eventsPic/event-2.jpg',
+  },
+  {
+    id: 3,
+    EventId: 2,
+    url: '/img/eventsPic/event-3.jpg',
+  },
+  {
+    id: 4,
+    EventId: 2,
+    url: '/img/eventsPic/event-4.jpg',
+  },
+  {
+    id: 5,
+    EventId: 3,
+    url: '/img/eventsPic/event-5.jpg',
+  },
+];
+
+const arrLocationPhoto = [
+  {
+    id: 1,
+    LocationId: 1,
+    url: '/img/locatePic/locate-1.jpg',
+  },
+  {
+    id: 2,
+    LocationId: 1,
+    url: '/img/locatePic/locate-2.jpg',
+  },
+  {
+    id: 3,
+    LocationId: 1,
+    url: '/img/locatePic/locate-3.jpg',
+  },
+  {
+    id: 4,
+    LocationId: 2,
+    url: '/img/locatePic/locate-4.jpg',
+  },
+  {
+    id: 5,
+    LocationId: 2,
+    url: '/img/locatePic/locate-5.jpg',
+  },
+];
+
 const arrAdmins = [
   {
     id: 1,
@@ -119,4 +175,6 @@ const arrLocations = [
   },
 ];
 
-module.exports = { arrEvents, arrLocations, arrAdmins };
+module.exports = {
+  arrEvents, arrLocations, arrAdmins, arrEventPhoto, arrLocationPhoto,
+};
