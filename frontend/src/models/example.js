@@ -8,14 +8,14 @@ const example = {
       subcategory: 'Рок',
       price: 'от 1700 рублей',
       startTime: '19:30',
-      // endTime: '',
-      // dorsOpen: '',
+      endTime: '',
+      dorsOpen: '',
       startDate: '7.03.2022',
-      // endDate: '',
+      endDate: '',
       postAuthor: 'Admin',
-      // linkToRegister: '',
+      linkToRegister: '',
       linkToBuy: 'https://afisha.yandex.ru/saint-petersburg/concert/10-let-albomu-todd-2022-03-07?utm_campaign=MSCAMP-60_%5BAF-P%5D_%7BWS%3AS%7D_RU-2_Category-Afisha_Exact%7C13814518310&utm_content=INTid%7Ckwd-300107410313%7Ccid%7C13814518310%7Cgid%7C126015649153%7Caid%7C532222141861%7Cpos%7C%7Csrc%7Cg_%7Cdvc%7Cc%7Cevid%7C0&utm_medium=search&utm_source=google&utm_term=%D0%B0%D1%84%D0%B8%D1%88%D0%B0.%5Be%5D&source=rubric',
-      // linkToEvent: ''
+      linkToEvent: '',
       urlImg1: 'https://via.placeholder.com/350x150',
       urlImg2: 'https://via.placeholder.com/200x100'
     },
@@ -27,14 +27,14 @@ const example = {
       subcategory: 'Ограниченный прокат',
       price: 'от 1700 рублей',
       startTime: '19:30',
-      // endTime: '',
-      // dorsOpen: '',
+      endTime: '',
+      dorsOpen: '',
       startDate: '7.03.2022',
-      // endDate: '',
+      endDate: '',
       postAuthor: 'Admin',
-      // linkToRegister: '',
+      linkToRegister: '',
       linkToBuy: 'https://afisha.yandex.ru/saint-petersburg/concert/10-let-albomu-todd-2022-03-07?utm_campaign=MSCAMP-60_%5BAF-P%5D_%7BWS%3AS%7D_RU-2_Category-Afisha_Exact%7C13814518310&utm_content=INTid%7Ckwd-300107410313%7Ccid%7C13814518310%7Cgid%7C126015649153%7Caid%7C532222141861%7Cpos%7C%7Csrc%7Cg_%7Cdvc%7Cc%7Cevid%7C0&utm_medium=search&utm_source=google&utm_term=%D0%B0%D1%84%D0%B8%D1%88%D0%B0.%5Be%5D&source=rubric',
-      // linkToEvent: ''
+      linkToEvent: '',
       urlImg1: 'https://via.placeholder.com/350x150',
       urlImg2: 'https://via.placeholder.com/200x100'
     },
@@ -46,14 +46,14 @@ const example = {
       subcategory: 'Рок',
       price: 'от 1700 рублей',
       startTime: '19:30',
-      // endTime: '',
-      // dorsOpen: '',
+      endTime: '',
+      dorsOpen: '',
       startDate: '7.03.2022',
-      // endDate: '',
+      endDate: '',
       postAuthor: 'Admin',
-      // linkToRegister: '',
+      linkToRegister: '',
       linkToBuy: 'https://afisha.yandex.ru/saint-petersburg/concert/10-let-albomu-todd-2022-03-07?utm_campaign=MSCAMP-60_%5BAF-P%5D_%7BWS%3AS%7D_RU-2_Category-Afisha_Exact%7C13814518310&utm_content=INTid%7Ckwd-300107410313%7Ccid%7C13814518310%7Cgid%7C126015649153%7Caid%7C532222141861%7Cpos%7C%7Csrc%7Cg_%7Cdvc%7Cc%7Cevid%7C0&utm_medium=search&utm_source=google&utm_term=%D0%B0%D1%84%D0%B8%D1%88%D0%B0.%5Be%5D&source=rubric',
-      // linkToEvent: ''
+      linkToEvent: '',
       urlImg1: 'https://via.placeholder.com/350x150',
       urlImg2: 'https://via.placeholder.com/200x100'
     }
@@ -73,7 +73,7 @@ const example = {
       fb: 'https://www.facebook.com/yubiarenaspb',
       instagram: 'https://instagram.com/yubiarena',
       whatsapp: '',
-      telegram:'https://t.me/yubiarena',
+      telegram: 'https://t.me/yubiarena',
       viber: '',
       email: '',
       tel1: '',
@@ -96,7 +96,7 @@ const example = {
       fb: 'https://www.facebook.com/aurorafmspb',
       instagram: 'https://www.instagram.com/aurora.fm_spb/',
       whatsapp: '',
-      telegram:'',
+      telegram: '',
       viber: '',
       email: '',
       tel1: '8 812 407 37 70',
@@ -106,6 +106,6 @@ const example = {
       urlImg3: 'https://via.placeholder.com/200x100'
     },
   ]
-    
+
 };
-export default example 
+export default example
