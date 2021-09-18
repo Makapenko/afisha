@@ -17,6 +17,9 @@ function Navigation() {
         <Link to="/favorites">
           <li className="margin-1 padding-1">Избранное</li>
         </Link>
+        <Link to="/addEventAndPlace">
+          <li className="margin-1 padding-1">Добавить Событие</li>
+        </Link>
       </ul>
     </nav>
   );

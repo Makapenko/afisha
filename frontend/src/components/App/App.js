@@ -1,4 +1,3 @@
-
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Provider } from "react-redux"
@@ -9,11 +8,9 @@ import YandexMap from '../YandexMap/YandexMap';
 import Events from '../CardList/Events';
 import Favorites from '../Favorites/Favorites';
 import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
-import EventInfo from '../CardList/EventInfo';
-import Place from '../Places/Place';
+import EventInfo from '../CardList/EventInfo'; 
 import PlaceInfo from '../Places/PlaceInfo';
 import Places from '../Places/Places';
-
 
 function App() {
 
