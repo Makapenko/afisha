@@ -16,9 +16,54 @@ module.exports = (sequelize, DataTypes) => {
   }
   Location.init({
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     description: {
+      type: DataTypes.TEXT,
+    },
+    address: {
+      type: DataTypes.TEXT,
+    },
+    type: {
+      type: DataTypes.TEXT,
+    },
+    coordX: {
+      type: DataTypes.INTEGER,
+    },
+    coordY: {
+      type: DataTypes.INTEGER,
+    },
+    openingHours: {
+      type: DataTypes.TEXT,
+    },
+    site: {
+      type: DataTypes.TEXT,
+    },
+    vk: {
+      type: DataTypes.TEXT,
+    },
+    fb: {
+      type: DataTypes.TEXT,
+    },
+    instagram: {
+      type: DataTypes.TEXT,
+    },
+    whatsapp: {
+      type: DataTypes.TEXT,
+    },
+    telegram: {
+      type: DataTypes.TEXT,
+    },
+    viber: {
+      type: DataTypes.TEXT,
+    },
+    email: {
+      type: DataTypes.TEXT,
+    },
+    tel1: {
+      type: DataTypes.TEXT,
+    },
+    tel2: {
       type: DataTypes.TEXT,
     },
   }, {
