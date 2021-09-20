@@ -7,9 +7,13 @@ function EventInfo(props) {
   const { events } = useSelector((store) => store.eventsReducer.events);
   const event = events[id-1]
 
-  const { places } = useSelector((store) => store.eventsReducer.places);
-  const idPlace =  event.idPlace
+  const  {places}  = useSelector((store) => store.eventsReducer.places);
+  const idPlace =  event.locationId
   const place = places.find(el => el.id == idPlace)
+  // console.log('event', event);
+  // console.log('places', places);
+  // console.log('idPlace', idPlace);
+  // console.log('place', place);
 
   const history = useHistory();
   return (
