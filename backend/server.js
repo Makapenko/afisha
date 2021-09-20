@@ -19,7 +19,8 @@ const corsOptions = {
 };
 
 const authRouter = require('./src/routes/auth.router');
-const indexRouter = require('./src/routes/index.router')
+const indexRouter = require('./src/routes/index.router');
+const addLocationRouter=require('./src')
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
@@ -36,8 +37,11 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 12, // 12 hours
   },
 }));
+
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/addLocation', addLocationRouter);
+
 
 app.listen(PORT, async () => {
   /* eslint-disable no-console */
