@@ -1,12 +1,19 @@
 import React from 'react';
 import Filter from './Filter';
-
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Main.module.css';
 
 import moviePng from '../../icons/filters/1movie.png'
 import movieActivePng from '../../icons/filters/1movieActive.png'
 
 function Main(props) {
+
+  useEffect(() => {
+    fetch('http://localhost:3001/')
+    .then(res => res.json())
+    .then(data => console.log(data))
+  })
   return (
     <div className={style.container}>
       <div className={style.category}>
