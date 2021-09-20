@@ -57,7 +57,7 @@ const example = {
       urlImg1: 'https://via.placeholder.com/350x150',
       urlImg2: 'https://via.placeholder.com/200x100'
     }
-  ]
+  ],
 
   places: [
     {

@@ -2,4 +2,32 @@
   position: absolute;
   left: 0;
   bottom: 0;
+  border-top: 2px solid black;
+  width: 100%;
+}
+
+
+
+.ul {
+  display: flex;
+  justify-content: space-around;
+
+  margin: 1vh;
+  padding-inline-start: 0px;
+}
+
+.li {
+  text-align: center;
+  border-left: 2px solid black;
+  padding: 0 5.5vw;
+  list-style-type: none;
+  
+}
+
+.liFirstChild {
+  border-left: none;
+}
+
+.icon {
+  /* margin: 10px 20px; */
 }

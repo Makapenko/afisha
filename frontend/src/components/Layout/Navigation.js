@@ -10,18 +10,18 @@ import favoritesSvg from '../../icons/navigation/favorites.svg'
 function Navigation() {
   return (
     <nav className={style.nav}>
-      <ul>
+      <ul className={style.ul}>
         <Link to="/">
-          <li className="margin-1 padding-1"><img src={filterSvg} alt="filter" /></li>
+          <li className={`${style.li} ${style.liFirstChild}`}><img src={filterSvg} alt="filter" className={style.icon} /></li>
         </Link>
         <Link to="/events">
-          <li className="margin-1 padding-1"><img src={cardListSvg} alt="card-list" /></li>
+          <li className={style.li}><img src={cardListSvg} alt="card-list" className={style.icon} /></li>
         </Link>
         <Link to="/map">
-          <li className="margin-1 padding-1"><img src={mapSvg} alt="map" /></li>
+          <li className={style.li}><img src={mapSvg} alt="map" className={style.icon} /></li>
         </Link>
         <Link to="/favorites">
-          <li className="margin-1 padding-1"><img src={favoritesSvg} alt="favorites" /></li>
+          <li className={style.li}><img src={favoritesSvg} alt="favorites" className={style.icon} /></li>
         </Link>
       </ul>
     </nav>
