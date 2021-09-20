@@ -29,7 +29,7 @@ router.route('/')
       const locId = res.id;
       
       db.LocationPhoto.create({ LocationId: locId, url: body.url })
-        .catch(err => console.log("это ЩШИБКА_______________", err));
-    }).catch(err => console.log(err, "((((((((((((((((("))
+        .catch(err => console.log(err, 'ImgId'));
+    }).catch(err => console.log(err, 'locId'))
   })
 module.exports = router;
