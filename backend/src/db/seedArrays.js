@@ -3,26 +3,36 @@ const arrEventPhoto = [
     id: 1,
     EventId: 1,
     url: '/img/eventsPic/event-1.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 2,
     EventId: 1,
     url: '/img/eventsPic/event-2.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 3,
     EventId: 2,
     url: '/img/eventsPic/event-3.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 4,
     EventId: 2,
     url: '/img/eventsPic/event-4.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 5,
     EventId: 3,
     url: '/img/eventsPic/event-5.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
 
@@ -31,26 +41,36 @@ const arrLocationPhoto = [
     id: 1,
     LocationId: 1,
     url: '/img/locatePic/locate-1.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 2,
     LocationId: 1,
     url: '/img/locatePic/locate-2.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 3,
     LocationId: 1,
     url: '/img/locatePic/locate-3.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 4,
     LocationId: 2,
     url: '/img/locatePic/locate-4.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     id: 5,
     LocationId: 2,
     url: '/img/locatePic/locate-5.jpg',
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
 ];
 
