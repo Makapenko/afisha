@@ -2,7 +2,7 @@ import React from 'react';
 
 function AddPlace(props) {
 
-  const addPlaceHandler = (e) => {
+  const addPlaceHandler = async(e) => {
     e.preventDefault();
 
     const body = {
@@ -20,18 +20,18 @@ function AddPlace(props) {
       email: e.target.email.value,
       tel1: e.target.tel1.value,
       tel2: e.target.tel2.value,
+      url:e.target.url.value
     }
 
-    console.log(body);
+    console.log(body,"на фронте");
 
-    // fetch ('lockalhost:3000/addPlace', {
-    //   method: 'POST',
-    //   body: {
-    //     title, description, address, type, site, vk, fb, instagram, whatsapp, telegram, viber, email, tel1, tel2
-    //   }
-    // })
+    await fetch ('http://localhost:3001/addLocation', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({body})
+    })
   }
-
   return (
     <div>
       <form action="" onSubmit={addPlaceHandler}>
@@ -83,7 +83,7 @@ function AddPlace(props) {
         <hr />
 
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-
+        <input type="text" name="url"/>
         Координаты: тут будет карта <br />
 
         <button> Сохранить </button>
