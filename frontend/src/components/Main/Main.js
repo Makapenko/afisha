@@ -1,6 +1,5 @@
-import React from 'react';
-import Filter from './Filter';
 import React, { useEffect } from 'react';
+import Filter from './Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Main.module.css';
 
