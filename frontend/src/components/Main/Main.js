@@ -1,18 +1,21 @@
 import { useEffect } from 'react';
 // import Filter from './Filter';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Main.module.css';
 
 import moviePng from '../../icons/filters/1movie.png'
 // import movieActivePng from '../../icons/filters/1movieActive.png'
 
 function Main() {
-
+const dispatch = useDispatch()
   useEffect(() => {
     fetch('http://localhost:3001/')
     .then(res => res.json())
-    .then(data => console.log(data))
-  })
+    .then(data => dispatch({
+      type: 'INIT_EVENTS',
+      payload: data
+    }))
+  },[dispatch])
 
   return (
     <div className={style.container}>
