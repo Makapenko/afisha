@@ -2,9 +2,12 @@ const router = require('express').Router();
 const db = require('../db/models');
 
 router.route('/')
+
   .post((req, res) => {
     const { body } = req.body;
-    
+    console.log(body.title, "на бэке");
+
+    console.log("++++++++++++");
     db.Location.create(
       {
         title: body.title,
