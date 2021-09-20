@@ -57,9 +57,9 @@ const arrLocationPhoto = [
 const arrAdmins = [
   {
     id: 1,
-    username: 'ASD',
+    username: 'qwe',
     email: 'qwe@qwe.ru',
-    password: '123',
+    password: 'qwe',
     createdAt: new Date(),
     updatedAt: new Date(),
   },

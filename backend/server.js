@@ -16,10 +16,9 @@ const HOST = 'localhost';
 const corsOptions = {
   origin: 'http://localhost:3000',
   credentials: true,
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
-const indexRouter = require('./src/routes/index.router');
+const authRouter = require('./src/routes/auth.router');
 
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -31,14 +30,14 @@ app.use(session({
   store: new FileStore(),
   name: 'user_sid',
   secret: process.env.SESSION_SECRET,
-  resave: false,
+  resave: true,
   saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 12, // 12 hours
   },
 }));
 
-app.use('/', indexRouter);
+app.use('/auth', authRouter);
 
 app.listen(PORT, async () => {
   /* eslint-disable no-console */

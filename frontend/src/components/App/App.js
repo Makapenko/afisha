@@ -12,6 +12,7 @@ import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
 import EventInfo from '../CardList/EventInfo'; 
 import PlaceInfo from '../Places/PlaceInfo';
 import Places from '../Places/Places';
+import Auth from '../Auth/Auth';
 
 function App() {
 
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/addEventAndPlace">
               <AddEventAndPlace />
+            </Route>
+            <Route path="/auth">
+              <Auth />
             </Route>
           </Switch>
         </Router>

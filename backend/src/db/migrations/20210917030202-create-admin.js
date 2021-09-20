@@ -7,8 +7,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       username: {
         allowNull: false,
+        unique: true,
         type: Sequelize.STRING,
       },
       email: {
@@ -24,6 +26,7 @@ module.exports = {
         type: Sequelize.STRING,
         defaultValue: 'admin',
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
