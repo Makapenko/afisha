@@ -1,9 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import Place from './Place';
 
 function Places(props) {
-  const dispatch = useDispatch()
   const { places } = useSelector(store => store.eventsReducer.places)
 
   return (
