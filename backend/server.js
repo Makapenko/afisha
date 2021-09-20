@@ -20,7 +20,9 @@ const corsOptions = {
 
 const authRouter = require('./src/routes/auth.router');
 const indexRouter = require('./src/routes/index.router');
-const addLocationRouter=require('./src')
+const addLocationRouter=require('./src/routes/addLocation.router')
+
+
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
