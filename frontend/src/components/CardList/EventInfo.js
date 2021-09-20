@@ -5,23 +5,15 @@ import { useSelector } from 'react-redux';
 function EventInfo(props) {
   const { id } = useParams();
   const { events } = useSelector((store) => store.eventsReducer.events);
-  // const { places } = useSelector((store) => store.eventsReducer.places);
-  console.log('events', events);
+  const { locations } = useSelector((store) => store.eventsReducer.locations);
   const event = events[id - 1]
-  console.log('event', event);
- 
 
-
-  // const place = places.find(el => el.id == event.LocationId)
-  // console.log('event', event);
-  // console.log('places', places);
-  // console.log('idPlace', idPlace);
-  // console.log('place', place);
-
+  const location = locations.find(el => el.id === +event.LocationId)
   const history = useHistory();
   return (
     <div className="flex column jus-center align-center">
       <h2>{event.title}</h2>
+      <p>{location.title}</p>
       {/* <Link to={`place/${idPlace}`}>{place.title}</Link> */}
       <p  className="padding-2">{event.description}</p>
       <p>{event.price}</p>

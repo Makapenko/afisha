@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 // import Filter from './Filter';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import style from './Main.module.css';
 
 import moviePng from '../../icons/filters/1movie.png'
@@ -12,7 +12,7 @@ const dispatch = useDispatch()
     fetch('http://localhost:3001/')
     .then(res => res.json())
     .then(data => dispatch({
-      type: 'INIT_EVENTS',
+      type: 'INIT_ALL',
       payload: data
     }))
   },[dispatch])

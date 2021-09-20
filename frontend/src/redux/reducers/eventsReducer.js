@@ -1,17 +1,18 @@
 
 const initialState = {
-  places:[],
+  locations:[],
   events:[], 
 }
 
 const eventsReducer = (state = initialState, action) => {
-console.log('state', state)
+// console.log('state', state)
   switch (action.type) {
-    case 'INIT_EVENTS':
+    case 'INIT_ALL':
 
       return {
         ...state,
-        events: action.payload
+        events: action.payload,
+        locations: action.payload,
       }
 
 
