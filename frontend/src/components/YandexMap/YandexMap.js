@@ -25,7 +25,7 @@ function YandexMap() {
     return {
       preset: "islands#violetIcon",
       iconImageHref: myIcon2,
-      iconImageSize: [30, 30],
+      iconImageSize: [25, 30],
       iconLayout: 'default#image'
     };
   };
@@ -54,7 +54,7 @@ function YandexMap() {
         options={{
           iconLayout: 'default#image',
           iconImageHref: myIcon,
-          iconImageSize: [30, 30]
+          iconImageSize: [25, 30]
         }}
       />
       <Clusterer
