@@ -24,9 +24,13 @@ router.route('/')
       }
     ).then(res => {
       const locId = res.id;
-      
-      db.LocationPhoto.create({ LocationId: locId, url: body.url })
-        .catch(err => console.log(err.message));
+      body.url.map(el=>{
+        if (el!=''){
+          console.log(el,';;;;;;;;;;;;;');
+          db.LocationPhoto.create({ LocationId: locId, url: el })
+          .catch(err => console.log(err.message));
+        }
+      })
     }).catch(err => console.log(err.message))
   })
 module.exports = router;

@@ -20,7 +20,13 @@ function AddPlace(props) {
       email: e.target.email.value,
       tel1: e.target.tel1.value,
       tel2: e.target.tel2.value,
-      url:e.target.url.value
+      url:[e.target.url0.value,
+      e.target.url1.value,
+      e.target.url2.value,
+      e.target.url3.value,
+      e.target.url4.value,
+      e.target.url5.value]
+
     }
 
     console.log(body,"на фронте");
@@ -83,7 +89,12 @@ function AddPlace(props) {
         <hr />
 
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-        <input type="text" name="url"/>
+        <input type="text" name="url0"/>
+        <input type="text" name="url1"/>
+        <input type="text" name="url2"/>
+        <input type="text" name="url3"/>
+        <input type="text" name="url4"/>
+        <input type="text" name="url5"/>
         Координаты: тут будет карта <br />
 
         <button> Сохранить </button>
