@@ -13,7 +13,6 @@ function AddEvent(props) {
       startTime: e.target.startTime.value,
       endTime: e.target.endTime.value,
       doorsOpen: e.target.doorsOpen.value,
-      startTime: e.target.startTime.value,
       endDate: e.target.endDate.value,
       linkToRegister: e.target.linkToRegister.value,
       linkToBuy: e.target.linkToBuy.value,

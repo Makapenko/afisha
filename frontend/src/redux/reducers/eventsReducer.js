@@ -1,16 +1,19 @@
-import events from '../../models/example'
-import places from '../../models/example'
+
 const initialState = {
-  places,
-  events, 
+  locations:[],
+  events:[], 
 }
 
 const eventsReducer = (state = initialState, action) => {
-
+// console.log('state', state)
   switch (action.type) {
-    case 'INIT_EVENTS':
+    case 'INIT_ALL':
 
-      return state
+      return {
+        ...state,
+        events: action.payload,
+        locations: action.payload,
+      }
 
 
     default:

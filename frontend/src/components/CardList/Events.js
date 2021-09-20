@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import {  useSelector } from 'react-redux';
 import Event from './Event';
 import style from './Events.module.css';
 
 function CardList(props) {
-  const dispatch = useDispatch()
-
 
   const {events} = useSelector(store => store.eventsReducer.events)
 
