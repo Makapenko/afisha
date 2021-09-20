@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Event from './Event';
+import style from './Events.module.css';
 
 function CardList(props) {
   const dispatch = useDispatch()
@@ -8,10 +9,9 @@ function CardList(props) {
 
   
   return (
- 
     <>
       {events
-        ?<ul>{ events.map(event => <Event key={event.id} event={event} />)}</ul>
+        ?<div className={style.cardlist}>{ events.map(event => <Event key={event.id} event={event} />)}</div>
         : <p>упс</p>
       }
     </>
