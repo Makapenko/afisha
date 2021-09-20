@@ -83,7 +83,7 @@ function AddPlace(props) {
         <hr />
 
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-
+        <input type="text" name="url"/>
         Координаты: тут будет карта <br />
 
         <button> Сохранить </button>
