@@ -8,7 +8,6 @@ import {
 } from "react-yandex-maps";
 import { useState } from "react";
 import points from "./points";
-// import myIcon from "../iconsForYMaps/bars.png";
 import myIcon2 from "../iconsForYMaps/quests.png";
 
 function YandexMap() {
@@ -17,21 +16,23 @@ function YandexMap() {
 
   const mapState = {
     center: [lat, lng],
-    zoom: 13,
+    zoom: 11.5,
   };
-
-  const getPointData = (index) => {
+  
+  const getPointData = (title, desc, id) => {
     return {
-      balloonContentBody: "placemark <strong>balloon " + index + "</strong>",
-      clusterCaption: "placemark <strong>" + index + "</strong>",
+      balloonContentHeader: title,
+      balloonContentBody: desc,
+      balloonContentFooter: `<a  style='color: green' href='/events/${id}'> go </a>`,
+      clusterCaption: title,
     };
   };
-
+// Когда будеь готов сам компонент (из раздела со списком сообытий), можно попробовать его html прокинуть в baloonContentBody, стили все накинуть инлайново
   const getPointOptions = () => {
     return {
       preset: "islands#violetIcon",
       iconImageHref: myIcon2,
-      iconImageSize: [25, 30],
+      iconImageSize: [35, 45],
       iconLayout: "default#image",
     };
   };
@@ -56,16 +57,16 @@ function YandexMap() {
           Longitude: <span id="longitude">{lng}</span>
         </p>
       </div>
-      <YMaps>
+      <YMaps query={{ lang: "ru_RU", load: "package.full" }}>
         <div>
-          <Map state={mapState}>
+          <Map state={mapState} width={500} heigth={400}>
             <ZoomControl options={{ float: "left" }} />
             <Placemark
               geometry={[lat, lng]}
               options={{
-                // iconLayout: "default#image",
-                iconImageHref: 'islands#violetRunIcon',
-                iconImageSize: [25, 30],
+                preset: "islands#violetRunIcon",
+                iconImageHref: "islands#violetRunIcon",
+                iconImageSize: [5, 5],
               }}
             />
             <Clusterer
@@ -77,11 +78,11 @@ function YandexMap() {
                 geoObjectHideIconOnBalloonOpen: false,
               }}
             >
-              {points.map((coordinates, idx) => (
+              {points.map((coordinates) => (
                 <Placemark
-                  key={idx}
-                  geometry={coordinates}
-                  properties={getPointData(idx)}
+                  key={coordinates.id}
+                  geometry={coordinates.coords}
+                  properties={getPointData(coordinates.desc, coordinates.title, coordinates.id)}
                   options={getPointOptions()}
                 />
               ))}
