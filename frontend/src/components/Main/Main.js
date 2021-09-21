@@ -8,14 +8,6 @@ import { useState } from "react";
 
 
 function Main() {
-  const dispatch = useDispatch();
-  const arrayToSend = useSelector((store) => store.eventsReducer.events);
-  const abc = [];
-  arrayToSend.map((el) => {
-    return abc.push(el.id);
-  });
-
-  const [state, setState] = useState(true);
   // const [checked, setChecked] =useState(nptVal.current.value)
   // const subcategory = useSelector((store) => 
   //   store.eventsReducer.events
@@ -45,36 +37,32 @@ function Main() {
   //     });
   //   }
 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    fetch('http://localhost:3001/')
-    .then(res => res.json())
-    .then(data => dispatch({
-      type: 'INIT_ALL',
-      payload: data
-    }))
-  },[dispatch])
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   fetch('http://localhost:3001/')
+  //   .then(res => res.json())
+  //   .then(data => dispatch({
+  //     type: 'INIT_ALL',
+  //     payload: data
+  //   }))
+  // },[dispatch])
+
+  // // const subcategory = 
     
-
-  function filterWideRelease() {
-    setState(!state);
-    if (state) {
-      fetch("http://localhost:3001/")
-        .then((res) => res.json())
-        .then((data) =>
-          dispatch({
-            type: "WIDERELEASE",
-            payload: data,
-          })
-        );
-    } else {
-      dispatch({
-        type: "DEL_WIDERELEASE",
-        payload: arrayToSend
-      });
-    }
-  }
-
+  // function test (num) {
+  //   const a = 3;
+  //   const b = num + a
+  //   console.log(b);
+  //   return b
+    
+  //   // console.log(event.target.value);
+  // }
+  // // function addEvent () {
+  // //   dispatch({
+  // //     type: 'ADD_EVENT',
+  // //     payload: subcategory
+  // //   })
+  // // }
   // Рабочая версия
 
   // const arrayToSend = useSelector((store) => store.eventsReducer.events);
@@ -83,25 +71,27 @@ function Main() {
   //   return abc.push(el.id);
   // });
 
+  const [state, setState] = useState(true);
+    const dispatch = useDispatch()
   
-  // function filterWideRelease() {
-  //   setState(!state);
-  //   if (state) {
-  //     fetch("http://localhost:3001/")
-  //       .then((res) => res.json())
-  //       .then((data) =>
-  //         dispatch({
-  //           type: "WIDERELEASE",
-  //           payload: data,
-  //         })
-  //       );
-  //   } else {
-  //     dispatch({
-  //       type: "DEL_WIDERELEASE",
-  //       payload: arrayToSend
-  //     });
-  //   }
-  // }
+  function filterWideRelease(a, b) {
+    setState(!state);
+    if (state) {
+      fetch("http://localhost:3001/")
+        .then((res) => res.json())
+        .then((data) =>
+          dispatch({
+            type: a,
+            payload: data,
+          })
+        );
+    } else {
+      dispatch({
+        type: b
+        // payload: arrayToSend
+      });
+    }
+  }
 
 
   return (
@@ -132,7 +122,11 @@ function Main() {
               name="filmWideRelease"
               id="filmWideRelease"
               className={style.subcat__checkbox}
-              onClick={filterWideRelease}
+              // onChange={
+              //   test(3)
+              // }
+              // value='fuck'
+              onClick={() => filterWideRelease('WIDERELEASE','DEL_WIDERELEASE')}
             />
             <label for="filmWideRelease" className={style.subcat__name}>
               Широкий прокат
@@ -142,7 +136,7 @@ function Main() {
           <div className={style.subcat}>
             <input
               type="checkbox"
-              name="filmLimitedRelease"
+              name="Ограниченый прокат"
               id="filmLimitedRelease"
               className={style.subcat__checkbox}
               // onClick={filterWideRelease}
@@ -167,7 +161,7 @@ function Main() {
           <div className={style.subcat}>
             <input
               type="checkbox"
-              name="Rock"
+              name="Рок"
               id="filmOther"
               className={style.subcat__checkbox}
             />
