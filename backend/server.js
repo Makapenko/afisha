@@ -21,6 +21,7 @@ const corsOptions = {
 const authRouter = require('./src/routes/auth.router');
 const indexRouter = require('./src/routes/index.router');
 const addLocationRouter=require('./src/routes/addLocation.router')
+const addEventRouter=require('./src/routes/addEvent.router')
 
 
 app.use(cors(corsOptions));
@@ -43,6 +44,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/addLocation', addLocationRouter);
+app.use('/addPlace', addEventRouter);
 
 
 app.listen(PORT, async () => {

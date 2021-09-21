@@ -5,7 +5,7 @@ import style from './Events.module.css';
 
 function CardList(props) {
 
-  const {events} = useSelector(store => store.eventsReducer.events)
+  const {events} = useSelector(store => store.eventsReducer)
 
   
   return (

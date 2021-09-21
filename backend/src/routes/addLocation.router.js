@@ -30,7 +30,6 @@ router.route('/')
 
       body.url.map(el=>{
         if (el!=''){
-  
           db.LocationPhoto.create({ LocationId: locId, url: el })
           .catch(err => console.log(err));
         }
