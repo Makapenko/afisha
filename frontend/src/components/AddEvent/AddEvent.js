@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useRef} from 'react';
 
 function AddEvent(props) {
 
@@ -26,12 +26,19 @@ function AddEvent(props) {
     //   body: body
     // })
   }
-
+  let arrEvent=['moscow','spb']
+  const newEvent=useRef(null)//ловим место после выбора из селектора
   return (
     <div>
       <form action="" onSubmit={addEventHandler}>
 
         ВЫБОР МЕСТА --------------------------------------------------------
+        <select ref={newEvent} name="eventSelect">
+          <option key={'default'} defaultChecked={true}>{''}</option>
+          {arrEvent.map((ev) => (
+            <option key={ev}>{ev}</option>
+          ))}
+        </select>
         <br />
         Название события (title):
         <input type="text" name="title" /> <br />
