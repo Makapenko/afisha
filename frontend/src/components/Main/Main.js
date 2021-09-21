@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Filter from './Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Main.module.css';
@@ -7,7 +7,7 @@ import moviePng from '../../icons/filters/1movie.png'
 // import movieActivePng from '../../icons/filters/1movieActive.png'
 
 function Main() {
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   // useEffect(() => {
   //   fetch('http://localhost:3001/')
@@ -17,7 +17,7 @@ const dispatch = useDispatch()
   //     payload: data
   //   }))
   // },[dispatch])
-  
+
 
 
   // const {events} = useSelector(store => store.eventsReducer)
@@ -25,20 +25,31 @@ const dispatch = useDispatch()
 
   const arrayToSend = useSelector(store => store.eventsReducer.events)
   const abc = [];
-  arrayToSend.map( el => {
+  arrayToSend.map(el => {
     return abc.push(el.id)
   })
 
-  const wideRelease = {subcategory: "Рок", value: false};
-  function filterWideRelease () {
-    wideRelease.value=!wideRelease.value
-    if (wideRelease.value) {
-    fetch('http://localhost:3001/')
-    .then(res => res.json())
-    .then(data => dispatch({
-      type: 'INIT_WIDERELEASE',
-      payload: data
-    }))} else {
+// let val={ subcategory: "Рок", value: false }
+
+  const [state, setState] = useState(false)
+
+
+  function filterWideRelease() {
+
+    console.log(state);
+    setState( !state)
+    console.log(state);
+
+
+    if (state) {
+      fetch('http://localhost:3001/')
+        .then(res => res.json())
+        .then(data => dispatch({
+          type: 'INIT_WIDERELEASE',
+          payload: data
+        }))
+    } else {
+      console.log("!!!!!!!!!!!!!!!!");
       dispatch({
         type: 'CLEAR_FILTER',
         payload: arrayToSend
@@ -51,7 +62,7 @@ const dispatch = useDispatch()
       <div className={style.category}>
         <div className={style.category__left}>
           <div className={style.category__img}>
-            <img src={moviePng} alt="favorites" className={style.icon} name="cat_movie" id="cat_movie" /> 
+            <img src={moviePng} alt="favorites" className={style.icon} name="cat_movie" id="cat_movie" />
             {/* настройки как для чекбокса */}
           </div>
 
@@ -62,8 +73,8 @@ const dispatch = useDispatch()
       <div className={style.subcats__container}>
         <div className={style.subcats}>
           <div className={style.subcat}>
-            <input type="checkbox" name="filmWideRelease" id="filmWideRelease" className={style.subcat__checkbox} 
-              onClick= {filterWideRelease}
+            <input type="checkbox" name="filmWideRelease" id="filmWideRelease" className={style.subcat__checkbox}
+              onClick={filterWideRelease}
             />
             <label for="filmWideRelease" className={style.subcat__name}>
               Широкий прокат

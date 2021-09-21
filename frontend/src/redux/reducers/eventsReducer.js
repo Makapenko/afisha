@@ -17,6 +17,7 @@ const eventsReducer = (state = initialState, action) => {
       case 'INIT_WIDERELEASE':
         let a = action.payload.events.filter( (el) =>
         el.subcategory === "Рок")
+        console.log("+++++++++++");
         return {...state,
         events: a
         }
@@ -25,7 +26,7 @@ const eventsReducer = (state = initialState, action) => {
         console.log(action.payload);
         let b = action.payload.filter( (el) =>
         el.subcategory !== "Рок")
-        console.log(b);
+        console.log(b,"&&&&&&&&&&&&");
         return {...state,
         events: b
         }
