@@ -11,8 +11,8 @@ console.log('state', state)
 
       return {
         ...state,
-        events: action.payload,
-        locations: action.payload,
+        events: action.payload.events,
+        locations: action.payload.locations,
       }
 
 
