@@ -36,6 +36,15 @@
   font-size: 20px;
 }
 
+.category__arrow{
+  /* margin-right: 1vh; */
+  width: 12vw;
+  height: 12vw;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: justify; 
+}
 .subcats__container {
   text-align: left;
   width: 90%;
