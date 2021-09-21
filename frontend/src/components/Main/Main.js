@@ -44,6 +44,16 @@ function Main() {
   //       payload: arrayToSend
   //     });
   //   }
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    fetch('http://localhost:3001/')
+    .then(res => res.json())
+    .then(data => dispatch({
+      type: 'INIT_ALL',
+      payload: data
+    }))
+  },[dispatch])
     
 
   function filterWideRelease() {
@@ -66,6 +76,14 @@ function Main() {
   }
 
   // Рабочая версия
+
+  // const arrayToSend = useSelector((store) => store.eventsReducer.events);
+  // const abc = [];
+  // arrayToSend.map((el) => {
+  //   return abc.push(el.id);
+  // });
+
+  
   // function filterWideRelease() {
   //   setState(!state);
   //   if (state) {
