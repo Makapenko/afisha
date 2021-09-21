@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function Auth() {
   // eslint-disable-next-line no-unused-vars
@@ -31,18 +31,19 @@ function Auth() {
 
   return (
     <div>
-      <h1>Авторизация</h1>
+      <h1>Пожалуйста, авторизуйтесь</h1>
+      <Link to='/auth/signup'>Регистрация нового пользователя</Link><br/><br />
 
       <form onSubmit={submitHandler}>
-        <input type='text' name='username' placeholder='username' />
-        <input type='password' name='password' placeholder='password' />
+        <input type='text' name='username' placeholder='username' /><br />
+        <input type='password' name='password' placeholder='password' /><br /><br />
 
         <button type='submit'>Sign in</button>
       </form>
 
       {
         redirect
-          ? <Redirect to='/addLocation' />
+          ? <Redirect to='/account' />
           : ''
       }
     </div>

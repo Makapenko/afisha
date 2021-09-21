@@ -8,11 +8,12 @@ import Main from '../Main/Main';
 import YandexMap from '../YandexMap/YandexMap';
 import Events from '../CardList/Events';
 import Favorites from '../Favorites/Favorites';
-import AddEventAndPlace from '../AddEventAndPlace/AddEventAndPlace';
 import EventInfo from '../CardList/EventInfo'; 
 import PlaceInfo from '../Places/PlaceInfo';
 import Places from '../Places/Places';
 import Auth from '../Auth/Auth';
+import Signup from '../Auth/Signup';
+import Account from '../Account/Account';
 
 function App() {
 
@@ -43,12 +44,17 @@ function App() {
             <Route path="/favorites">
               <Favorites />
             </Route>
-            <Route path="/addEventAndPlace">
-              <AddEventAndPlace />
+
+            <Route path="/auth/signup">
+              <Signup />
             </Route>
             <Route path="/auth">
               <Auth />
             </Route>
+            <Route path="/account">
+              <Account />
+            </Route>
+
           </Switch>
         </Router>
       </Provider>

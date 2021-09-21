@@ -20,6 +20,7 @@ router.route('/signin')
 
       if (password === itemUser.password) {
         req.session.user = itemUser;
+
         res
           .status(200)
           .json({
