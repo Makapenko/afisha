@@ -2,9 +2,12 @@ const router = require('express').Router();
 const db = require('../db/models');
 
 router.route('/')
+
   .post((req, res) => {
     const { body } = req.body;
-    
+    console.log(body.title, "на бэке");
+
+    console.log("++++++++++++");
     db.Location.create(
       {
         title: body.title,
@@ -24,13 +27,14 @@ router.route('/')
       }
     ).then(res => {
       const locId = res.id;
+
       body.url.map(el=>{
         if (el!=''){
-          console.log(el,';;;;;;;;;;;;;');
+  
           db.LocationPhoto.create({ LocationId: locId, url: el })
-          .catch(err => console.log(err.message));
+          .catch(err => console.log(err));
         }
       })
-    }).catch(err => console.log(err.message))
+    }).catch(err => console.log(err))
   })
 module.exports = router;
