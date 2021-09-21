@@ -97,9 +97,18 @@ function Main() {
 const [all,setAll]=useState(null)
 const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
-   function filterWideRelease(a, b, c, f) {
+  function allFunc(){
+    filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1);
+    allFunc1()     
+
+  }
+  function allFunc1(){
+    filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0);
+  }
+    function filterWideRelease(a, b, c, f) {
     console.log(arr[f]);
     if (arr[f]==0) {
+      console.log("888888888888");
       let newArr = [...arr];
       newArr[f] =1
       // console.log(newArr,"-----------");
@@ -114,6 +123,7 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
           })
       // );
     } else if(arr[f]==1){
+      console.log("9999999999");
       console.log(arr);
       let newArr = [...arr];
       newArr[f] =0
@@ -151,11 +161,15 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               className={style.icon}
               name="cat_movie"
               id="cat_movie"
-              onClick={() =>{ filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0);
-              filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1);
-              // filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 2);
-              // filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 3);
-            }}
+              onClick={()=>{allFunc();}
+                
+              
+              }
+              // onClick="filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1);
+              //   filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0);"
+                
+              
+              
 
             />
           </div>

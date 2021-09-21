@@ -35,6 +35,9 @@ module.exports = {
       price: {
         type: Sequelize.TEXT,
       },
+      category: {
+        type: Sequelize.TEXT
+      },
       subcategory: {
         type: Sequelize.TEXT,
       },

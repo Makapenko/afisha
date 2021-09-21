@@ -76,16 +76,16 @@ case 'INIT_ALL':
           locations: action.payload.locations,
         }
 case "WIDERELEASE":
-  console.log(action.payload);
+  // console.log(action.payload);
   let a = action.payload.all.events.filter((el) => el.subcategory ==action.payload.c);
-  console.log(state);
+  // console.log(state);
   return { ...state, events: [...state.events, ...a ]};
 
 case "DEL_WIDERELEASE":
   // let b = action.payload.filter((el) => el.subcategory !== "Рок");
   // console.log(b);
   // return { ...state, events: b };
-  console.log(`${action.payload}`);
+  // console.log(`${action.payload}`);
   let b = state.events.filter((el) => el.subcategory !== `${action.payload}`)
     return {
       ...state, events:b
