@@ -3,7 +3,7 @@ function isAuthenticated(req, res, next) {
     next();
   } else {
     res.json({
-      code: 'ACCESS DENIED',
+      code: 'ACCESS ERROR',
       message: 'Доступ запрещён',
     });
   }

@@ -18,7 +18,6 @@ const corsOptions = {
   credentials: true,
 };
 
-// const isAuthenticated = require('./src/middleware/isAuthenticated');
 const indexRouter = require('./src/routes/index.router');
 const authRouter = require('./src/routes/auth.router');
 const accountRouter = require('./src/routes/account.router');

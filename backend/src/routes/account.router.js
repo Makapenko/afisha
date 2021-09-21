@@ -6,7 +6,7 @@ router.route('/')
     res
       .status(200)
       .json({
-        code: 'ACCESS GRANTED',
+        code: 'ACCESS OK',
         message: 'Доступ разрешён',
       });
   });
