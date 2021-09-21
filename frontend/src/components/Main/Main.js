@@ -8,21 +8,50 @@ import moviePng from '../../icons/filters/1movie.png'
 
 function Main() {
 const dispatch = useDispatch()
-  useEffect(() => {
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3001/')
+  //   .then(res => res.json())
+  //   .then(data => dispatch({
+  //     type: 'INIT_ALL',
+  //     payload: data
+  //   }))
+  // },[dispatch])
+  
+
+
+  // const {events} = useSelector(store => store.eventsReducer)
+  // console.log(events);
+
+  const arrayToSend = useSelector(store => store.eventsReducer.events)
+  const abc = [];
+  arrayToSend.map( el => {
+    return abc.push(el.id)
+  })
+
+  const wideRelease = {subcategory: "Рок", value: false};
+  function filterWideRelease () {
+    wideRelease.value=!wideRelease.value
+    if (wideRelease.value) {
     fetch('http://localhost:3001/')
     .then(res => res.json())
     .then(data => dispatch({
-      type: 'INIT_ALL',
+      type: 'INIT_WIDERELEASE',
       payload: data
-    }))
-  },[dispatch])
+    }))} else {
+      dispatch({
+        type: 'CLEAR_FILTER',
+        payload: arrayToSend
+      })
+    }
+  }
 
   return (
     <div className={style.container}>
       <div className={style.category}>
         <div className={style.category__left}>
           <div className={style.category__img}>
-            <img src={moviePng} alt="favorites" className={style.icon} name="cat_movie" id="cat_movie"/> 
+            <img src={moviePng} alt="favorites" className={style.icon} name="cat_movie" id="cat_movie" /> 
             {/* настройки как для чекбокса */}
           </div>
 
@@ -33,7 +62,9 @@ const dispatch = useDispatch()
       <div className={style.subcats__container}>
         <div className={style.subcats}>
           <div className={style.subcat}>
-            <input type="checkbox" name="filmWideRelease" id="filmWideRelease" className={style.subcat__checkbox} />
+            <input type="checkbox" name="filmWideRelease" id="filmWideRelease" className={style.subcat__checkbox} 
+              onClick= {filterWideRelease}
+            />
             <label for="filmWideRelease" className={style.subcat__name}>
               Широкий прокат
             </label>
@@ -54,11 +85,17 @@ const dispatch = useDispatch()
           </div>
           <hr />
           <div className={style.subcat}>
+            <input type="checkbox" name="Rock" id="filmOther" className={style.subcat__checkbox} />
+            <label for="filmOther" className={style.subcat__name}>
+              Рок
+            </label>
+          </div>
+          {/* <div className={style.subcat}>
             <input type="checkbox" name="filmOther" id="filmOther" className={style.subcat__checkbox} />
             <label for="filmOther" className={style.subcat__name}>
               Разное
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
 
