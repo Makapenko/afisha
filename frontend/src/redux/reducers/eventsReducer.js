@@ -1,43 +1,35 @@
-
 const initialState = {
-  locations:[],
-  events:[], 
-}
+  locations: [],
+  events: [],
+};
 
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case 'INIT_ALL':
+    case "WIDERELEASE":
+      let a = action.payload.events.filter((el) => el.subcategory === "Рок");
+      return { ...state, events: a };
 
-    //   return {
-    //     ...state,
-    //     events: action.payload.events,
-    //     locations: action.payload.locations,
-    //   }
-
-      case 'INIT_WIDERELEASE':
-        let a = action.payload.events.filter( (el) =>
-        el.subcategory === "Рок")
-        return {...state,
-        events: a
-        }
-
-      case 'CLEAR_FILTER':
-        console.log(action.payload);
-        let b = action.payload.filter( (el) =>
-        el.subcategory !== "Рок")
-        console.log(b);
-        return {...state,
-        events: b
-        }
-        // return {...state, events: state.events.filter(
-        //   el => el.id !== action.payload
-        // )}
-        
-
+    case "DEL_WIDERELEASE":
+      let b = action.payload.filter((el) => el.subcategory !== "Рок");
+      return { ...state, events: b };
 
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default eventsReducer
+export default eventsReducer;
+
+// Рабочая версия
+// case "WIDERELEASE":
+//   let a = action.payload.events.filter((el) => el.subcategory === "Рок");
+//   return { ...state, events: a };
+
+// case "DEL_WIDERELEASE":
+//   let b = action.payload.filter((el) => el.subcategory !== "Рок");
+//   console.log(b);
+//   return { ...state, events: b };
+
+// default:
+//   return state;
+// }
