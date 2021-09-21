@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const db = require('../db/models');
+// const isAuthenticated = require('../middleware/isAuthenticated');
 
 router.route('/signin')
   // eslint-disable-next-line consistent-return
@@ -13,8 +14,8 @@ router.route('/signin')
         return res
           .status(400)
           .json({
-            code: 'ACCESS DENIED',
-            message: 'Пользователь не найден',
+            code: 'ACCESS ERROR',
+            message: 'Ошибка авторизации',
           });
       }
 
@@ -24,15 +25,15 @@ router.route('/signin')
         res
           .status(200)
           .json({
-            code: 'ACCESS GRANTED',
+            code: 'ACCESS OK',
             message: 'Доступ разрешён',
           });
       } else {
         res
           .status(400)
           .json({
-            code: 'ACCESS DENIED',
-            message: 'Неверный пароль',
+            code: 'ACCESS ERROR',
+            message: 'Ошибка авторизации',
           });
       }
     } catch (error) {

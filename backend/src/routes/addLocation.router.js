@@ -22,8 +22,8 @@ router.route('/')
         tel1: body.tel1,
         tel2: body.tel2,
       },
-    ).then((res) => {
-      const locId = res.id;
+    ).then((data) => {
+      const locId = data.id;
 
       db.LocationPhoto.create({ LocationId: locId, url: body.url })
         .catch((err) => console.log(err, 'ImgId'));

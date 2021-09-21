@@ -45,7 +45,7 @@ function App() {
               <Favorites />
             </Route>
 
-            <Route path="/auth/signup">
+            <Route path="/signup">
               <Signup />
             </Route>
             <Route path="/auth">

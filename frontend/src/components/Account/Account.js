@@ -1,43 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { Redirect } from 'react-router';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, Redirect } from 'react-router-dom'
+import { isAuthenticatedAC } from '../../redux/actionCreators';
 import AddEvent from '../AddEvent/AddEvent';
 import AddPlace from '../AddPlace/AddPlace';
 
-function Account(props) {
-  const [redirect, setRedirect] = useState(false);
+function Account() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.userReducer);
 
-  useEffect(() => {
-    fetch('http://localhost:3001/account', {
-      credentials: 'include',
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('AddEventAndPlace', data.message);
-        if (data.code === 'ACCESS DENIED') {
-          setRedirect(true);
-        }
-      })
-      .catch(err => err.message)
-  }, [])
+
+  function logoutHandler() {
+    dispatch(isAuthenticatedAC(false));
+    history.push('/auth');
+  }
 
   return (
     <div>
-      <h1>Профиль для добавления событий</h1>
-      <p>(component Account)</p>
       {
-        redirect
-          ? <Redirect to='/auth' />
-          : (
-            <>
-              <AddPlace />
-              <hr /> <hr />
-              <AddEvent />
-            </>
-          )
+        isAuthenticated
+          ? (
+          <>
+            <button onClick={logoutHandler}>
+              Выход
+            </button>
+            <hr />
+            <h1>Профиль для добавления событий</h1>
+            <AddPlace />
+            <hr /> <hr />
+            <AddEvent />
+          </>
+        )
+        : <Redirect to='/auth' />
       }
-
-
-    </div>
+    </div >
   );
 }
 
