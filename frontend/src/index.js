@@ -8,8 +8,11 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 ReactDOM.render(
   <>
     <App />
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a59dddf7400fec308daba75144d5551a4c860786
   </>,
   document.getElementById('root')
 );
