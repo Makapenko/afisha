@@ -10,6 +10,7 @@ router.route('/')
       .json({
         code: 'LOCATION SENDED',
         location,
+        userId: req.session.user.id,
       });
   });
 

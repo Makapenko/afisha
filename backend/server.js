@@ -23,8 +23,7 @@ const indexRouter = require('./src/routes/index.router');
 const authRouter = require('./src/routes/auth.router');
 const accountRouter = require('./src/routes/account.router');
 const getLocationRouter = require('./src/routes/getLocation.router');
-
-const addEventRouter = require('./src/routes/addEvent.router'); // todo
+const addEventRouter = require('./src/routes/addEvent.router');
 
 const addLocationRouter = require('./src/routes/addLocation.router');
 

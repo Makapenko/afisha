@@ -2,41 +2,48 @@ const router = require('express').Router();
 const db = require('../db/models');
 
 router.route('/')
-  .post((req, res) => {
-    console.log("пришли на бэк")
-
+  .post(async (req, res) => {
     const { body } = req.body;
-    console.log(body, "на бэке");
 
-    console.log("++++++++++++");
-    db.Event.create(
-      {
-        AdminId: 1,
-        title: body.title,
-        description: body.description,
-        subcategory: body.subcategory,
-        price: body.price,
-        LocationId: body.LocationId,
-        startTime: body.startTime,
-        endTime: body.endTime,
-        doorsOpen: body.doorsOpen,
-        endDate: body.endDate,
-        linkToRegister: body.linkToRegister,
-        linkToBuy: body.linkToBuy,
-        linkToEvent: body.linkToEvent
-      }
-    ).then((res) => {
-      const locId = res.id;
-      console.log(locId);
-      console.log(body.url);
-      body.url.map(el => {
-        if (el != '') {
-          db.EventPhoto.create({ EventId: locId, url: el })
-            .then(console.log("+==========="))
-            .catch(err => console.log(err));
+    const newEvent = await db.Event.create({
+      title: body.title,
+      description: body.description,
+      AdminId: body.AdminId,
+      LocationId: Number(body.LocationId),
+      price: body.price,
+      subcategory: body.subcategory,
+      timeStart: body.startTime,
+      timeEnd: body.endTime,
+      dorsOpen: body.doorsOpen,
+      dateStart: body.startDate,
+      dateEnd: body.endDate,
+      linkToRegister: body.linkToRe,
+      linkToBuy: body.linkToBuy,
+      linkToEvent: body.linkToEvent,
+    });
+
+    // eslint-disable-next-line consistent-return
+    body.url.forEach(async (item) => {
+      try {
+        if (item !== '') {
+          await db.EventPhoto.create({
+            EventId: newEvent.id,
+            url: item,
+          });
         }
-      })
-      console.log('++++++++++11111111111111111');
-    }).catch(err => console.log(err))
-  })
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error.message);
+        return null;
+      }
+    });
+
+    res
+      .status(200)
+      .json({
+        code: 'EVENT SAVED',
+        message: 'EVENT SAVED',
+      });
+  });
+
 module.exports = router;

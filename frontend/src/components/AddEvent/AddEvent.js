@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 function AddEvent() {
   const [locations, setLocations] = useState([]);
+  const [sessionUserId, setsessionUserId] = useState(null);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/getLocation`, {
@@ -11,8 +12,8 @@ function AddEvent() {
     })
       .then((response) => response.json())
       .then(data => {
-        setLocations(data.location)
-        console.log(locations);
+        setLocations(data.location);
+        setsessionUserId(data.userId);
       })
       .catch((err) => err.message);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -22,25 +23,27 @@ function AddEvent() {
     e.preventDefault();
 
     const body = {
+      LocationId: e.target.locationSelect.value,
+      AdminId: sessionUserId,
       title: e.target.title.value,
       description: e.target.description.value,
       subcategory: e.target.subcategory.value,
       price: e.target.price.value,
-      LocationId: e.target.locationSelect.value,
       startTime: e.target.startTime.value,
       endTime: e.target.endTime.value,
       doorsOpen: e.target.doorsOpen.value,
+      startDate: e.target.startDate.value,
       endDate: e.target.endDate.value,
       linkToRegister: e.target.linkToRegister.value,
       linkToBuy: e.target.linkToBuy.value,
       linkToEvent: e.target.linkToEvent.value,
       url: [
-        e.target.url0.value,
         e.target.url1.value,
         e.target.url2.value,
         e.target.url3.value,
         e.target.url4.value,
         e.target.url5.value,
+        e.target.url6.value,
       ],
     };
 
@@ -53,13 +56,13 @@ function AddEvent() {
       body: JSON.stringify({ body }),
     })
       .then((response) => response.json())
-      .then(data => console.log(data.message))
+      .then(data => alert(data.message))
       .catch((err) => err.message);
   };
 
   return (
     <div>
-      <form action='' onSubmit={addEventHandler}>
+      <form onSubmit={addEventHandler}>
         <h2>ДОБАВЛЕНИЕ СОБЫТИЯ</h2>
 
         <b>Выбор места проведения события</b><br />
@@ -128,12 +131,12 @@ function AddEvent() {
         Ссылка на событие (linkToEvent):
         <input type='text' name='linkToEvent' /> <br />
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-        <input type='text' name='url0' />
         <input type='text' name='url1' />
         <input type='text' name='url2' />
         <input type='text' name='url3' />
         <input type='text' name='url4' />
         <input type='text' name='url5' />
+        <input type='text' name='url6' />
         ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА
         ОДИНАКОВЫХ СОБЫТИЯ
         <br />
