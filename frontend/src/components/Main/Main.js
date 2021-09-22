@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Filter from "./Filter";
 import { useDispatch, useSelector } from "react-redux";
@@ -202,11 +201,41 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
     )
   },[])
 
+import React, { useEffect, useState } from 'react';
+// import Filter from './Filter';
+import { useDispatch } from 'react-redux';
+import style from './Main.module.css';
+
+import moviePng from '../../icons/filters/1movie.png'
+// import movieActivePng from '../../icons/filters/1movieActive.png'
+import arrowWhitePng from '../../icons/navigation/arrowWhite.png'
+import arrowBlackPng from '../../icons/navigation/arrowBlack.png'
+function Main() {
+
+  const [select, setSelect] = useState(false)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    fetch('http://localhost:3001/')
+      .then(res => res.json())
+      .then(data => dispatch({
+        type: 'INIT_ALL',
+        payload: data
+      }))
+  }, [dispatch])
+
+    function dropDownList(){
+      setSelect(!select)
+    }
+  
+
   return (
     <div className={style.container}>
       <div className={style.category}>
         <div className={style.category__left}>
           <div className={style.category__img}>
+
+            <img src={moviePng} alt="favorites" className={style.icon} name="cat_movie" id="cat_movie" />
+
             {/* настройки как для чекбокса */}
             <img
               src={moviePng}
@@ -226,10 +255,21 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
           <div className={style.category__name} for="cat_movie">
             Кино
           </div>
+
+          <div className={style.category__name} for="cat_movie">Кино</div>
+          
         </div>
-        <div className={style.category__arrow}>\/</div>
+        <div onClick={dropDownList} className={style.category__arrow}>
+        <img src={arrowBlackPng} alt="arrow" className={style.icon} name="cat_movie" id="cat_movie" />
+          {/* \/ */}
+
+        </div>
       </div>
-      <div className={style.subcats__container}>
+      
+      {/* sub */}
+      {select
+      ?
+<div className={style.subcats__container}>
         <div className={style.subcats}>
           <div className={style.subcat}>
 
@@ -300,6 +340,15 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
           </div> */}
         </div>
       </div>
+
+      : <span/>
+      }
+      
+
+
+
+      <div className={style.category__name} for="cat_theatre">Театр</div>
+
     </div>
   );
 }
