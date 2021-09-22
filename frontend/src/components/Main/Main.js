@@ -26,6 +26,12 @@ function Main() {
       "Ограниченный прокат",
       1
     );
+    filterBySubcategory(
+      "WIDERELEASE",
+      "DEL_WIDERELEASE",
+      "Кинопоказы в барах",
+      2
+    )
   }
 
   function toggle(status) {
@@ -64,7 +70,13 @@ function Main() {
   useEffect(() => {
     fetch("http://localhost:3001/")
       .then((res) => res.json())
-      .then((data) => setAll(data));
+      .then((data) => setAll(data))
+      // .then((data) => {setAll(data);
+      
+      // dispatch({
+      //   type:"INIT_ALL",
+      //   payload:data
+      // })})
   }, []);
 
   const [select, setSelect] = useState(false);
@@ -169,6 +181,14 @@ function Main() {
                 name="filmBar"
                 id="filmBar"
                 className={style.subcat__checkbox}
+                onClick={() =>
+                  filterBySubcategory(
+                    "WIDERELEASE",
+                    "DEL_WIDERELEASE",
+                    "Кинопоказы в барах",
+                    2
+                  )
+                }
               />
               <label htmlFor="filmBar" className={style.subcat__name}>
                 Кинопоказы в барах
