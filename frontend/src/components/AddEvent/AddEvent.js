@@ -1,65 +1,90 @@
-import React, { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 
-function AddEvent(props) {
+function AddEvent() {
+  const [locations, setLocations] = useState([]);
+  const [sessionUserId, setsessionUserId] = useState(null);
 
-
-  const { locations } = useSelector((store) => store.eventsReducer);
-  let arrEvent = []
-  const newEvent = useRef(null)  //ловим место после выбора из селектора
-  locations.map(el => arrEvent.push(el.title))
-
-  const addEventHandler = async (e) => {
-
-    e.preventDefault();
-    let idLocationEvent = arrEvent.findIndex(el => el == newEvent.current.value) + 1
-
-    if (idLocationEvent != 0) {
-      const body = {
-        title: e.target.title.value,
-        description: e.target.description.value,
-        subcategory: e.target.subcategory.value,
-        price: e.target.price.value,
-        LocationId: idLocationEvent,
-        startTime: e.target.startTime.value,
-        endTime: e.target.endTime.value,
-        doorsOpen: e.target.doorsOpen.value,
-        endDate: e.target.endDate.value,
-        linkToRegister: e.target.linkToRegister.value,
-        linkToBuy: e.target.linkToBuy.value,
-        linkToEvent: e.target.linkToEvent.value,
-        url:[e.target.url0.value,
-          e.target.url1.value,
-          e.target.url2.value,
-          e.target.url3.value,
-          e.target.url4.value,
-          e.target.url5.value]
-      }
-
-      console.log(body);
-
-      await fetch('http://localhost:3001/addPlace', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ body })
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/getLocation`, {
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then(data => {
+        setLocations(data.location);
+        setsessionUserId(data.userId);
       })
-    }else{
-          console.log('ошибка при заполнении формы');
-    }
-  }
+      .catch((err) => err.message);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  function addEventHandler(e) {
+    e.preventDefault();
+
+    const body = {
+      LocationId: e.target.locationSelect.value,
+      AdminId: sessionUserId,
+      title: e.target.title.value,
+      description: e.target.description.value,
+      subcategory: e.target.subcategory.value,
+      price: e.target.price.value,
+      startTime: e.target.startTime.value,
+      endTime: e.target.endTime.value,
+      doorsOpen: e.target.doorsOpen.value,
+      startDate: e.target.startDate.value,
+      endDate: e.target.endDate.value,
+      linkToRegister: e.target.linkToRegister.value,
+      linkToBuy: e.target.linkToBuy.value,
+      linkToEvent: e.target.linkToEvent.value,
+      url: [
+        e.target.url1.value,
+        e.target.url2.value,
+        e.target.url3.value,
+        e.target.url4.value,
+        e.target.url5.value,
+        e.target.url6.value,
+      ],
+    };
+
+    console.log('body', body);
+
+    fetch(`${process.env.REACT_APP_SERVER_URL}/addEvent`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ body }),
+    })
+      .then((response) => response.json())
+      .then(data => alert(data.message))
+      .catch((err) => err.message);
+  };
 
   return (
     <div>
-      <form action='' onSubmit={addEventHandler}>
-        ВЫБОР МЕСТА --------------------------------------------------------
-        <select ref={newEvent} name="eventSelect">
-          <option key={'default'} defaultChecked={true}>{''}</option>
-          {arrEvent.map((ev, index) => (
-            <option key={index}>{ev}</option>
-          ))}
-        </select>
-        <br />
+      <form onSubmit={addEventHandler}>
+        <h2>AddEvent</h2>
+
+        <b>Выбор места проведения события</b><br />
+        <select name='locationSelect'>
+          <option
+            key={'default'}
+            defaultChecked={true}
+          >
+            Название места
+          </option>
+          {
+            locations && locations.map((item) => (
+              <option
+                key={item.id}
+                value={item.id}
+              >
+                {item.title} - {item.type}
+              </option>
+            ))
+          }
+        </select><br /><br />
+
         <b>Название события (title):</b>
         <input type='text' name='title' /> <br />
         Описание события (description):
@@ -86,7 +111,7 @@ function AddEvent(props) {
           <option value='Обучение - Мастер классы'>Экскурсии</option>
           <option value='Обучение - Разное'>Экскурсии</option>
         </select>{' '}
-        <br />
+        <br />LocationId
         Цена события (price):
         <input type='text' name='price' /> <br />
         Время начала (startTime):
@@ -104,18 +129,16 @@ function AddEvent(props) {
         Ссылка на покупку билета (linkToBuy):
         <input type='text' name='linkToBuy' /> <br />
         Ссылка на событие (linkToEvent):
-
-        <input type="text" name="linkToEvent" /> <br />
-
+        <input type='text' name='linkToEvent' /> <br />
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-        <input type="text" name="url0"/>
-        <input type="text" name="url1"/>
-        <input type="text" name="url2"/>
-        <input type="text" name="url3"/>
-        <input type="text" name="url4"/>
-        <input type="text" name="url5"/>
-
-        ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА ОДИНАКОВЫХ СОБЫТИЯ
+        <input type='text' name='url1' />
+        <input type='text' name='url2' />
+        <input type='text' name='url3' />
+        <input type='text' name='url4' />
+        <input type='text' name='url5' />
+        <input type='text' name='url6' />
+        ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА
+        ОДИНАКОВЫХ СОБЫТИЯ
         <br />
         <button> Сохранить </button>
       </form>

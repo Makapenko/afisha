@@ -22,8 +22,9 @@ const indexRouter = require('./src/routes/index.router');
 
 const authRouter = require('./src/routes/auth.router');
 const accountRouter = require('./src/routes/account.router');
+const getLocationRouter = require('./src/routes/getLocation.router');
+const addEventRouter = require('./src/routes/addEvent.router');
 const addLocationRouter = require('./src/routes/addLocation.router');
-const addEventRouter=require('./src/routes/addEvent.router') // saved from dev
 
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,12 +46,11 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/account', accountRouter);
+app.use('/getLocation', getLocationRouter);
+app.use('/addEvent', addEventRouter);
+app.use('/addLocation', addLocationRouter);
 
 // saved from dev
-app.use('/addLocation', addLocationRouter);
-app.use('/addPlace', addEventRouter);
-
-app.use('/addLocation', addLocationRouter);
 
 app.listen(PORT, async () => {
   /* eslint-disable no-console */
