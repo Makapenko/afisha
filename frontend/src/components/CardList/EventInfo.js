@@ -13,7 +13,7 @@ function EventInfo(props) {
   return (
     <div className="flex column jus-center align-center">
       <h2>{event.title}</h2>
-      <p>{location.title}</p>
+      <p>{event.location}</p>
       {/* <Link to={`place/${idPlace}`}>{place.title}</Link> */}
       <p  className="padding-2">{event.description}</p>
       <p>{event.price}</p>
