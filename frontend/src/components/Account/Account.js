@@ -12,6 +12,11 @@ function Account() {
 
 
   function logoutHandler() {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/auth/logout`,
+      {
+        credentials: 'include',
+      })
+
     dispatch(isAuthenticatedAC(false));
     history.push('/auth');
   }
@@ -21,18 +26,18 @@ function Account() {
       {
         isAuthenticated
           ? (
-          <>
-            <button onClick={logoutHandler}>
-              Выход
-            </button>
-            <hr />
-            <h1>Профиль для добавления событий</h1>
-            <AddPlace />
-            <hr /> <hr />
-            <AddEvent />
-          </>
-        )
-        : <Redirect to='/auth' />
+            <>
+              <button onClick={logoutHandler}>
+                Выход
+              </button>
+              <hr />
+              <h1>Профиль для добавления событий</h1>
+              <AddPlace />
+              <hr /> <hr />
+              <AddEvent />
+            </>
+          )
+          : <Redirect to='/auth' />
       }
     </div >
   );

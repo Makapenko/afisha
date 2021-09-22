@@ -12,7 +12,7 @@ function Auth() {
 
     const { username, password } = e.target;
 
-    fetch('http://localhost:3001/auth/signin', {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
