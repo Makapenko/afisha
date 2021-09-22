@@ -18,7 +18,7 @@ function Event({ event }) {
     })
   }
   return (
-    <Link to={`events/${event.id}`} style={{textDecoration: 'none'}}>
+    
       <div className={style.box} style={{  background:`linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(http://localhost:3001/img/eventsPic/event-1.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover',  }}>
         <div className={style.firstline}>
           <div className={style.subcategory}>{event.subcategory}</div>
@@ -28,7 +28,7 @@ function Event({ event }) {
                     {/* <img src={favoritesCardSvg} alt="favorites" className={style.icon} onClick={addFavorit}/> */}
 
         </div>
-
+<Link to={`events/${event.id}`} style={{textDecoration: 'none'}}>
         <div className={style.bottom}>
           <div className={style.title}>{event.title}</div>
 
@@ -41,9 +41,9 @@ function Event({ event }) {
               Билеты от 1500р
             </div>
           </div>
-        </div>
+        </div> </Link>
       </div >
-     </Link>
+    
   );
 }
 

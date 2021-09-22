@@ -10,17 +10,18 @@ function CardList(props) {
 const [value, setValue] = useState(true)
 function isFree(){
   if(value){
+    console.log("бесплатно");
     setValue(false)
     setCopyEvents(events.filter(function (el) {
     return hasNumbers(el.price)!==true
   }))
   console.log(copyEvents);
   }else{
+    console.log("все");
+
     setValue(true)
 
-    setCopyEvents(events.filter(function (el) {
-      return hasNumbers(el.price)==true
-    }))
+    setCopyEvents(events)
     console.log(copyEvents);
   }
   
