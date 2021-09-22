@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './AddPlace.module.css'
 
 function AddPlace(props) {
 
@@ -43,7 +44,7 @@ function AddPlace(props) {
       <form action="" onSubmit={addPlaceHandler}>
 
         Название места (title):
-        <input type="text" name="title" /> <br />
+        <input className={styles.inputs} type="text" name="title" /> <br />
 
         Описание места (description):
         <textarea name="description"></textarea> <br />
