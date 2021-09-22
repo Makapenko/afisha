@@ -26,6 +26,14 @@
   width: 12vw;
   height: 12vw;
 }
+.category__img_active {
+  background: white;
+  border-radius: 2vh;
+  margin-right: 1vh;
+  width: 12vw;
+  height: 12vw;
+}
+
 
 .icon {
   width: 10vw;
