@@ -10,6 +10,45 @@ import { useState } from "react";
 
 function Main() {
   const dispatch = useDispatch()
+
+  // const events = useSelector(store => store.eventsReducer.events)
+
+  // useEffect(() => {
+  //   fetch('http://localhost:3001/')
+  //   .then(res => res.json())
+  //   .then(data => dispatch({
+  //     type: 'INIT_ALL',
+  //     payload: data
+  //   }))
+  // },[dispatch])
+
+  // function selected(e) {
+  //   // console.log('events', e.target.name);
+  //   // console.log(e.target.value);
+  //   console.log('target',e.target.value);
+  //   console.log(1);
+  //   console.log(1);
+  //   console.log(1);
+  //   console.log(1);
+  //   console.log(1);
+  //   console.log(1);
+  //   const sub = e.target.name
+  //   // if(e.target.value=='on'){
+  //     if(e.target.value==='on'){
+  //     dispatch({
+  //       type:'ADD_EVENT',
+  //       payload: sub
+  //     })
+  //   } else {
+  //     dispatch({
+  //       type:"DELETE_EVENT",
+  //       payload: sub
+  //     })
+  //   }
+  // }
+
+
+
   // const [checked, setChecked] =useState(nptVal.current.value)
   // const subcategory = useSelector((store) => 
   //   store.eventsReducer.events
@@ -41,6 +80,7 @@ function Main() {
 
   // const dispatch = useDispatch()
   
+
 
   // // const subcategory = 
 
@@ -98,6 +138,8 @@ const [all,setAll]=useState(null)
 const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
    function filterWideRelease(a, b, c, f) {
+    console.log(all);
+
     console.log(arr[f]);
     if (arr[f]==0) {
       let newArr = [...arr];
@@ -126,6 +168,27 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
       });
     }
     console.log(arr,"&&&&&&&&&&&&");
+  // const [state, setState] = useState(true);
+    
+  
+  // function filterWideRelease(a, b) {
+  //   setState(!state);
+  //   if (state) {
+  //     fetch("http://localhost:3001/")
+  //       .then((res) => res.json())
+  //       .then((data) =>
+  //         dispatch({
+  //           type: a,
+  //           payload: data,
+  //         })
+  //       );
+  //   } else {
+  //     dispatch({
+  //       type: b
+  //       // payload: arrayToSend
+  //     });
+  //   }
+  // }
 
   }
   useEffect(() => {
@@ -182,6 +245,7 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               // onClick={() => {filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', state);    setState(!state);
               onClick={() => filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0)
             }           
+              // onClick={() => filterWideRelease('WIDERELEASE','DEL_WIDERELEASE')}
             />
             <label for="filmWideRelease" className={style.subcat__name}>
               Широкий прокат
@@ -197,6 +261,8 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               // onClick={() => {filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', state1);setState1(!state1)}}
               onClick={() => filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1)}
             // onClick={filterWideRelease}
+              // onChange={selected}
+              // onClick={filterWideRelease}
             />
             <label for="filmLimitedRelease" className={style.subcat__name}>
               Ограниченный прокат

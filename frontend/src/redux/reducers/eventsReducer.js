@@ -1,11 +1,13 @@
 const initialState = {
   locations:[],
   events:[],
-  myEvents: [] 
+  myEvents: [] ,
+  counter:0
 }
 
-// const eventsReducer = (state = initialState, action) => {
-//   switch (action.type) {
+const eventsReducer = (state = initialState, action) => {
+//   console.log('act',action.payload);
+  switch (action.type) {
 //     case 'INIT_ALL':
 
 //       return {
@@ -13,6 +15,14 @@ const initialState = {
 //         events: action.payload.events,
 //         locations: action.payload.locations,
 //       }
+//       case 'ADD_EVENT':
+//         return{
+//           couner: state.counter + 1
+//         }
+//         case 'DELETE_EVENT':
+//         return{
+//           couner: state.counter -1
+//         }
 
 //     // case 'ADD_EVENT':
 //     //   return {
@@ -30,8 +40,8 @@ const initialState = {
 
 
 // Рабочая версия
-const eventsReducer = (state = initialState, action) => {
-  switch (action.type) {
+// const eventsReducer = (state = initialState, action) => {
+//   switch (action.type) {
 //     // case 'INIT_ALL':
 
 //     //   return {
@@ -76,7 +86,7 @@ case 'INIT_ALL':
           locations: action.payload.locations,
         }
 case "WIDERELEASE":
-  console.log(action.payload);
+  // console.log(action.payload);
   let a = action.payload.all.events.filter((el) => el.subcategory ==action.payload.c);
   console.log(state);
   return { ...state, events: [...state.events, ...a ]};
@@ -85,7 +95,6 @@ case "DEL_WIDERELEASE":
   // let b = action.payload.filter((el) => el.subcategory !== "Рок");
   // console.log(b);
   // return { ...state, events: b };
-  console.log(`${action.payload}`);
   let b = state.events.filter((el) => el.subcategory !== `${action.payload}`)
     return {
       ...state, events:b
@@ -96,3 +105,21 @@ default:
 }}
 
 export default eventsReducer;
+// const eventsReducer = (state = initialState, action) => {
+//   switch (action.type) {
+// case "WIDERELEASE":
+//   let a = action.payload.events.filter((el) => el.subcategory === "Рок");
+//   return { ...state, events: a };
+
+// case "DEL_WIDERELEASE":
+//   console.log(state);
+//   let b = state.events.filter((el) => el.subcategory !== "Рок")
+//     return {
+//       ...state, events:b
+//     }
+// default:
+//   return state;
+
+// }}
+
+// export default eventsReducer;
