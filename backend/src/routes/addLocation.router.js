@@ -23,15 +23,19 @@ router.route('/')
         tel2: body.tel2,
       }
     ).then(res => {
+      console.log("111111111111");
       const locId = res.id;
+      console.log(locId,"111111111111");
 
       body.url.map(el=>{
         if (el!=''){
           db.LocationPhoto.create({ LocationId: locId, url: el })
-          .catch(err => console.log(err));
+          .catch(err => console.log(err,"&&&&&&&&&&&&&"));
         }
       })
-    }).catch(err => console.log(err))
+      console.log("111111111111");
+
+    }).catch(err => console.log(err,"--------"))
   })
 
 module.exports = router;
