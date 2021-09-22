@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 // import Filter from './Filter';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Main.module.css";
 
 import moviePng from "../../icons/filters/1movie.png";
