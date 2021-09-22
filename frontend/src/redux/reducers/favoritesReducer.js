@@ -5,6 +5,7 @@ const favoriteReducer = (state = [], action) => {
       let value = false
       let index;
       state.map(el => {
+        // eslint-disable-next-line eqeqeq
         if (el == action.payload) {
           value = true
           index = state.indexOf(action.payload);
@@ -31,4 +32,5 @@ const favoriteReducer = (state = [], action) => {
       return state;
   }
 };
+
 export default favoriteReducer;
