@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import style from './Event.module.css';
 import favoritesCardSvg from '../../icons/favoritesCard.png'
+
 import favoritesCardActiveSvg from '../../icons/favoritesCardActive.png'
+
 import { useDispatch } from "react-redux";
 import {  useSelector } from 'react-redux';
 

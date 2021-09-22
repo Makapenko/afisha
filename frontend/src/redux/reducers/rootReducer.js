@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import eventsReducer from './eventsReducer'
 import favoriteReducer from './favoritesReducer'
-const rootReducer = combineReducers({
-  eventsReducer, favoriteReducer
-})
+import userReducer from './userReducer';
 
-export default rootReducer
+const rootReducer = combineReducers({
+  eventsReducer, favoriteReducer, userReducer
+})
+export default rootReducer;
