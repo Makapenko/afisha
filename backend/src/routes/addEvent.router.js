@@ -2,7 +2,6 @@ const router = require('express').Router();
 const db = require('../db/models');
 
 router.route('/')
-
   .post((req, res) => {
     console.log("пришли на бэк")
 

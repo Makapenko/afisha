@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import style from './Event.module.css';
 import favoritesCardSvg from '../../icons/favoritesCard.png'
-import favoritesCardActiveSvg from '../../icons/favoritesCardActive.png'
+// import favoritesCardActiveSvg from '../../icons/favoritesCardActive.png'
 
 function Event({ event }) {
   return (

@@ -10,26 +10,28 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
 
+// eslint-disable-next-line no-unused-vars
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+  // [::1] is the IPv6 localhost address.
+  window.location.hostname === '[::1]' ||
+  // 127.0.0.0/8 are considered localhost for IPv4.
+  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
 
 export function register(config) {
   window.addEventListener('load', () => {
 
-    if ('serviceWorker' in navigator){
+    if ('serviceWorker' in navigator) {
 
-        navigator.serviceWorker.register('/service-worker.js')
-            .then(registration => {
-            })
-            .catch(error => {
-            });
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+        })
+        .catch(error => {
+        });
     }
-})};
+  })
+};
 //   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
 //     // The URL constructor is available in all browsers that support SW.
 //     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
@@ -102,6 +104,7 @@ function registerValidSW(swUrl, config) {
     });
 }
 
+// eslint-disable-next-line no-unused-vars
 function checkValidServiceWorker(swUrl, config) {
 
   // Check if the service worker can be found. If it can't reload the page.
