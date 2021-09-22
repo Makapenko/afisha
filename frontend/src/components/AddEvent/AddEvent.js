@@ -1,35 +1,64 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 function AddEvent(props) {
-  const addEventHandler = (e) => {
+
+
+  const { locations } = useSelector((store) => store.eventsReducer);
+  let arrEvent = []
+  const newEvent = useRef(null)  //ловим место после выбора из селектора
+  locations.map(el => arrEvent.push(el.title))
+
+  const addEventHandler = async (e) => {
+
     e.preventDefault();
+    let idLocationEvent = arrEvent.findIndex(el => el == newEvent.current.value) + 1
 
-    const body = {
-      title: e.target.title.value,
-      description: e.target.description.value,
-      subcategory: e.target.subcategory.value,
-      price: e.target.price.value,
-      startTime: e.target.startTime.value,
-      endTime: e.target.endTime.value,
-      doorsOpen: e.target.doorsOpen.value,
-      endDate: e.target.endDate.value,
-      linkToRegister: e.target.linkToRegister.value,
-      linkToBuy: e.target.linkToBuy.value,
-      linkToEvent: e.target.linkToEvent.value,
-    };
+    if (idLocationEvent != 0) {
+      const body = {
+        title: e.target.title.value,
+        description: e.target.description.value,
+        subcategory: e.target.subcategory.value,
+        price: e.target.price.value,
+        LocationId: idLocationEvent,
+        startTime: e.target.startTime.value,
+        endTime: e.target.endTime.value,
+        doorsOpen: e.target.doorsOpen.value,
+        endDate: e.target.endDate.value,
+        linkToRegister: e.target.linkToRegister.value,
+        linkToBuy: e.target.linkToBuy.value,
+        linkToEvent: e.target.linkToEvent.value,
+        url:[e.target.url0.value,
+          e.target.url1.value,
+          e.target.url2.value,
+          e.target.url3.value,
+          e.target.url4.value,
+          e.target.url5.value]
+      }
 
-    console.log(body);
+      console.log(body);
 
-    // fetch ('lockalhost:3000/addPlace', {
-    //   method: 'POST',
-    //   body: body
-    // })
-  };
+      await fetch('http://localhost:3001/addPlace', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ body })
+      })
+    }else{
+          console.log('ошибка при заполнении формы');
+    }
+  }
 
   return (
     <div>
       <form action='' onSubmit={addEventHandler}>
         ВЫБОР МЕСТА --------------------------------------------------------
+        <select ref={newEvent} name="eventSelect">
+          <option key={'default'} defaultChecked={true}>{''}</option>
+          {arrEvent.map((ev, index) => (
+            <option key={index}>{ev}</option>
+          ))}
+        </select>
         <br />
         <b>Название события (title):</b>
         <input type='text' name='title' /> <br />
@@ -75,9 +104,18 @@ function AddEvent(props) {
         Ссылка на покупку билета (linkToBuy):
         <input type='text' name='linkToBuy' /> <br />
         Ссылка на событие (linkToEvent):
-        <input type='text' name='linkToEvent' /> <br />
-        ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА
-        ОДИНАКОВЫХ СОБЫТИЯ
+
+        <input type="text" name="linkToEvent" /> <br />
+
+        фото: ТУТ БУДЕТ МУЛЬТЕР <br />
+        <input type="text" name="url0"/>
+        <input type="text" name="url1"/>
+        <input type="text" name="url2"/>
+        <input type="text" name="url3"/>
+        <input type="text" name="url4"/>
+        <input type="text" name="url5"/>
+
+        ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА ОДИНАКОВЫХ СОБЫТИЯ
         <br />
         <button> Сохранить </button>
       </form>

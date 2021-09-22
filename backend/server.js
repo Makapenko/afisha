@@ -19,9 +19,11 @@ const corsOptions = {
 };
 
 const indexRouter = require('./src/routes/index.router');
+
 const authRouter = require('./src/routes/auth.router');
 const accountRouter = require('./src/routes/account.router');
 const addLocationRouter = require('./src/routes/addLocation.router');
+const addEventRouter=require('./src/routes/addEvent.router') // saved from dev
 
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -43,6 +45,10 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/account', accountRouter);
+
+// saved from dev
+app.use('/addLocation', addLocationRouter);
+app.use('/addPlace', addEventRouter);
 
 app.use('/addLocation', addLocationRouter);
 

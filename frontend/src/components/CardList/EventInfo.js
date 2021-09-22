@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 
 function EventInfo(props) {
   const { id } = useParams();
-  const { events } = useSelector((store) => store.eventsReducer.events);
-  const { locations } = useSelector((store) => store.eventsReducer.locations);
+  const { events } = useSelector((store) => store.eventsReducer);
+  const { locations } = useSelector((store) => store.eventsReducer);
   const event = events[id - 1]
 
   const location = locations.find(el => el.id === +event.LocationId)

@@ -21,14 +21,17 @@ router.route('/')
         email: body.email,
         tel1: body.tel1,
         tel2: body.tel2,
-      },
-    ).then((data) => {
-      const locId = data.id;
+      }
+    ).then(res => {
+      const locId = res.id;
 
-      db.LocationPhoto.create({ LocationId: locId, url: body.url })
-        .catch((err) => console.log(err, 'ImgId'));
-    })
-      .catch((err) => console.log(err, 'locId'));
-  });
+      body.url.map(el=>{
+        if (el!=''){
+          db.LocationPhoto.create({ LocationId: locId, url: el })
+          .catch(err => console.log(err));
+        }
+      })
+    }).catch(err => console.log(err))
+  })
 
 module.exports = router;

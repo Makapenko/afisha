@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './AddPlace.module.css'
 
 function AddPlace(props) {
   const addPlaceHandler = async (e) => {
@@ -19,8 +20,18 @@ function AddPlace(props) {
       email: e.target.email.value,
       tel1: e.target.tel1.value,
       tel2: e.target.tel2.value,
-      url: e.target.url.value,
-    };
+
+      url:[e.target.url0.value,
+      e.target.url1.value,
+      e.target.url2.value,
+      e.target.url3.value,
+      e.target.url4.value,
+      e.target.url5.value]
+
+    }
+
+    console.log(body,"на фронте");
+
 
     await fetch('http://localhost:3001/addLocation', {
       method: 'POST',
@@ -32,9 +43,13 @@ function AddPlace(props) {
 
   return (
     <div>
-      <form onSubmit={addPlaceHandler}>
-        <b>Название места (title):</b>
-        <input type='text' name='title' /> <br />
+
+      <form action="" onSubmit={addPlaceHandler}>
+
+        Название места (title):
+        <input className={styles.inputs} type="text" name="title" /> <br />
+
+
         Описание места (description):
         <textarea name='description'></textarea> <br />
         Адрес (address):
@@ -64,7 +79,14 @@ function AddPlace(props) {
         <input type='text' name='tel2' /> <br />
         <hr />
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-        <input type='text' name='url' />
+
+        <input type="text" name="url0"/>
+        <input type="text" name="url1"/>
+        <input type="text" name="url2"/>
+        <input type="text" name="url3"/>
+        <input type="text" name="url4"/>
+        <input type="text" name="url5"/>
+
         Координаты: тут будет карта <br />
         <button> Сохранить </button>
       </form>
