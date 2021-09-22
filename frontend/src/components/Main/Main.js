@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import Filter from './Filter';
 import { useDispatch } from "react-redux";
 import style from "./Main.module.css";
-
 import moviePng from "../../icons/filters/1movie.png";
 import theatrePng from "../../icons/filters/2theatreActive.png";
 import concertPNG from "../../icons/filters/3concert.png";
@@ -19,10 +17,10 @@ function Main() {
   ]);
 
   function filterByCategory() {
-    filterBySubcategory("WIDERELEASE", "DEL_WIDERELEASE", "Рок", 0);
+    filterBySubcategory("FILTER_ADD_TO_STATE", "DELETE_FILTER", "Рок", 0);
     filterBySubcategory(
-      "WIDERELEASE",
-      "DEL_WIDERELEASE",
+      "FILTER_ADD_TO_STATE",
+      "DELETE_FILTER",
       "Ограниченный прокат",
       1
     );
@@ -128,8 +126,8 @@ function Main() {
                 className={style.subcat__checkbox}
                 onClick={() =>
                   filterBySubcategory(
-                    "WIDERELEASE",
-                    "DEL_WIDERELEASE",
+                    "FILTER_ADD_TO_STATE",
+                    "DELETE_FILTER",
                     "Рок",
                     0
                   )
@@ -148,8 +146,8 @@ function Main() {
                 className={style.subcat__checkbox}
                 onClick={() =>
                   filterBySubcategory(
-                    "WIDERELEASE",
-                    "DEL_WIDERELEASE",
+                    "FILTER_ADD_TO_STATE",
+                    "DELETE_FILTER",
                     "Ограниченный прокат",
                     1
                   )

@@ -9,21 +9,25 @@ import {
 import { useState } from "react";
 import points from "./points";
 import myIcon2 from "../iconsForYMaps/quests.png";
+import style from './ymaps.module.css'
+import { useDispatch } from "react-redux";
 
 function YandexMap() {
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
 
+  const dispatch = useDispatch();
+  console.log(dispatch);
   const mapState = {
     center: [lat, lng],
-    zoom: 11.5,
+    zoom: 13,
   };
   
   const getPointData = (title, desc, id) => {
     return {
       balloonContentHeader: title,
       balloonContentBody: desc,
-      balloonContentFooter: `<a  style='color: green' href='/events/${id}'> go </a>`,
+      balloonContentFooter: `<a  style='color: green' href='/events/${id}'> На страницу события! </a>`,
       clusterCaption: title,
     };
   };
@@ -49,24 +53,16 @@ function YandexMap() {
 
   return (
     <>
-      <div>
-        <p>
-          {" "}
-          Latitude: <span id="latitude">{lat}</span>
-          <br />
-          Longitude: <span id="longitude">{lng}</span>
-        </p>
-      </div>
       <YMaps query={{ lang: "ru_RU", load: "package.full" }}>
-        <div>
-          <Map state={mapState} width={500} heigth={400}>
+        <div className={style.ymap}>
+          <Map state={mapState} className={style.ymap}>
             <ZoomControl options={{ float: "left" }} />
             <Placemark
               geometry={[lat, lng]}
               options={{
                 preset: "islands#violetRunIcon",
-                iconImageHref: "islands#violetRunIcon",
-                iconImageSize: [5, 5],
+                iconImageHref: "islands#violetRunIcon"
+                // iconImageSize: [2, 2],
               }}
             />
             <Clusterer

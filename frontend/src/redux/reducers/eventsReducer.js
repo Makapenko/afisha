@@ -4,19 +4,12 @@ const initialState = {
 };
 const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
-    //Первого кейса у нас фактически нет, убрать
-    case "INIT_ALL":
-      return {
-        ...state,
-        events: action.payload.events,
-        locations: action.payload.locations,
-      };
-    case "WIDERELEASE":
+    case "FILTER_ADD_TO_STATE":
       let a = action.payload.all.events.filter(
         (el) => el.subcategory === action.payload.c
       );
       return { ...state, events: [...state.events, ...a] };
-    case "DEL_WIDERELEASE":
+    case "DELETE_FILTER":
       let b = state.events.filter(
         (el) => el.subcategory !== `${action.payload}`
       );
