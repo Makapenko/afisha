@@ -18,7 +18,7 @@ function Event({ event }) {
     })
   }
   return (
-    // <Link to={`events/${event.id}`} style={{textDecoration: 'none'}}>
+    <Link to={`events/${event.id}`} style={{textDecoration: 'none'}}>
       <div className={style.box} style={{  background:`linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(http://localhost:3001/img/eventsPic/event-1.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover',  }}>
         <div className={style.firstline}>
           <div className={style.subcategory}>{event.subcategory}</div>
@@ -36,9 +36,6 @@ function Event({ event }) {
             <div className={style.bottom__bottom__left}>
               <div className={style.location}>Тут будет место проведения</div>
               <div className={style.date}>{event.startDate} {event.startTime}</div>
-              <Link to={`events/${event.id}`} style={{textDecoration: 'none'}}>
-              <button>На страницу события</button>
-              </Link>
             </div>
             <div className={style.bottom__bottom__right}>
               Билеты от 1500р
@@ -46,7 +43,7 @@ function Event({ event }) {
           </div>
         </div>
       </div >
-    // </Link>
+     </Link>
   );
 }
 
