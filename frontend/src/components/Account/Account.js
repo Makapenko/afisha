@@ -25,7 +25,7 @@ function Account() {
         <>
           <button onClick={logoutHandler}>Выход</button>
           <hr />
-          <h1>Профиль для добавления событий</h1>
+          <h1>Профиль админа БД</h1>
           <AddPlace />
           <hr /> <hr />
           <AddEvent />

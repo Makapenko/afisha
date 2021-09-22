@@ -63,7 +63,7 @@ function AddEvent() {
   return (
     <div>
       <form onSubmit={addEventHandler}>
-        <h2>ДОБАВЛЕНИЕ СОБЫТИЯ</h2>
+        <h2>AddEvent</h2>
 
         <b>Выбор места проведения события</b><br />
         <select name='locationSelect'>

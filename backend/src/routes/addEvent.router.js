@@ -4,46 +4,56 @@ const db = require('../db/models');
 router.route('/')
   .post(async (req, res) => {
     const { body } = req.body;
+    let newEvent = null;
 
-    const newEvent = await db.Event.create({
-      title: body.title,
-      description: body.description,
-      AdminId: body.AdminId,
-      LocationId: Number(body.LocationId),
-      price: body.price,
-      subcategory: body.subcategory,
-      timeStart: body.startTime,
-      timeEnd: body.endTime,
-      dorsOpen: body.doorsOpen,
-      dateStart: body.startDate,
-      dateEnd: body.endDate,
-      linkToRegister: body.linkToRe,
-      linkToBuy: body.linkToBuy,
-      linkToEvent: body.linkToEvent,
-    });
+    try {
+      newEvent = await db.Event.create({
+        title: body.title,
+        description: body.description,
+        AdminId: body.AdminId,
+        LocationId: Number(body.LocationId),
+        price: body.price,
+        subcategory: body.subcategory,
+        timeStart: body.startTime,
+        timeEnd: body.endTime,
+        dorsOpen: body.doorsOpen,
+        dateStart: body.startDate,
+        dateEnd: body.endDate,
+        linkToRegister: body.linkToRe,
+        linkToBuy: body.linkToBuy,
+        linkToEvent: body.linkToEvent,
+      });
 
-    // eslint-disable-next-line consistent-return
-    body.url.forEach(async (item) => {
+      res
+        .status(200)
+        .json({
+          code: 'EVENT SAVED',
+          message: 'Событие добавлено в БД',
+        });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error.message);
+
+      res
+        .status(500)
+        .json({
+          message: 'Ошибка записи в БД',
+        });
+    }
+
+    body.url.forEach(async (link) => {
       try {
-        if (item !== '') {
+        if (link !== '') {
           await db.EventPhoto.create({
             EventId: newEvent.id,
-            url: item,
+            url: link,
           });
         }
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error.message);
-        return null;
       }
     });
-
-    res
-      .status(200)
-      .json({
-        code: 'EVENT SAVED',
-        message: 'EVENT SAVED',
-      });
   });
 
 module.exports = router;
