@@ -40,7 +40,7 @@ function Main() {
   //   }
 
   // const dispatch = useDispatch()
-  
+
 
   // // const subcategory = 
 
@@ -74,7 +74,7 @@ function Main() {
 
   // let val={ subcategory: "Рок", value: false }
 
- 
+
 
   // function filterWideRelease() {
 
@@ -94,60 +94,56 @@ function Main() {
   //     console.log("!!!!!!!!!!!!!!!!");
   //     const [state, setState] = useState(true);
   //     const dispatch = useDispatch()
-const [all,setAll]=useState(null)
-const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+  const [all, setAll] = useState(null)
+  const [checkboxList, setCheckboxList] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-  function allFunc(){
-    filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1);
-    allFunc1()     
-
+  function filterByCategory() {
+    filterBySubcategory('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0);
+    filterBySubcategory('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1);
   }
-  function allFunc1(){
-    filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0);
-  }
-    function filterWideRelease(a, b, c, f) {
-    console.log(arr[f]);
-    if (arr[f]==0) {
-      console.log("888888888888");
-      let newArr = [...arr];
-      newArr[f] =1
-      // console.log(newArr,"-----------");
-    setArr(newArr)
-    console.log(arr[f]);
-      // fetch('http://localhost:3001/')
-      // .then(res => res.json())
-      // .then(data =>
-         dispatch({
-            type: a,
-            payload: {all, c}
-          })
-      // );
-    } else if(arr[f]==1){
-      console.log("9999999999");
-      console.log(arr);
-      let newArr = [...arr];
-      newArr[f] =0
-    setArr(newArr)
 
-     dispatch({
-        type: b,
-        payload: c
-        // payload: arrayToSend
-      });
+  function toggle(status) {
+    return status === 1
+      ? 0
+      : 1
+  }
+
+  function filterBySubcategory(actionTypeAdd, actionTypeDelete, subcategoryName, checkboxIndex) {
+    const status = checkboxList[checkboxIndex];
+
+    if (!(status === 0 || status === 1)) {
+      throw new Error('Invalid status');
     }
-    console.log(arr,"&&&&&&&&&&&&");
+    
+    setCheckboxList((prevList) => {
+      const copy = [...prevList];
+      copy[checkboxIndex] = toggle(status);
+      return copy;
+    });
 
+    const action = status
+      ? {
+          type: actionTypeDelete,
+          payload: subcategoryName
+        }
+      : {
+          type: actionTypeAdd,
+          payload: { all, c: subcategoryName }
+        };
+
+    dispatch(action);
   }
+
   useEffect(() => {
     fetch('http://localhost:3001/')
-    .then(res => res.json())
-    .then(data => setAll(data)
-      // dispatch({
-    //   type: 'INIT_ALL',
-    //   payload: data
-    // }))
-    )
-  },[])
+      .then(res => res.json())
+      .then(data => setAll(data)
+        // dispatch({
+        //   type: 'INIT_ALL',
+        //   payload: data
+        // }))
+      )
+  }, [])
 
   return (
     <div className={style.container}>
@@ -161,16 +157,7 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               className={style.icon}
               name="cat_movie"
               id="cat_movie"
-              onClick={()=>{allFunc();}
-                
-              
-              }
-              // onClick="filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1);
-              //   filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0);"
-                
-              
-              
-
+              onClick={filterByCategory}
             />
           </div>
 
@@ -194,11 +181,11 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               // }
               // value='fuck'
               // onClick={() => {filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', state);    setState(!state);
-              onClick={() => filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0)
-            }           
+              onClick={() => filterBySubcategory('WIDERELEASE', 'DEL_WIDERELEASE', 'Рок', 0)
+              }
             />
             <label for="filmWideRelease" className={style.subcat__name}>
-              Широкий прокат
+              Рок
             </label>
           </div>
           <hr />
@@ -209,7 +196,7 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               id="filmLimitedRelease"
               className={style.subcat__checkbox}
               // onClick={() => {filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', state1);setState1(!state1)}}
-              onClick={() => filterWideRelease('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1)}
+              onClick={() => filterBySubcategory('WIDERELEASE', 'DEL_WIDERELEASE', 'Ограниченный прокат', 1)}
             // onClick={filterWideRelease}
             />
             <label for="filmLimitedRelease" className={style.subcat__name}>
@@ -225,19 +212,19 @@ const [arr,setArr]=useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
               className={style.subcat__checkbox}
             />
             <label for="filmBar" className={style.subcat__name}>
-              Кинопоказы в барах
+              --Кинопоказы в барах
             </label>
           </div>
           <hr />
           <div className={style.subcat}>
             <input
               type="checkbox"
-              name="Рок"
+              name="---"
               id="filmOther"
               className={style.subcat__checkbox}
             />
             <label for="filmOther" className={style.subcat__name}>
-              Рок
+              ---
             </label>
           </div>
           {/* <div className={style.subcat}>

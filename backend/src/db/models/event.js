@@ -41,9 +41,9 @@ module.exports = (sequelize, DataTypes) => {
     subcategory: {
       type: DataTypes.TEXT,
     },
-    category: {
-      type: Data.TEXT
-    },
+    // category: {
+    //   type: Data.TEXT
+    // },
     timeStart: {
       type: DataTypes.TEXT,
     },
