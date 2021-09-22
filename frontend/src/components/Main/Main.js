@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import Filter from './Filter';
 import { useDispatch, useSelector } from "react-redux";
 import style from "./Main.module.css";
@@ -15,8 +15,9 @@ import arrowBlackDownPng from "../../icons/navigation/arrowBlackDown.png";
 import arrowBlackUpPng from "../../icons/navigation/arrowBlackUp.png";
 function Main() {
   const dispatch = useDispatch();
-  // const events = useSelector(store=>store.eventsReducer)
-  // console.log('event', events)
+  const events = useSelector(store=>store.eventsReducer)
+  console.log('myEvents', events.myEvents)
+
   const [selectMovie, setSelectMovie] = useState(false);
   const [selectTheatre, setSelectTheatre] = useState(false);
   const [selectConcert, setSelectConcert] = useState(false);
@@ -45,62 +46,16 @@ function Main() {
     console.log(e.target.name);
   }
 
-  const [all, setAll] = useState(null);
-  const [checkboxList, setCheckboxList] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
 
-  function filterByCategory() {
-    filterBySubcategory("WIDERELEASE", "DEL_WIDERELEASE", "Рок", 0);
-    filterBySubcategory(
-      "WIDERELEASE",
-      "DEL_WIDERELEASE",
-      "Ограниченный прокат",
-      1
-    );
-  }
-
-  function toggle(status) {
-    return status === 1 ? 0 : 1;
-  }
-
-  function filterBySubcategory(
-    actionTypeAdd,
-    actionTypeDelete,
-    subcategoryName,
-    checkboxIndex
-  ) {
-    const status = checkboxList[checkboxIndex];
-    if (!(status === 0 || status === 1)) {
-      throw new Error("Invalid status");
-    }
-
-    setCheckboxList((prevList) => {
-      const copy = [...prevList];
-      copy[checkboxIndex] = toggle(status);
-      return copy;
-    });
-
-    const action = status
-      ? {
-        type: actionTypeDelete,
-        payload: subcategoryName,
-      }
-      : {
-        type: actionTypeAdd,
-        payload: { all, c: subcategoryName },
-      };
-    dispatch(action);
-  }
 
   useEffect(() => {
     fetch("http://localhost:3001/")
       .then((res) => res.json())
-      .then((data) => setAll(data));
+      .then((data) => dispatch({type:'INIT_ALL', payload:data}));
   }, []);
 
   function onChange(e) {
-    console.log(e.target.checked);
+    // console.log(e.target.checked);
     const sub = e.target.labels[0].innerText
     // console.log('sub', sub)
     if (e.target.checked) {
@@ -110,6 +65,32 @@ function Main() {
     }
   }
 
+  const npt1 = useRef(false)
+  const npt2 = useRef(false)
+  const npt3 = useRef(false)
+  const npt4 = useRef(false)
+  const npt5 = useRef(false)
+  const npt6 = useRef(false)
+  const npt7 = useRef(false)
+  const npt8 = useRef(false)
+  const npt9 = useRef(false)
+  const npt10 = useRef(false)
+  const npt11 = useRef(false)
+  const npt12 = useRef(false)
+  const npt13 = useRef(false)
+  const npt14 = useRef(false)
+  const npt15 = useRef(false)
+  const npt16 = useRef(false)
+  const npt17 = useRef(false)
+  const npt18 = useRef(false)
+  const npt19 = useRef(false)
+
+function click(e){
+  console.log(npt1)
+   npt1.current.checked=!npt1.current.checked
+   npt2.current.checked=!npt2.current.checked
+
+}
 
   return (
     <div className={style.container}>
@@ -123,7 +104,7 @@ function Main() {
               className={style.icon}
               name="cat_movie"
               id="cat_movie"
-              onClick={filterByCategory}
+              onClick={click}
             />
             {/* настройки как для чекбокса */}
           </div>
@@ -165,6 +146,7 @@ function Main() {
                 name="filmWideRelease"
                 id="filmWideRelease"
                 className={style.subcat__checkbox}
+                ref={npt1}
                 // onClick={() =>
                 //   filterBySubcategory(
                 //     "WIDERELEASE",
@@ -186,14 +168,16 @@ function Main() {
                 name="filmLimitedRelease"
                 id="filmLimitedRelease"
                 className={style.subcat__checkbox}
-                onClick={() =>
-                  filterBySubcategory(
-                    "WIDERELEASE",
-                    "DEL_WIDERELEASE",
-                    "Ограниченный прокат",
-                    1
-                  )
-                }
+                // onClick={() =>
+                //   filterBySubcategory(
+                //     "WIDERELEASE",
+                //     "DEL_WIDERELEASE",
+                //     "Ограниченный прокат",
+                //     1
+                //   )
+                // }
+                onChange={onChange}
+                ref={npt2}
               />
               <label
                 htmlFor="filmLimitedRelease"
@@ -209,6 +193,7 @@ function Main() {
                 name="filmBar"
                 id="filmBar"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="filmBar" className={style.subcat__name}>
                 Кинопоказы в барах
@@ -221,6 +206,7 @@ function Main() {
                 name="filmOther"
                 id="filmOther"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="filmOther" className={style.subcat__name}>
                 Разное
@@ -279,6 +265,7 @@ function Main() {
                 name="bigTheatre"
                 id="bigTheatre"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="bigTheatre" className={style.subcat__name}>
                 Большой театр
@@ -291,6 +278,7 @@ function Main() {
                 name="chamberTheatre"
                 id="chamberTheatre"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="chamberTheatre" className={style.subcat__name}>
                 Камерный театр
@@ -304,6 +292,7 @@ function Main() {
                 name="theatreOther"
                 id="theatreOther"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="theatreOther" className={style.subcat__name}>
                 Разное
@@ -363,6 +352,7 @@ function Main() {
                 name="popConcert"
                 id="popConcert"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="popConcert" className={style.subcat__name}>
                 Поп
@@ -375,6 +365,7 @@ function Main() {
                 name="rockConcert"
                 id="rockConcert"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="rockConcert" className={style.subcat__name}>
                 Рок
@@ -387,6 +378,7 @@ function Main() {
                 name="rapConcert"
                 id="rapConcert"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="rapConcert" className={style.subcat__name}>
                 Рэп
@@ -399,6 +391,7 @@ function Main() {
                 name="perfomanceInBars"
                 id="perfomanceInBars"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="perfomanceInBars" className={style.subcat__name}>
                 Выступления в барах
@@ -411,6 +404,7 @@ function Main() {
                 name="concertOther"
                 id="concertOther"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="concertOther" className={style.subcat__name}>
                 Разное
@@ -472,6 +466,7 @@ function Main() {
                 name="lecturesEducation"
                 id="lecturesEducation"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="lecturesEducation" className={style.subcat__name}>
                 Лекции
@@ -484,6 +479,7 @@ function Main() {
                 name="masterClassEducation"
                 id="masterClassEducation"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="masterClassEducation" className={style.subcat__name}>
                 Мастер-классы
@@ -497,6 +493,7 @@ function Main() {
                 name="otherEducation"
                 id="otherEducation"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="otherEducation" className={style.subcat__name}>
                 Разное
@@ -557,6 +554,7 @@ function Main() {
                 name="water_excursion"
                 id="water_excursion"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="water_excursion" className={style.subcat__name}>
                 Водная экскурсия
@@ -569,6 +567,7 @@ function Main() {
                 name="walking_excursion"
                 id="walking_excursion"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="walking_excursion" className={style.subcat__name}>
                 Пешеходная экскурсия
@@ -582,6 +581,7 @@ function Main() {
                 name="otherExcursion"
                 id="otherExcursion"
                 className={style.subcat__checkbox}
+                onChange={onChange}
               />
               <label htmlFor="otherExcursion" className={style.subcat__name}>
                 Разное
