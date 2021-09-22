@@ -2,12 +2,9 @@ const router = require('express').Router();
 const db = require('../db/models');
 
 router.route('/')
-
   .post((req, res) => {
     const { body } = req.body;
-    console.log(body, "на бэке");
 
-    console.log("++++++++++++");
     db.Location.create(
       {
         title: body.title,
@@ -40,4 +37,5 @@ router.route('/')
 
     }).catch(err => console.log(err,"--------"))
   })
+
 module.exports = router;

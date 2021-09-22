@@ -2,8 +2,7 @@ import React from 'react';
 import styles from './AddPlace.module.css'
 
 function AddPlace(props) {
-
-  const addPlaceHandler = async(e) => {
+  const addPlaceHandler = async (e) => {
     e.preventDefault();
 
     const body = {
@@ -21,6 +20,7 @@ function AddPlace(props) {
       email: e.target.email.value,
       tel1: e.target.tel1.value,
       tel2: e.target.tel2.value,
+
       url:[e.target.url0.value,
       e.target.url1.value,
       e.target.url2.value,
@@ -32,72 +32,62 @@ function AddPlace(props) {
 
     console.log(body,"на фронте");
 
-    await fetch ('http://localhost:3001/addLocation', {
+
+    await fetch('http://localhost:3001/addLocation', {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({body})
-    })
-  }
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ body }),
+    });
+  };
+
   return (
     <div>
+
       <form action="" onSubmit={addPlaceHandler}>
 
         Название места (title):
         <input className={styles.inputs} type="text" name="title" /> <br />
 
+
         Описание места (description):
-        <textarea name="description"></textarea> <br />
-
+        <textarea name='description'></textarea> <br />
         Адрес (address):
-        <input type="text" name="address" /> <br />
-
+        <input type='text' name='address' /> <br />
         Тип (type):
-        <input type="text" name="type" />  <br />
-
+        <input type='text' name='type' /> <br />
         <hr />
-
         Сайт (site):
-        <input type="text" name="site" />  <br />
-
+        <input type='text' name='site' /> <br />
         vk:
-        <input type="text" name="vk" />  <br />
-
+        <input type='text' name='vk' /> <br />
         fb:
-        <input type="text" name="fb" />  <br />
-
+        <input type='text' name='fb' /> <br />
         instagram:
-        <input type="text" name="instagram" />  <br />
-
+        <input type='text' name='instagram' /> <br />
         whatsapp:
-        <input type="text" name="whatsapp" />  <br />
-
+        <input type='text' name='whatsapp' /> <br />
         telegram:
-        <input type="text" name="telegram" />  <br />
-
+        <input type='text' name='telegram' /> <br />
         viber:
-        <input type="text" name="viber" />  <br />
-
+        <input type='text' name='viber' /> <br />
         email:
-        <input type="text" name="email" />  <br />
-
+        <input type='text' name='email' /> <br />
         tel1:
-        <input type="text" name="tel1" />  <br />
-
+        <input type='text' name='tel1' /> <br />
         tel2:
-        <input type="text" name="tel2" />  <br />
-
+        <input type='text' name='tel2' /> <br />
         <hr />
-
         фото: ТУТ БУДЕТ МУЛЬТЕР <br />
+
         <input type="text" name="url0"/>
         <input type="text" name="url1"/>
         <input type="text" name="url2"/>
         <input type="text" name="url3"/>
         <input type="text" name="url4"/>
         <input type="text" name="url5"/>
-        Координаты: тут будет карта <br />
 
+        Координаты: тут будет карта <br />
         <button> Сохранить </button>
       </form>
     </div>
