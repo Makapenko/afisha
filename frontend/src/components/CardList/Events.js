@@ -8,10 +8,10 @@ import Event from './Event';
 import style from './Events.module.css';
 
 // для кнопок навигации
-import { PUSH_BUTOON } from '../../redux/actionTypes';
+import { PUSH_BUTOON } from '../../redux/actionTypes';  
 
 function CardList(props) {
-
+  const dispatch = useDispatch();
 
   const { events } = useSelector(store => store.eventsReducer)
 
@@ -142,7 +142,6 @@ console.log("Date: "+date.getDate()+
           <Event key={event.id} event={event} />)}</div>
         : <p>упс</p>
       }
-       <input type="date" name="calendar" onChange={cal}/>
     </>
   );
 }
