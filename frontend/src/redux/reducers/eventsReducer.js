@@ -22,11 +22,14 @@ const eventsReducer = (state = initialState, action) => {
       //     if(ell.LocationId==el.id)
       //      arr.push(el)  }
       // ))
+      state.locations.map(el => { if (arr.indexOf(el.id) < 0) arr.push(el.id) })
       a.map(el => { if (arr.indexOf(el.LocationId) < 0) arr.push(el.LocationId) })
         let arr1=[]
+        // action.payload.all.locations.map(el=>{if(arr1.indexOf(el.id)>=0)arr1.push(el) })
         action.payload.all.locations.map(el=>{if(arr.indexOf(el.id)>=0)arr1.push(el) })
+
       
-      return { ...state, events: [...state.events, ...a], locations: [ ...state.locations  ,...arr1]  };
+      return { ...state, events: [...state.events, ...a], locations: [ ...arr1]  };
     case "DEL_WIDERELEASE":
       let b = state.events.filter(
         (el) => el.subcategory !== `${action.payload}`
@@ -39,6 +42,7 @@ const eventsReducer = (state = initialState, action) => {
         arrNew.push(el)
       }
       )
+      console.log(arrNew);
       return {
         ...state,
         events: b,
