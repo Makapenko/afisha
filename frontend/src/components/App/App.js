@@ -17,11 +17,15 @@ import Account from '../Account/Account';
 
 function App() {
 
+  
+
   return (
     <div className={style.app}>
       <Provider store={store} >
         <Router>
-          <Navigation />
+
+          <Navigation />    
+          
           <Switch>
             <Route path="/" exact>
               <Main />
@@ -51,8 +55,9 @@ function App() {
             <Route path="/auth">
               <Auth />
             </Route>
-            <Route path="/account">
+            <Route path="/account" >
               <Account />
+
             </Route>
 
           </Switch>
