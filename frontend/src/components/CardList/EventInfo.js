@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function EventInfo(props) {
@@ -8,6 +8,7 @@ function EventInfo(props) {
   const { locations } = useSelector((store) => store.eventsReducer);
   const event = events[id - 1]
 
+  // eslint-disable-next-line no-unused-vars
   const location = locations.find(el => el.id === +event.LocationId)
   const history = useHistory();
   return (

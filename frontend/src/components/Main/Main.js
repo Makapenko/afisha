@@ -12,6 +12,24 @@ import arrowBlackDownPng from "../../icons/navigation/arrowBlackDown.png";
 import arrowBlackUpPng from "../../icons/navigation/arrowBlackUp.png";
 function Main() {
   const dispatch = useDispatch();
+  // const events = useSelector(store=>store.eventsReducer)
+  // console.log('event', events)
+  const [selectMovie, setSelectMovie] = useState(false);
+  const [selectTheatre, setSelectTheatre] = useState(false);
+  const [selectConcert, setSelectConcert] = useState(false);
+
+  function dropDownListMovie(e) {
+    setSelectMovie(!selectMovie);
+    console.log(e.target.name);
+  }
+  function dropDownListTheatre(e) {
+    setSelectTheatre(!selectTheatre);
+    console.log(e.target.name);
+  }
+  function dropDownListConcert(e) {
+    setSelectConcert(!selectConcert);
+    console.log(e.target.name);
+  }
 
   const [all, setAll] = useState(null);
   const [checkboxList, setCheckboxList] = useState([
@@ -79,10 +97,7 @@ function Main() {
       // })})
   }, []);
 
-  const [select, setSelect] = useState(false);
-  function dropDownList() {
-    setSelect(!select);
-  }
+
 
   return (
     <div className={style.container}>
@@ -105,8 +120,8 @@ function Main() {
             Кино
           </div>
         </div>
-        {select ? (
-          <div onClick={dropDownList} className={style.category__arrow}>
+        {selectMovie ? (
+          <div onClick={dropDownListMovie} className={style.category__arrow}>
             <img
               src={arrowBlackDownPng}
               alt="arrow"
@@ -116,7 +131,7 @@ function Main() {
             />
           </div>
         ) : (
-          <div onClick={dropDownList} className={style.category__arrow}>
+          <div onClick={dropDownListMovie} className={style.category__arrow}>
             <img
               src={arrowBlackUpPng}
               alt="arrow"
@@ -129,8 +144,8 @@ function Main() {
       </div>
 
       {/* sub */}
-      {select ? (
-        <div className={style.subcats__container}>
+      {selectMovie ? (
+        <div name= "cat_movie"className={style.subcats__container}>
           <div className={style.subcats}>
             <div className={style.subcat}>
               <input
@@ -228,8 +243,8 @@ function Main() {
             Театр
           </div>
         </div>
-        {select ? (
-          <div onClick={dropDownList} className={style.category__arrow}>
+        {selectTheatre ? (
+          <div onClick={dropDownListTheatre} className={style.category__arrow}>
             <img
               src={arrowBlackDownPng}
               alt="arrow"
@@ -239,7 +254,7 @@ function Main() {
             />
           </div>
         ) : (
-          <div onClick={dropDownList} className={style.category__arrow}>
+          <div onClick={dropDownListTheatre} className={style.category__arrow}>
             <img
               src={arrowBlackUpPng}
               alt="arrow"
@@ -250,7 +265,7 @@ function Main() {
           </div>
         )}
       </div>
-      {select ? (
+      {selectTheatre ? (
         <div className={style.subcats__container}>
           <div className={style.subcats}>
             <div className={style.subcat}>
@@ -312,8 +327,8 @@ function Main() {
             Концерты
           </div>
         </div>
-        {select ? (
-          <div onClick={dropDownList} className={style.category__arrow}>
+        {selectConcert ? (
+          <div onClick={dropDownListConcert} className={style.category__arrow}>
             <img
               src={arrowBlackDownPng}
               alt="arrow"
@@ -323,7 +338,7 @@ function Main() {
             />
           </div>
         ) : (
-          <div onClick={dropDownList} className={style.category__arrow}>
+          <div onClick={dropDownListConcert} className={style.category__arrow}>
             <img
               src={arrowBlackUpPng}
               alt="arrow"
@@ -334,7 +349,7 @@ function Main() {
           </div>
         )}
       </div>
-      {select ? (
+      {selectConcert ? (
         <div className={style.subcats__container}>
           <div className={style.subcats}>
             <div className={style.subcat}>
