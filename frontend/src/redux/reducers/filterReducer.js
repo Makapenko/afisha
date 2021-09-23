@@ -5,12 +5,15 @@ const initialState = {
     lections: false,
     masterClass: false,
     educationOthers: false,
+
     dances: false,
     concerts: false,
     adults: false,
+
     barCinema: false,
     barLections: false,
     degustations: false,
+
     painting: false,
     expositionOther: false
   }

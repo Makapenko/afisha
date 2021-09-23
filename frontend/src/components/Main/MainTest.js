@@ -111,21 +111,21 @@ function Main() {
 
   return (
     <div className={style.container}>
-      Обучение:
+      {/* Обучение:
       -Лекции - lections
       -Мастер-классы - masterClass
-      -Другое - educationOthers
+      -Другое - educationOthers */}
 
-      Вечеринки:
+      {/* Вечеринки:
       -Танцевальные - dances
       -Концерты - concerts
-      -18+ - adults
+      -18+ - adults */}
 
       Бары:
       -Кинопоказы - barCinema
       -Лекции - barLections
       -Дегустации - degustations
-
+      <br/>
       Выставки
       -Живопись - painting
       -Разное - expositionOther
@@ -152,7 +152,6 @@ function Main() {
 
       {/* // ! ОБУЧЕНИЕ */}
       <div className={style.category}>
-
         <div className={style.category__left}>
           <div className={style.category__img}>
             <img
@@ -197,7 +196,6 @@ function Main() {
         }
       </div>
 
-      {/* //! Study Сабкатегории */}
       {
         selectStudy && (
           <div name="cat_movie" className={style.subcats__container}>
@@ -284,76 +282,89 @@ function Main() {
             />
             {/* настройки как для чекбокса */}
           </div>
-          <div className={style.category__name} htmlFor="cat_theatre">
-            Театр
-          </div>
-        </div>
-        {selectTheatre ? (
-          <div onClick={dropDownListTheatre} className={style.category__arrow}>
-            <img
-              src={arrowBlackDownPng}
-              alt="arrow"
-              className={style.icon}
-              name="cat_theatre"
-              id="cat_theatre"
-            />
-          </div>
-        ) : (
-          <div onClick={dropDownListTheatre} className={style.category__arrow}>
-            <img
-              src={arrowBlackUpPng}
-              alt="arrow"
-              className={style.icon}
-              name="cat_theatre"
-              id="cat_theatre"
-            />
-          </div>
-        )}
-      </div>
-      {selectTheatre ? (
-        <div className={style.subcats__container}>
-          <div className={style.subcats}>
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="bigTheatre"
-                id="bigTheatre"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="bigTheatre" className={style.subcat__name}>
-                Большой театр
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="chamberTheatre"
-                id="chamberTheatre"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="chamberTheatre" className={style.subcat__name}>
-                Камерный театр
-              </label>
-            </div>
-            <hr />
 
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="theatreOther"
-                id="theatreOther"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="theatreOther" className={style.subcat__name}>
-                Разное
-              </label>
-            </div>
+          <div className={style.category__name} htmlFor="cat_theatre">
+            Вечеринки
           </div>
         </div>
-      ) : (
-        <span />
-      )}
+        {
+          selectTheatre
+            ? (
+              <div onClick={dropDownListTheatre} className={style.category__arrow}>
+                <img
+                  src={arrowBlackUpPng}
+                  alt="arrow"
+                  className={style.icon}
+                  name="cat_theatre"
+                  id="cat_theatre"
+                />
+              </div>
+            )
+            : (
+              <div onClick={dropDownListTheatre} className={style.category__arrow}>
+                <img
+                  src={arrowBlackDownPng}
+                  alt="arrow"
+                  className={style.icon}
+                  name="cat_theatre"
+                  id="cat_theatre"
+                />
+              </div>
+            )
+        }
+
+      </div>
+      {
+        selectTheatre && (
+          <div className={style.subcats__container}>
+            <div className={style.subcats}>
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="dances"
+                  id="dances"
+                  className={style.subcat__checkbox}
+                  onClick={() => checkboxHandle('dances')}
+                  defaultChecked={subcategories.dances}
+                />
+                <label htmlFor="dances" className={style.subcat__name}>
+                  Танцевальные
+                </label>
+              </div>
+              <hr />
+
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="concerts"
+                  id="concerts"
+                  className={style.subcat__checkbox}
+                  onClick={() => checkboxHandle('concerts')}
+                  defaultChecked={subcategories.concerts}
+                />
+                <label htmlFor="concerts" className={style.subcat__name}>
+                  Концерты
+                </label>
+              </div>
+              <hr />
+
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="adults"
+                  id="adults"
+                  className={style.subcat__checkbox}
+                  onClick={() => checkboxHandle('adults')}
+                  defaultChecked={subcategories.adults}
+                />
+                <label htmlFor="adults" className={style.subcat__name}>
+                  18 +
+                </label>
+              </div>
+            </div>
+          </div>
+        )
+      }
 
       {/* // ! Концерты */}
       <div className={style.category}>
@@ -363,104 +374,117 @@ function Main() {
               src={concertPNG}
               alt="favorites"
               className={style.icon}
-              name="cat_concert"
-              id="cat_concert"
+              name="cat_movie"
+              id="cat_movie"
+              onClick={filterByCategory}
             />
             {/* настройки как для чекбокса */}
           </div>
-          <div className={style.category__name} htmlFor="cat_concert">
-            Концерты
+
+          <div className={style.category__name} htmlFor="cat_movie">
+            Бары
           </div>
         </div>
-        {selectConcert ? (
-          <div onClick={dropDownListConcert} className={style.category__arrow}>
-            <img
-              src={arrowBlackDownPng}
-              alt="arrow"
-              className={style.icon}
-              name="cat_concert"
-              id="cat_concert"
-            />
-          </div>
-        ) : (
-          <div onClick={dropDownListConcert} className={style.category__arrow}>
-            <img
-              src={arrowBlackUpPng}
-              alt="arrow"
-              className={style.icon}
-              name="cat_concert"
-              id="cat_concert"
-            />
-          </div>
-        )}
+        {
+          selectConcert
+            ? (
+              <div onClick={dropDownListConcert} className={style.category__arrow}>
+                <img
+                  src={arrowBlackUpPng}
+                  alt="arrow"
+                  className={style.icon}
+                  name="cat_movie"
+                  id="cat_movie"
+                />
+              </div>
+            )
+            : (
+              <div onClick={dropDownListConcert} className={style.category__arrow}>
+                <img
+                  src={arrowBlackDownPng}
+                  alt="arrow"
+                  className={style.icon}
+                  name="cat_movie"
+                  id="cat_movie"
+                />
+              </div>
+            )
+        }
       </div>
-      {selectConcert ? (
-        <div className={style.subcats__container}>
-          <div className={style.subcats}>
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="popConcert"
-                id="popConcert"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="popConcert" className={style.subcat__name}>
-                Поп
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="rockConcert"
-                id="rockConcert"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="rockConcert" className={style.subcat__name}>
-                Рок
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="rapConcert"
-                id="rapConcert"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="rapConcert" className={style.subcat__name}>
-                Рэп
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="perfomanceInBars"
-                id="perfomanceInBars"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="perfomanceInBars" className={style.subcat__name}>
-                Выступления в барах
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="concertOther"
-                id="concertOther"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="concertOther" className={style.subcat__name}>
-                Разное
-              </label>
+
+      {
+        selectConcert && (
+          <div name="cat_movie" className={style.subcats__container}>
+            <div className={style.subcats}>
+
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="barCinema"
+                  id="barCinema"
+                  className={style.subcat__checkbox}
+                  onClick={() => {
+                    filterBySubcategory(
+                      "WIDERELEASE",
+                      "DEL_WIDERELEASE",
+                      "Рок",
+                      0
+                    );
+                    checkboxHandle('barCinema');
+                  }}
+                  defaultChecked={subcategories.barCinema}
+                />
+                <label htmlFor="barCinema" className={style.subcat__name}>
+                  Кинопоказы
+                </label>
+              </div>
+              <hr />
+
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="barLections"
+                  id="barLections"
+                  className={style.subcat__checkbox}
+                  onClick={() => {
+                    filterBySubcategory(
+                      "WIDERELEASE",
+                      "DEL_WIDERELEASE",
+                      "Ограниченный прокат",
+                      1
+                    );
+                    checkboxHandle('barLections');
+                  }}
+                  defaultChecked={subcategories.barLections}
+                />
+                <label htmlFor="barLections" className={style.subcat__name}>
+                  Лекции
+                </label>
+              </div>
+              <hr />
+
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="degustations"
+                  id="degustations"
+                  className={style.subcat__checkbox}
+                  onClick={() => {
+                    checkboxHandle('degustations')
+                  }}
+                  defaultChecked={subcategories.degustations}
+                />
+                <label htmlFor="degustations" className={style.subcat__name}>
+                  Дегустации
+                </label>
+              </div>
+              <hr />
+
             </div>
           </div>
-        </div>
-      ) : (
-        <span />
-      )}
+        )
+      }
+
     </div>
   );
 }
