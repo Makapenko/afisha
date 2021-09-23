@@ -10,7 +10,21 @@ import { useState } from "react";
 import points from "./points";
 import myIcon2 from "../iconsForYMaps/quests.png";
 
+  // для кнопок навигации
+import { PUSH_BUTOON } from '../../redux/actionTypes'
+import { useDispatch } from 'react-redux';
+
 function YandexMap() {
+
+  // для кнопок навигации
+  const dispatch = useDispatch();
+  const action = {
+    type: PUSH_BUTOON,
+    payload: 'map',
+  };
+  dispatch(action);
+  //
+
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
 
@@ -18,7 +32,7 @@ function YandexMap() {
     center: [lat, lng],
     zoom: 11.5,
   };
-  
+
   const getPointData = (title, desc, id) => {
     return {
       balloonContentHeader: title,
@@ -27,7 +41,7 @@ function YandexMap() {
       clusterCaption: title,
     };
   };
-// Когда будеь готов сам компонент (из раздела со списком сообытий), можно попробовать его html прокинуть в baloonContentBody, стили все накинуть инлайново
+  // Когда будеь готов сам компонент (из раздела со списком сообытий), можно попробовать его html прокинуть в baloonContentBody, стили все накинуть инлайново
   const getPointOptions = () => {
     return {
       preset: "islands#violetIcon",

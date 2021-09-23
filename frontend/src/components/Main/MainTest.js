@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import Filter from './Filter';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./Main.module.css";
 
 import moviePng from "../../icons/filters/1movie.png";
@@ -25,6 +25,10 @@ function Main() {
   dispatch(action);
   //
 
+  // тест чекбокса
+  const checkBoxes = useSelector(store => store.filterReducer.subcategories)
+
+  console.log(checkBoxes)
 
   // const events = useSelector(store=>store.eventsReducer)
   // console.log('event', events)
@@ -58,12 +62,6 @@ function Main() {
       "Ограниченный прокат",
       1
     );
-    filterBySubcategory(
-      "WIDERELEASE",
-      "DEL_WIDERELEASE",
-      "Кинопоказы в барах",
-      2
-    )
   }
 
   function toggle(status) {
@@ -102,19 +100,57 @@ function Main() {
   useEffect(() => {
     fetch("http://localhost:3001/")
       .then((res) => res.json())
-      .then((data) => setAll(data))
-      // .then((data) => {setAll(data);
-      
-      // dispatch({
-      //   type:"INIT_ALL",
-      //   payload:data
-      // })})
+      .then((data) => setAll(data));
   }, []);
 
-
+  function test(data) {
+    const action = {
+      type: 'ADD_SUBCAT',
+      payload: data
+    }
+    dispatch(action)
+  }
 
   return (
     <div className={style.container}>
+      Обучение:
+      -Лекции - lections
+      -Мастер-классы - masterClass
+      -Другое - educationOthers
+      Вечеринки:
+      -Танцевальные - dances
+      -Концерты - concerts
+      -18+ - adults
+      Бары:
+      -Кинопоказы - barCinema
+      -Лекции - barLections
+      -Дегустации - degustations
+      Выставки
+      -Живопись - painting
+      -Разное - expositionOther
+
+
+      <input
+         defaultChecked={checkBoxes.expositionOther && true}
+        type="checkbox"
+        name="filmLimitedRelease"
+        id="filmLimitedRelease"
+        className={style.subcat__checkbox}
+        onClick={() =>
+          test('expositionOther')
+        }
+        onChange={() =>
+          filterBySubcategory(
+            "WIDERELEASE",
+            "DEL_WIDERELEASE",
+            "Ограниченный прокат",
+            1
+          )
+        }
+      />
+
+
+
       {/* Кино */}
       <div className={style.category}>
         <div className={style.category__left}>
@@ -182,20 +218,40 @@ function Main() {
             </div>
             <hr />
             <div className={style.subcat}>
-              <input checked={false}
-                type="checkbox"
-                name="filmLimitedRelease"
-                id="filmLimitedRelease"
-                className={style.subcat__checkbox}
-                onClick={() =>
-                  filterBySubcategory(
-                    "WIDERELEASE",
-                    "DEL_WIDERELEASE",
-                    "Ограниченный прокат",
-                    1
-                  )
-                }
-              />
+              {/* Тест чекбокса !!!!!!!!!!!!!*/}
+              {checkBoxes[0] === 'test'
+                ? <input
+                  defaultChecked
+                  type="checkbox"
+                  name="filmLimitedRelease"
+                  id="filmLimitedRelease"
+                  className={style.subcat__checkbox}
+                  onClick={() =>
+                    filterBySubcategory(
+                      "WIDERELEASE",
+                      "DEL_WIDERELEASE",
+                      "Ограниченный прокат",
+                      1
+                    )
+                  }
+                />
+                : <input
+
+                  type="checkbox"
+                  name="filmLimitedRelease"
+                  id="filmLimitedRelease"
+                  className={style.subcat__checkbox}
+                  onClick={() =>
+                    filterBySubcategory(
+                      "WIDERELEASE",
+                      "DEL_WIDERELEASE",
+                      "Ограниченный прокат",
+                      1
+                    )
+                  }
+                />
+              }
+
               <label
                 htmlFor="filmLimitedRelease"
                 className={style.subcat__name}
@@ -210,14 +266,6 @@ function Main() {
                 name="filmBar"
                 id="filmBar"
                 className={style.subcat__checkbox}
-                onClick={() =>
-                  filterBySubcategory(
-                    "WIDERELEASE",
-                    "DEL_WIDERELEASE",
-                    "Кинопоказы в барах",
-                    2
-                  )
-                }
               />
               <label htmlFor="filmBar" className={style.subcat__name}>
                 Кинопоказы в барах

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 import store from "../../redux/store.js"
 import Navigation from '../Layout/Navigation';
-import Main from '../Main/Main';
+import Main from '../Main/Main'; // !!!!!!!!!!!!!!!!!!!!!! TEST
 import YandexMap from '../YandexMap/YandexMap';
 import Events from '../CardList/Events';
 import Favorites from '../Favorites/Favorites';

@@ -1,13 +1,28 @@
-import React,{useState} from 'react';
-import { useSelector } from 'react-redux';
+
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Event from './Event';
 import style from './Events.module.css';
 import { useDispatch } from "react-redux";
+
+// для кнопок навигации
+import { PUSH_BUTOON } from '../../redux/actionTypes';
 
 function CardList(props) {
   const dispatch = useDispatch();
 
   const { events } = useSelector(store => store.eventsReducer)
+
+  // для кнопок навигации
+  const dispatch = useDispatch();
+  const action = {
+    type: PUSH_BUTOON,
+    payload: 'cardList',
+  };
+  dispatch(action);
+  //
+
   const [copyEvents, setCopyEvents] = useState(events)
 
   const [value, setValue] = useState(true)
@@ -47,6 +62,7 @@ function isFree(){
   // if(!value&&!isToday){
   //   console.log(" любые  всегда");
   //   setValue(true)
+
 
   // }
 }
@@ -122,8 +138,8 @@ console.log("Date: "+date.getDate()+
     <div onClick={isFree} >бесплатно</div>
     {/* <div onClick={Today} >сегодня</div> */}
       {events
-        ? <div className={style.cardlist}>{events.map(event => 
-        <Event key={event.id} event={event} />)}</div>
+        ? <div className={style.cardlist}>{events.map(event =>
+          <Event key={event.id} event={event} />)}</div>
         : <p>упс</p>
       }
        <input type="date" name="calendar" onChange={cal}/>

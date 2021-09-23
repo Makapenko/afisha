@@ -31,7 +31,10 @@
 
 .icon {
   width: 6vw;
-  height: 3vh;
+  height: 6vw;
+  position: relative;
+  left: 41vw;
+  top: -18vh;
 }
 
 .bottom {
