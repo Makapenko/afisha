@@ -7,7 +7,12 @@ router.get('/', async (req, res) => {
 
   const events = rawEvents.map((item) => item.dataValues);
   const locations = rawLocations.map((item) => item.dataValues);
-  res.json({ message: 'ok', events, locations });
+
+  res.json({
+    message: 'ok',
+    events,
+    locations,
+  });
 });
 
 module.exports = router;

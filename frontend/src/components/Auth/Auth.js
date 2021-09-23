@@ -7,7 +7,7 @@ function Auth() {
   const { isAuthenticated } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
-  const submitHandler = (e) => {
+  function submitHandler(e) {
     e.preventDefault();
 
     const { username, password } = e.target;
@@ -24,7 +24,7 @@ function Auth() {
       .then((response) => response.json())
       .then((data) => {
         if (data.code === 'ACCESS OK') {
-          dispatch(dispatch(isAuthenticatedAC(true)));
+          dispatch(isAuthenticatedAC(true));
         } else {
           alert(data.message);
         }
