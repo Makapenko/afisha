@@ -24,6 +24,7 @@ function CardList(props) {
   const [copyEvents, setCopyEvents] = useState(events)
 
   const [value, setValue] = useState(true)
+  const [value1, setValue1] = useState(true)
   const [isToday, setIsToday] = useState(true)
 function isFree(){
   // if(value&&isToday){
@@ -111,36 +112,59 @@ function isFree(){
 // var regex = /\d/g;
 // return regex.test(t);
 // }  
-function cal(e){
-console.log(e.timeStamp);
-var timestamp = e.timeStamp
-var date = new Date(timestamp);
+// function isFree(){
+//   // if(value&&isToday){
+//     if(value){
+     
+//     console.log("бесплатно и всегда", events);
+//     setValue(false)
+//     dispatch({
+//       type:"IS_FREE_EVENT",
+//       payload:events
+//     })
+//   //   setCopyEvents(events.filter(function (el) {
+//   //   return hasNumbers(el.price)!==true
+//   // })
+//   // )
+// }else if(!value){
+//     console.log(" любые  всегда", events);
+//     setValue(true)
+//     dispatch({
+//       type:"ALL_EVENT",
+//       payload: copyEvents
+//     })
+//     // setCopyEvents(events)
+//   }
+function today(){
+  
+  if(value1){
+     
+    setValue1(false)
+    dispatch({
+      type:"IS_TODAY",
+      payload:events
+    })
 
-console.log("Date: "+date.getDate()+
-          "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()+
-          " "+date.getHours()+
-          ":"+date.getMinutes()+
-          ":"+date.getSeconds());
-//   let today1= new Date().toISOString().slice(0, 10)
+}else if(!value1){
+  setValue1(true)
+  dispatch({
+    type:"ALL_EVENT_IS_NOT_TODAY",
+    payload: copyEvents
+  })
 
-// console.log(today1)
-//   var date = new Date( );
-//   console.log(date);
-//   let today = new Date().toLocaleDateString()
-
-// console.log(today)
+}
 }
   return (
     <>
-    <div onClick={isFree} >бесплатно</div>
-    {/* <div onClick={Today} >сегодня</div> */}
+    <div onClick={isFree} >бесплатно</div> 
+    <div onClick={today} >Сегодня</div>
+
       {events
         ? <div className={style.cardlist}>{events.map(event =>
           <Event key={event.id} event={event} />)}</div>
         : <p>упс</p>
       }
-       <input type="date" name="calendar" onChange={cal}/>
+
     </>
   );
 }

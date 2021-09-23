@@ -59,10 +59,39 @@ const eventsReducer = (state = initialState, action) => {
         events:all
       }
     case "ALL_EVENT":
+      let all4 
+      all4 = action.payload.filter(function (el) {
+        return hasNumbers1(el.price) == true
+      })
+      function hasNumbers1(t) {
+        var regex = /\d/g;
+        return regex.test(t);
+      }
       return {
        ...state,
-       events:action.payload
+       events:[...state.events, ...all4]
       }
+      case "IS_TODAY":
+        let today1= new Date().toISOString().slice(0, 10)
+      let all1 
+      all1 = action.payload.filter(function (el) {
+        return el.dateStart !== today1
+      })
+      return {
+        ...state,
+        events:all1
+      }
+      case "ALL_EVENT_IS_NOT_TODAY":
+        let today= new Date().toISOString().slice(0, 10)
+        let all2
+        all2 = action.payload.filter(function (el) {
+          return el.dateStart == today
+        })
+      return {
+       ...state,
+       events:[...state.events, ...all2]
+      }
+      
     default:
       return state;
   }
