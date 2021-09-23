@@ -6,6 +6,7 @@ import AddEvent from '../AddEvent/AddEvent';
 import AddPlace from '../AddPlace/AddPlace';
 
 function Account() {
+
   const history = useHistory();
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.userReducer);
@@ -16,6 +17,7 @@ function Account() {
     });
 
     dispatch(isAuthenticatedAC(false));
+    dispatch({type:'ADD_NAV'})
     history.push('/auth');
   }
 

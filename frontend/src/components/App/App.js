@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 import store from "../../redux/store.js"
 import Navigation from '../Layout/Navigation';
-import Main from '../Main/Main'; // !!!!!!!!!!!!!!!!!!!!!! TEST
+import Main from '../Main/MainTest'; // !!!!!!!!!!!!!!!!!!!!!! TEST
 import YandexMap from '../YandexMap/YandexMap';
 import Events from '../CardList/Events';
 import Favorites from '../Favorites/Favorites';
@@ -17,11 +17,15 @@ import Account from '../Account/Account';
 
 function App() {
 
+  
+
   return (
     <div className={style.app}>
       <Provider store={store} >
         <Router>
-          <Navigation />
+
+          <Navigation />    
+          
           <Switch>
             <Route path="/" exact>
               <Main />
@@ -51,8 +55,9 @@ function App() {
             <Route path="/auth">
               <Auth />
             </Route>
-            <Route path="/account">
+            <Route path="/account" >
               <Account />
+
             </Route>
 
           </Switch>
