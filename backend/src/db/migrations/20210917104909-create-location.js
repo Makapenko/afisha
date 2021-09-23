@@ -21,10 +21,10 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       coordX: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
       },
       coordY: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.INTEGER,
       },
       openingHours: {
         type: Sequelize.TEXT,
