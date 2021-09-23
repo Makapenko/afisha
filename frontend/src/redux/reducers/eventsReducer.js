@@ -12,22 +12,16 @@ const eventsReducer = (state = initialState, action) => {
         locations: action.payload.locations,
       };
     case "WIDERELEASE":
+
       let a = action.payload.all.events.filter(
         (el) => el.subcategory === action.payload.c
       );
       let arr = []
-      // console.log(action.payload.all.locations);
-      // action.payload.all.locations.map(el=>
-      //   a.map(ell=>{
-      //     if(ell.LocationId==el.id)
-      //      arr.push(el)  }
-      // ))
+      
       state.locations.map(el => { if (arr.indexOf(el.id) < 0) arr.push(el.id) })
       a.map(el => { if (arr.indexOf(el.LocationId) < 0) arr.push(el.LocationId) })
       let arr1 = []
-      // action.payload.all.locations.map(el=>{if(arr1.indexOf(el.id)>=0)arr1.push(el) })
       action.payload.all.locations.map(el => { if (arr.indexOf(el.id) >= 0) arr1.push(el) })
-
 
       return { ...state, events: [...state.events, ...a], locations: [...arr1] };
     case "DEL_WIDERELEASE":
@@ -42,6 +36,7 @@ const eventsReducer = (state = initialState, action) => {
           arrNew.push(el)
       }
       )
+
       return {
         ...state,
         events: b,
@@ -49,7 +44,6 @@ const eventsReducer = (state = initialState, action) => {
       };
 
     case "IS_FREE_EVENT":
-      console.log(action.payload, "++++++++++++++++");
 
       let all 
       all = action.payload.filter(function (el) {

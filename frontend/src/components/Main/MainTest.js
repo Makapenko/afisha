@@ -29,7 +29,6 @@ function Main() {
 
   // тест чекбокса
 
-  console.log(subcategories)
 
   // const events = useSelector(store=>store.eventsReducer)
   // console.log('event', events)
@@ -40,63 +39,89 @@ function Main() {
 
   function dropDownListMovie(e) {
     setSelectStudy(!selectStudy);
-    console.log(e.target.name);
+    // console.log(e.target.name);
   }
 
   function dropDownListTheatre(e) {
     setSelectTheatre(!selectTheatre);
-    console.log(e.target.name);
+    // console.log(e.target.name);
   }
 
   function dropDownListConcert(e) {
     setSelectConcert(!selectConcert);
-    console.log(e.target.name);
+    // console.log(e.target.name);
   }
 
   const [all, setAll] = useState(null);
-  const [checkboxList, setCheckboxList] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
+  // const [checkboxList, setCheckboxList] = useState([
+  //   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  // ]);
 
   function filterByCategory() {
-    filterBySubcategory( "Рок", 0);
-    filterBySubcategory(
-      
-      "Ограниченный прокат",
-      1
-    );
+    filterBySubcategory( "lections");
+    filterBySubcategory("masterClass");
   }
 
-  function toggle(status) {
-    return status === 1 ? 0 : 1;
+  // function toggle(status) {
+  //   return status === 1 ? 0 : 1;
+  // }
+
+  const subCat={lections:"Лекции",
+    // masterClass:"Мастер-классы ",
+    masterClass:"Ограниченный прокат",
+    educationOthers:"Другое",
+    dances:"Танцевальные",
+    concerts:"Концерты",
+    adults:"18+",
+    // lections:"Лекции",
+    lections:"Рок",
+    // masterClass:"Ограниченный прокат",
+    // filmScreeningsInBars:"Кинопоказы в барах"
+    // barCinema:"",
+    // barLections:"",
+    // degustations:"",
+    // painting:"",
+    // expositionOther:"",
   }
 
   function filterBySubcategory(
     
-    subcategoryName,
-    checkboxIndex
+    subcategoryName
+    // checkboxIndex
   ) {
-    const status = checkboxList[checkboxIndex];
-    if (!(status === 0 || status === 1)) {
-      throw new Error("Invalid status");
-    }
-
-    setCheckboxList((prevList) => {
-      const copy = [...prevList];
-      copy[checkboxIndex] = toggle(status);
-      return copy;
-    });
-
-    const action = status
-      ? {
-        type: "DEL_WIDERELEASE",
-        payload: subcategoryName,
+    
+    let nameSubCat=''
+    for(var i in subCat){
+      if(i==subcategoryName){
+        nameSubCat=subCat[i]
       }
-      : {
-        type: "WIDERELEASE",
-        payload: { all, c: subcategoryName },
-      };
-    dispatch(action);
+    }
+    // const status = checkboxList[checkboxIndex];
+    // if (!(status === 0 || status === 1)) {
+    //   throw new Error("Invalid status");
+    // }
+
+    // setCheckboxList((prevList) => {
+    //   const copy = [...prevList];
+    //   copy[checkboxIndex] = toggle(status);
+    //   return copy;
+    // });
+
+    // const action = status
+    if(subcategories[subcategoryName]) {
+      subcategories[subcategoryName]=false
+      dispatch({
+        type: "DEL_WIDERELEASE",
+        payload: nameSubCat,
+      })}else{
+        subcategories[subcategoryName]=true
+
+          dispatch(
+            {type: "WIDERELEASE",
+        payload: { all, c: nameSubCat },
+        
+      })};
+    
   }
 
   useEffect(() => {
@@ -141,8 +166,7 @@ function Main() {
         onChange={() =>
           filterBySubcategory(
             
-            "Ограниченный прокат",
-            1
+            "masterClass"
           )
         }
       />
@@ -209,10 +233,9 @@ function Main() {
                   onClick={() => {
                     filterBySubcategory(
                       
-                      "Рок",
-                      0
+                      "lections"
                     );
-                    checkboxHandle('lections');
+                    // checkboxHandle('lections');
                   }}
                   defaultChecked={subcategories.lections}
                 />
@@ -230,11 +253,9 @@ function Main() {
                   className={style.subcat__checkbox}
                   onClick={() => {
                     filterBySubcategory(
-                      
-                      "Ограниченный прокат",
-                      1
+                      "masterClass"
                     );
-                    checkboxHandle('masterClass');
+                    // checkboxHandle('masterClass');
                   }}
                   defaultChecked={subcategories.masterClass}
                 />
@@ -423,8 +444,7 @@ function Main() {
                   onClick={() => {
                     filterBySubcategory(
                       
-                      "Рок",
-                      0
+                      "lections"
                     );
                     checkboxHandle('barCinema');
                   }}
@@ -445,8 +465,7 @@ function Main() {
                   onClick={() => {
                     filterBySubcategory(
                       
-                      "Ограниченный прокат",
-                      1
+                      "masterClass"
                     );
                     checkboxHandle('barLections');
                   }}
