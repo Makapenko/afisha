@@ -28,10 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
     },
     coordX: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
     },
     coordY: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
     },
     openingHours: {
       type: DataTypes.TEXT,
