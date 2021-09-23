@@ -47,52 +47,61 @@ function AddPlace() {
   };
 
   return (
-    <div>
+    <div className={styles.allwrapper}>
       <form action='' onSubmit={addPlaceHandler}>
-        <h2>AddPlace</h2>
-
-        Название места (title):
-        <input className={styles.inputs} type='text' name='title' /> <br />
-        Описание места (description):
-        <textarea name='description'></textarea> <br />
-        Адрес (address):
-        <input type='text' name='address' /> <br />
-        Тип (type):
-        <input type='text' name='type' /> <br />
-        <p>coordX</p>
-        <input type='text' name='coordX' /> <br />
-        <p>coordY</p>
-        <input type='text' name='coordY' /> <br />
-        <hr />
-        Сайт (site):
-        <input type='text' name='site' /> <br />
-        vk:
-        <input type='text' name='vk' /> <br />
-        fb:
-        <input type='text' name='fb' /> <br />
-        instagram:
-        <input type='text' name='instagram' /> <br />
-        whatsapp:
-        <input type='text' name='whatsapp' /> <br />
-        telegram:
-        <input type='text' name='telegram' /> <br />
-        viber:
-        <input type='text' name='viber' /> <br />
-        email:
-        <input type='text' name='email' /> <br />
-        tel1:
-        <input type='text' name='tel1' /> <br />
-        tel2:
-        <input type='text' name='tel2' /> <br />
-        <hr />
-        фото: ТУТ БУДЕТ МУЛЬТЕР <br />
-        <input type='text' name='url0' />
-        <input type='text' name='url1' />
-        <input type='text' name='url2' />
-        <input type='text' name='url3' />
-        <input type='text' name='url4' />
-        <input type='text' name='url5' />
-        Координаты: тут будет карта <br />
+      <h2>AddPlace</h2>
+        <div className={styles.wrapper}>
+          <div className={styles.wrapp}>
+            
+            Название места (title):
+            <input className={styles.inputs} type='text' name='title' /> <br />
+            Описание места (description):
+            <textarea name='description'></textarea> <br />
+            Адрес (address):
+            <input type='text' name='address' /> <br />
+            Тип (type):
+            <input type='text' name='type' /> <br />
+            <p>coordX</p>
+            <input type='text' name='coordX' /> <br />
+            <p>coordY</p>
+            <input type='text' name='coordY' /> <br />
+            <hr />
+          </div>
+          <div className={styles.wrapp}>
+            Сайт (site):
+            <input type='text' name='site' /> <br />
+            vk:
+            <input type='text' name='vk' /> <br />
+            fb:
+            <input type='text' name='fb' /> <br />
+            instagram:
+            <input type='text' name='instagram' /> <br />
+            whatsapp:
+            <input type='text' name='whatsapp' /> <br />
+            telegram:
+            <input type='text' name='telegram' /> <br />
+            viber:
+            <input type='text' name='viber' /> <br />
+            email:
+            <input type='text' name='email' /> <br />
+            tel1:
+            <input type='text' name='tel1' /> <br />
+            tel2:
+            <input type='text' name='tel2' /> <br />
+            <hr />
+          </div>
+          <div className={styles.multer}>
+            <p>фото: ТУТ БУДЕТ МУЛЬТЕР </p>
+            <input type='text' name='url0' />
+            <input type='text' name='url1' />
+            <input type='text' name='url2' />
+            <input type='text' name='url3' />
+            <input type='text' name='url4' />
+            <input type='text' name='url5' />
+            <p>Координаты: тут будет карта </p>
+          </div>
+          
+        </div>
         <button> Сохранить </button>
       </form>
     </div>
