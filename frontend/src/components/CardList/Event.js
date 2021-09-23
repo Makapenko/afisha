@@ -12,7 +12,6 @@ function Event({ event }) {
   const dispatch = useDispatch();
   const favorites = useSelector(store => store.favoriteReducer)
 
-  console.log(event);
   function addFavorit(){
     dispatch({
       type:"ADD_FAVORITE",
