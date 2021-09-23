@@ -17,6 +17,7 @@ import { checkboxHandleAC } from "../../redux/actionCreators";
 
 function Main() {
   const dispatch = useDispatch();
+  const subcategories = useSelector(store => store.filterReducer.subcategories)
 
   // для кнопок навигации
   const action = {
@@ -27,7 +28,6 @@ function Main() {
   //
 
   // тест чекбокса
-  const subcategories = useSelector(store => store.filterReducer.subcategories)
 
   console.log(subcategories)
 
@@ -42,10 +42,12 @@ function Main() {
     setSelectStudy(!selectStudy);
     console.log(e.target.name);
   }
+
   function dropDownListTheatre(e) {
     setSelectTheatre(!selectTheatre);
     console.log(e.target.name);
   }
+
   function dropDownListConcert(e) {
     setSelectConcert(!selectConcert);
     console.log(e.target.name);
@@ -57,10 +59,9 @@ function Main() {
   ]);
 
   function filterByCategory() {
-    filterBySubcategory("WIDERELEASE", "DEL_WIDERELEASE", "Рок", 0);
+    filterBySubcategory( "Рок", 0);
     filterBySubcategory(
-      "WIDERELEASE",
-      "DEL_WIDERELEASE",
+      
       "Ограниченный прокат",
       1
     );
@@ -71,8 +72,7 @@ function Main() {
   }
 
   function filterBySubcategory(
-    actionTypeAdd,
-    actionTypeDelete,
+    
     subcategoryName,
     checkboxIndex
   ) {
@@ -89,11 +89,11 @@ function Main() {
 
     const action = status
       ? {
-        type: actionTypeDelete,
+        type: "DEL_WIDERELEASE",
         payload: subcategoryName,
       }
       : {
-        type: actionTypeAdd,
+        type: "WIDERELEASE",
         payload: { all, c: subcategoryName },
       };
     dispatch(action);
@@ -140,8 +140,7 @@ function Main() {
         className={style.subcat__checkbox}
         onChange={() =>
           filterBySubcategory(
-            "WIDERELEASE",
-            "DEL_WIDERELEASE",
+            
             "Ограниченный прокат",
             1
           )
@@ -209,8 +208,7 @@ function Main() {
                   className={style.subcat__checkbox}
                   onClick={() => {
                     filterBySubcategory(
-                      "WIDERELEASE",
-                      "DEL_WIDERELEASE",
+                      
                       "Рок",
                       0
                     );
@@ -232,8 +230,7 @@ function Main() {
                   className={style.subcat__checkbox}
                   onClick={() => {
                     filterBySubcategory(
-                      "WIDERELEASE",
-                      "DEL_WIDERELEASE",
+                      
                       "Ограниченный прокат",
                       1
                     );
@@ -425,8 +422,7 @@ function Main() {
                   className={style.subcat__checkbox}
                   onClick={() => {
                     filterBySubcategory(
-                      "WIDERELEASE",
-                      "DEL_WIDERELEASE",
+                      
                       "Рок",
                       0
                     );
@@ -448,8 +444,7 @@ function Main() {
                   className={style.subcat__checkbox}
                   onClick={() => {
                     filterBySubcategory(
-                      "WIDERELEASE",
-                      "DEL_WIDERELEASE",
+                      
                       "Ограниченный прокат",
                       1
                     );
