@@ -13,6 +13,7 @@ import arrowBlackUpPng from "../../icons/navigation/arrowBlackUp.png";
 
 // для кнопок навигации
 import { PUSH_BUTOON } from '../../redux/actionTypes';
+import { checkboxHandleAC } from "../../redux/actionCreators";
 
 function Main() {
   const dispatch = useDispatch();
@@ -26,18 +27,19 @@ function Main() {
   //
 
   // тест чекбокса
-  const checkBoxes = useSelector(store => store.filterReducer.subcategories)
+  const subcategories = useSelector(store => store.filterReducer.subcategories)
 
-  console.log(checkBoxes)
+  console.log(subcategories)
 
   // const events = useSelector(store=>store.eventsReducer)
   // console.log('event', events)
-  const [selectMovie, setSelectMovie] = useState(false);
+  //todo Переписать на редакс, чтобы при перемещении по вкладкам открытое состояние категории состовалось
+  const [selectStudy, setSelectStudy] = useState(false); // ! Обучение
   const [selectTheatre, setSelectTheatre] = useState(false);
   const [selectConcert, setSelectConcert] = useState(false);
 
   function dropDownListMovie(e) {
-    setSelectMovie(!selectMovie);
+    setSelectStudy(!selectStudy);
     console.log(e.target.name);
   }
   function dropDownListTheatre(e) {
@@ -103,12 +105,8 @@ function Main() {
       .then((data) => setAll(data));
   }, []);
 
-  function test(data) {
-    const action = {
-      type: 'ADD_SUBCAT',
-      payload: data
-    }
-    dispatch(action)
+  function checkboxHandle(data) {
+    dispatch(checkboxHandleAC(data))
   }
 
   return (
@@ -117,28 +115,29 @@ function Main() {
       -Лекции - lections
       -Мастер-классы - masterClass
       -Другое - educationOthers
+
       Вечеринки:
       -Танцевальные - dances
       -Концерты - concerts
       -18+ - adults
+
       Бары:
       -Кинопоказы - barCinema
       -Лекции - barLections
       -Дегустации - degustations
+
       Выставки
       -Живопись - painting
       -Разное - expositionOther
 
 
       <input
-         defaultChecked={checkBoxes.expositionOther && true}
+        onClick={() => checkboxHandle('expositionOther')}
+        defaultChecked={subcategories.expositionOther && true}
         type="checkbox"
         name="filmLimitedRelease"
         id="filmLimitedRelease"
         className={style.subcat__checkbox}
-        onClick={() =>
-          test('expositionOther')
-        }
         onChange={() =>
           filterBySubcategory(
             "WIDERELEASE",
@@ -151,8 +150,9 @@ function Main() {
 
 
 
-      {/* Кино */}
+      {/* // ! ОБУЧЕНИЕ */}
       <div className={style.category}>
+
         <div className={style.category__left}>
           <div className={style.category__img}>
             <img
@@ -167,128 +167,111 @@ function Main() {
           </div>
 
           <div className={style.category__name} htmlFor="cat_movie">
-            Кино
+            Обучение
           </div>
         </div>
-        {selectMovie ? (
-          <div onClick={dropDownListMovie} className={style.category__arrow}>
-            <img
-              src={arrowBlackDownPng}
-              alt="arrow"
-              className={style.icon}
-              name="cat_movie"
-              id="cat_movie"
-            />
-          </div>
-        ) : (
-          <div onClick={dropDownListMovie} className={style.category__arrow}>
-            <img
-              src={arrowBlackUpPng}
-              alt="arrow"
-              className={style.icon}
-              name="cat_movie"
-              id="cat_movie"
-            />
-          </div>
-        )}
+        {
+          selectStudy
+            ? (
+              <div onClick={dropDownListMovie} className={style.category__arrow}>
+                <img
+                  src={arrowBlackUpPng}
+                  alt="arrow"
+                  className={style.icon}
+                  name="cat_movie"
+                  id="cat_movie"
+                />
+              </div>
+            )
+            : (
+              <div onClick={dropDownListMovie} className={style.category__arrow}>
+                <img
+                  src={arrowBlackDownPng}
+                  alt="arrow"
+                  className={style.icon}
+                  name="cat_movie"
+                  id="cat_movie"
+                />
+              </div>
+            )
+        }
       </div>
 
-      {/* sub */}
-      {selectMovie ? (
-        <div name="cat_movie" className={style.subcats__container}>
-          <div className={style.subcats}>
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="filmWideRelease"
-                id="filmWideRelease"
-                className={style.subcat__checkbox}
-                onClick={() =>
-                  filterBySubcategory(
-                    "WIDERELEASE",
-                    "DEL_WIDERELEASE",
-                    "Рок",
-                    0
-                  )
-                }
-              />
-              <label htmlFor="filmWideRelease" className={style.subcat__name}>
-                Широкий прокат
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              {/* Тест чекбокса !!!!!!!!!!!!!*/}
-              {checkBoxes[0] === 'test'
-                ? <input
-                  defaultChecked
+      {/* //! Study Сабкатегории */}
+      {
+        selectStudy && (
+          <div name="cat_movie" className={style.subcats__container}>
+            <div className={style.subcats}>
+
+              <div className={style.subcat}>
+                <input
                   type="checkbox"
-                  name="filmLimitedRelease"
-                  id="filmLimitedRelease"
+                  name="lections"
+                  id="lections"
                   className={style.subcat__checkbox}
-                  onClick={() =>
+                  onClick={() => {
+                    filterBySubcategory(
+                      "WIDERELEASE",
+                      "DEL_WIDERELEASE",
+                      "Рок",
+                      0
+                    );
+                    checkboxHandle('lections');
+                  }}
+                  defaultChecked={subcategories.lections}
+                />
+                <label htmlFor="lections" className={style.subcat__name}>
+                  Лекции
+                </label>
+              </div>
+              <hr />
+
+              <div className={style.subcat}>
+                <input
+                  type="checkbox"
+                  name="masterClass"
+                  id="masterClass"
+                  className={style.subcat__checkbox}
+                  onClick={() => {
                     filterBySubcategory(
                       "WIDERELEASE",
                       "DEL_WIDERELEASE",
                       "Ограниченный прокат",
                       1
-                    )
-                  }
+                    );
+                    checkboxHandle('masterClass');
+                  }}
+                  defaultChecked={subcategories.masterClass}
                 />
-                : <input
+                <label htmlFor="masterClass" className={style.subcat__name}>
+                  Мастер-классы
+                </label>
+              </div>
+              <hr />
 
+              <div className={style.subcat}>
+                <input
                   type="checkbox"
-                  name="filmLimitedRelease"
-                  id="filmLimitedRelease"
+                  name="educationOthers"
+                  id="educationOthers"
                   className={style.subcat__checkbox}
-                  onClick={() =>
-                    filterBySubcategory(
-                      "WIDERELEASE",
-                      "DEL_WIDERELEASE",
-                      "Ограниченный прокат",
-                      1
-                    )
-                  }
+                  onClick={() => {
+                    checkboxHandle('educationOthers')
+                  }}
+                  defaultChecked={subcategories.educationOthers}
                 />
-              }
+                <label htmlFor="educationOthers" className={style.subcat__name}>
+                  Другое
+                </label>
+              </div>
+              <hr />
 
-              <label
-                htmlFor="filmLimitedRelease"
-                className={style.subcat__name}
-              >
-                Ограниченный прокат
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="filmBar"
-                id="filmBar"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="filmBar" className={style.subcat__name}>
-                Кинопоказы в барах
-              </label>
-            </div>
-            <hr />
-            <div className={style.subcat}>
-              <input
-                type="checkbox"
-                name="filmOther"
-                id="filmOther"
-                className={style.subcat__checkbox}
-              />
-              <label htmlFor="filmOther" className={style.subcat__name}>
-                Разное
-              </label>
             </div>
           </div>
-        </div>
-      ) : (
-        <span />
-      )}
-      {/* Театр */}
+        )
+      }
+
+      {/* // todo Театр */}
       <div className={style.category}>
         <div className={style.category__left}>
           <div className={style.category__img}>
@@ -372,7 +355,7 @@ function Main() {
         <span />
       )}
 
-      {/* Концерты */}
+      {/* // ! Концерты */}
       <div className={style.category}>
         <div className={style.category__left}>
           <div className={style.category__img}>

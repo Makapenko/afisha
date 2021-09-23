@@ -1,3 +1,5 @@
+import { SUBCAT_ON_OFF } from "../actionTypes";
+
 const initialState = {
   subcategories: {
     lections: false,
@@ -16,18 +18,15 @@ const initialState = {
 
 const filterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_SUBCAT":
-      const b = action.payload;
-
-      console.log(b);
+    case SUBCAT_ON_OFF:
+      const data = action.payload;
       
       for (const [key, value] of Object.entries(state.subcategories)) {
-
-        if (key === b) {
-          // console.log(key, value, b);
+        if (key === data) {
           state.subcategories[key] = !value;
         }
       }
+
       return {
         ...state,
         subcategories: {
