@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import Filter from './Filter';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "./Main.module.css";
 
 import moviePng from "../../icons/filters/1movie.png";
@@ -58,6 +58,12 @@ function Main() {
       "Ограниченный прокат",
       1
     );
+    filterBySubcategory(
+      "WIDERELEASE",
+      "DEL_WIDERELEASE",
+      "Кинопоказы в барах",
+      2
+    )
   }
 
   function toggle(status) {
@@ -96,7 +102,13 @@ function Main() {
   useEffect(() => {
     fetch("http://localhost:3001/")
       .then((res) => res.json())
-      .then((data) => setAll(data));
+      .then((data) => setAll(data))
+      // .then((data) => {setAll(data);
+      
+      // dispatch({
+      //   type:"INIT_ALL",
+      //   payload:data
+      // })})
   }, []);
 
 
@@ -198,6 +210,14 @@ function Main() {
                 name="filmBar"
                 id="filmBar"
                 className={style.subcat__checkbox}
+                onClick={() =>
+                  filterBySubcategory(
+                    "WIDERELEASE",
+                    "DEL_WIDERELEASE",
+                    "Кинопоказы в барах",
+                    2
+                  )
+                }
               />
               <label htmlFor="filmBar" className={style.subcat__name}>
                 Кинопоказы в барах
