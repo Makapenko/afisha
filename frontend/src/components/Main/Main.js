@@ -68,15 +68,15 @@ function Main() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:3001/")
+    fetch(`${process.env.REACT_APP}`)
       .then((res) => res.json())
-      .then((data) => setAll(data))
-      // .then((data) => {setAll(data);
+      // .then((data) => setAll(data))
+      .then((data) => {setAll(data);
       
-      // dispatch({
-      //   type:"INIT_ALL",
-      //   payload:data
-      // })})
+      dispatch({
+        type:"INIT_ALL",
+        payload:data})})
+      // // 
   }, []);
 
   const [select, setSelect] = useState(false);
@@ -405,4 +405,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Main
