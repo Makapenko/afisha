@@ -47,7 +47,7 @@ function AddEvent() {
       ],
     };
 
-    console.log('body', body);
+    // console.log('body', body);
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/addEvent`, {
       method: 'POST',

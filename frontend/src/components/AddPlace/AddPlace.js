@@ -33,7 +33,7 @@ function AddPlace() {
       ],
     };
 
-    console.log(body, 'AddPlace');
+    // console.log(body, 'AddPlace');
 
     fetch(`${process.env.REACT_APP_SERVER_URL}/addLocation`, {
       method: 'POST',

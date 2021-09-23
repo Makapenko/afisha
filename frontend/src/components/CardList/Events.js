@@ -31,7 +31,7 @@ function isFree(){
   // if(value&&isToday){
     if(value){
      
-    console.log("бесплатно и всегда", events);
+    // console.log("бесплатно и всегда", events);
     setValue(false)
     dispatch({
       type:"IS_FREE_EVENT",
@@ -42,7 +42,7 @@ function isFree(){
   // })
   // )
 }else if(!value){
-    console.log(" любые  всегда", events);
+    // console.log(" любые  всегда", events);
     setValue(true)
     dispatch({
       type:"ALL_EVENT",

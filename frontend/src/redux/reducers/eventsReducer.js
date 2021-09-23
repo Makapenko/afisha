@@ -67,7 +67,7 @@ const eventsReducer = (state = initialState, action) => {
     case "ALL_EVENT":
       return {
        ...state,
-       events:action.payload
+       events:action.payload.events
       }
     default:
       return state;

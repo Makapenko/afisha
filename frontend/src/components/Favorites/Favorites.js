@@ -21,8 +21,8 @@ function Favorites(props) {
 
   const { events } = useSelector(store => store.eventsReducer)
   const favorites = useSelector(store => store.favoriteReducer)
-  console.log(events);
-  console.log(favorites);
+  // console.log(events);
+  // console.log(favorites);
   return (
     <div>
       <Link to="/addEventAndPlace">
@@ -32,7 +32,7 @@ function Favorites(props) {
 
         ? <div className={style.cardlist}>{events.map(event => {
           if ((favorites.indexOf(event.id)) >= 0) {
-            console.log("должно работать");
+            // console.log("должно работать");
             return <div><Event key={event.id} event={event} /></div>
 
           }
