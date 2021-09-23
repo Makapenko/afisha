@@ -13,11 +13,15 @@
   font-weight: 100;
   color: #958CF7;
   opacity: 0.5;
+  height: 5vh;
 }
-.cardImage {
-  border-radius: 2vh;
+.cardImageDiv {
   height: 26vh;
-  width: 100%;
+}
+.cardImage{
+  border-radius: 2vh;
+  height: 100%;
+  width:100%;
 }
 /* .icon {
   width: 6vw;
@@ -25,11 +29,15 @@
 } */
 .subMenuContainer {
   display: flex;
+  height: 15vh;
 }
 .infoBlock {
   font-size: 2vh;
   line-height: 1;
   font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .infoBlock__eventTitle {
   text-transform: uppercase;
@@ -50,11 +58,12 @@
   background-color: #AF41C0;
   color: #FFFFFF;
   border-radius: 2vh;
-  min-width: 20vw;
+  border: 0.1vw solid #AF41C0;
+  min-width: 22vw;
   min-height: 3vh;
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   flex-direction: column;
   padding: 0 2vw;
 }
@@ -68,11 +77,10 @@
   padding-right: 1vw;
 }
 .buttonsBlock__buttonRoute {
-  /* background-color: #AF41C0; */
   color: #AF41C0;
   border-radius: 2vh;
-  border: 2px solid #AF41C0;
-  min-width: 20vw;
+  border: 0.1vw solid #AF41C0;
+  min-width: 22vw;
   min-height: 3vh;
   text-align: center;
   padding: 0 2vw;
@@ -94,5 +102,19 @@
   font-weight: 400;
   height: 38vh;
   overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-color: #D4AA70 #E4E4E4;
+  padding-right: 4vw;
+  text-align: justify;
 }
-
+.eventInfoContainer__description::-webkit-scrollbar {
+  width: 2vw;
+}
+.eventInfoContainer__description::-webkit-scrollbar-track {
+  border: 1px solid #AF41C0;
+  border-radius: 5vw;
+}
+.eventInfoContainer__description::-webkit-scrollbar-thumb {
+  background-color: #AF41C0;
+  border-radius: 5vw;
+}

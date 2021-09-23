@@ -140,7 +140,7 @@ function AddEvent() {
               <input type='text' name='linkToEvent' /> <br />
             
           </div>
-          <div className={styles.multer}>
+          {/* <div className={styles.multer}>
             фото: ТУТ БУДЕТ МУЛЬТЕР <br />
             <input type='text' name='url1' />
             <input type='text' name='url2' />
@@ -153,7 +153,7 @@ function AddEvent() {
               ОДИНАКОВЫХ СОБЫТИЯ
             </p>
             <br />
-          </div>
+          </div> */}
         </div>
         <button> Сохранить </button>
       </form>
