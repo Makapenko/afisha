@@ -10,8 +10,22 @@ import concertPNG from "../../icons/filters/3concert.png";
 // import arrowWhitePng from '../../icons/navigation/arrowWhite.png'
 import arrowBlackDownPng from "../../icons/navigation/arrowBlackDown.png";
 import arrowBlackUpPng from "../../icons/navigation/arrowBlackUp.png";
+
+// для кнопок навигации
+import { PUSH_BUTOON } from '../../redux/actionTypes';
+
 function Main() {
   const dispatch = useDispatch();
+
+  // для кнопок навигации
+  const action = {
+    type: PUSH_BUTOON,
+    payload: 'filter',
+  };
+  dispatch(action);
+  //
+
+
   // const events = useSelector(store=>store.eventsReducer)
   // console.log('event', events)
   const [selectMovie, setSelectMovie] = useState(false);
@@ -69,13 +83,13 @@ function Main() {
 
     const action = status
       ? {
-          type: actionTypeDelete,
-          payload: subcategoryName,
-        }
+        type: actionTypeDelete,
+        payload: subcategoryName,
+      }
       : {
-          type: actionTypeAdd,
-          payload: { all, c: subcategoryName },
-        };
+        type: actionTypeAdd,
+        payload: { all, c: subcategoryName },
+      };
     dispatch(action);
   }
 
@@ -133,7 +147,7 @@ function Main() {
 
       {/* sub */}
       {selectMovie ? (
-        <div name= "cat_movie"className={style.subcats__container}>
+        <div name="cat_movie" className={style.subcats__container}>
           <div className={style.subcats}>
             <div className={style.subcat}>
               <input
