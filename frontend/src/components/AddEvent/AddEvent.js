@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect,useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
 
 function AddEvent() {
+  const dispatch = useDispatch()
+  const renderNav = useSelector(store => store.navigationReducer.renderNav)
   const [locations, setLocations] = useState([]);
   const [sessionUserId, setsessionUserId] = useState(null);
 
   useEffect(() => {
+    dispatch({type:'DEL_NAV'})
     fetch(`${process.env.REACT_APP_SERVER_URL}/getLocation`, {
       credentials: 'include',
     })
