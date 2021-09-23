@@ -1,5 +1,7 @@
 
-import React, { useState } from 'react';
+
+import React, {useState} from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 
 import Event from './Event';
@@ -9,7 +11,7 @@ import style from './Events.module.css';
 import { PUSH_BUTOON } from '../../redux/actionTypes';
 
 function CardList(props) {
-  const dispatch = useDispatch();
+
 
   const { events } = useSelector(store => store.eventsReducer)
 
@@ -30,7 +32,7 @@ function isFree(){
   // if(value&&isToday){
     if(value){
      
-    console.log("бесплатно и всегда", events);
+    // console.log("бесплатно и всегда", events);
     setValue(false)
     dispatch({
       type:"IS_FREE_EVENT",
@@ -41,7 +43,7 @@ function isFree(){
   // })
   // )
 }else if(!value){
-    console.log(" любые  всегда", events);
+    // console.log(" любые  всегда", events);
     setValue(true)
     dispatch({
       type:"ALL_EVENT",

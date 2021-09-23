@@ -90,6 +90,7 @@ const eventsReducer = (state = initialState, action) => {
       return {
        ...state,
        events:[...state.events, ...all2]
+
       }
       
     default:
