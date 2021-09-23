@@ -23,7 +23,7 @@ function Event({ event }) {
 
     <>
       <Link to={`events/${event.id}`} style={{ textDecoration: 'none' }}>
-        <div className={style.box} style={{ background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(http://localhost:3001/img/eventsPic/event-1.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', }}>
+        <div className={style.box} style={{ background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://i.pinimg.com/280x280_RS/7f/8a/93/7f8a93f68a0f7718167e03f86541c0cf.jpg)`, backgroundPosition: 'center', backgroundSize: 'cover', }}>
           <div className={style.firstline}>
             <div className={style.subcategory}>{event.subcategory}</div>
 
@@ -47,7 +47,7 @@ function Event({ event }) {
               </div>
             </div>
           </div>
-        </div >
+        </div>
       </Link>
       <img src={favorites.indexOf(event.id) >= 0 ? favoritesCardActiveSvg : favoritesCardSvg} alt="favorites" className={style.icon} onClick={addFavorit} />
     </>

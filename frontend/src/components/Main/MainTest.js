@@ -136,40 +136,6 @@ function Main() {
 
   return (
     <div className={style.container}>
-      {/* Обучение:
-      -Лекции - lections
-      -Мастер-классы - masterClass
-      -Другое - educationOthers */}
-
-      {/* Вечеринки:
-      -Танцевальные - dances
-      -Концерты - concerts
-      -18+ - adults */}
-
-      Бары:
-      -Кинопоказы - barCinema
-      -Лекции - barLections
-      -Дегустации - degustations
-      <br/>
-      Выставки
-      -Живопись - painting
-      -Разное - expositionOther
-
-
-      <input
-        onClick={() => checkboxHandle('expositionOther')}
-        defaultChecked={subcategories.expositionOther && true}
-        type="checkbox"
-        name="filmLimitedRelease"
-        id="filmLimitedRelease"
-        className={style.subcat__checkbox}
-        onChange={() =>
-          filterBySubcategory(
-            
-            "masterClass"
-          )
-        }
-      />
 
 
 

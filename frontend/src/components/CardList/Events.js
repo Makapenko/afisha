@@ -8,10 +8,10 @@ import Event from './Event';
 import style from './Events.module.css';
 
 // для кнопок навигации
-import { PUSH_BUTOON } from '../../redux/actionTypes';
+import { PUSH_BUTOON } from '../../redux/actionTypes';  
 
 function CardList(props) {
-
+  const dispatch = useDispatch();
 
   const { events } = useSelector(store => store.eventsReducer)
 

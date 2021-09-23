@@ -9,7 +9,10 @@ function EventInfo(props) {
   const { events } = useSelector((store) => store.eventsReducer);
   const { locations } = useSelector((store) => store.eventsReducer);
   const event = events[id - 1]
+  console.log(event,'aaa');
+  console.log(event.LocationId, 'bbb');
   const location = locations.find(el => el.id === +event.LocationId)
+  
   const history = useHistory();
   return (
     <div className={style.globalContainer}>

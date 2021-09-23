@@ -16,6 +16,7 @@ import style from './ymaps.module.css'
   // для кнопок навигации
 import { PUSH_BUTOON } from '../../redux/actionTypes'
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 
 function YandexMap() {
 
@@ -31,7 +32,7 @@ function YandexMap() {
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
 
-  const events = useSelector((state) => state.eventsReducer.events);
+  const events = useSelector((store) => store.eventsReducer.events);
 
   const eventsIdArr = [];
   events.map((el) => eventsIdArr.push(el.id));
@@ -81,11 +82,15 @@ function YandexMap() {
     zoom: 11.5,
   };
 
-  const getPointData = (title, desc, id) => {
+  function goTo(a) {
+    return <Link to={`/events/${a}`}></Link>
+  }
+
+  const getPointData = (title, desc, id, goTo) => {
     return {
       balloonContentHeader: title,
       balloonContentBody: desc,
-      balloonContentFooter: `<a  style='color: violet, font-weight: 900' href='/events/${id}'> ${title} </a>`,
+      balloonContentFooter: `<p onClick={goTo(id)}> guh</p>`,
       clusterCaption: `<p style='color: voilet, font-weight: 900' >${title}</p>`,
     };
   };
