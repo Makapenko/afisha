@@ -96,27 +96,17 @@ function AddEvent() {
             <textarea name='description' placeholder='Описание'></textarea> <br />
             Подкатегория (subcategory):
             <select name='subcategory'>
-              <option value='Широкий прокат'>Кино - Широкий прокат</option>
-              <option value='Ограниченный прокат'>
-                Кино - Ограниченный прокат
-              </option>
-              <option value='Кино в баре'>Кино - Кино в баре</option>
-              <option value='Большой театр'>Театр - Большой театр</option>
-              <option value='Камерный театр'>Театр - Камерный театр</option>
-              <option value='Театр - разное'>Театр - разное</option>
-              <option value='Концерты - Pop'>Концерты - Pop</option>
-              <option value='Концерты - Рок'>Концерты - Рок</option>
-              <option value='Концерты - Рэп'>Концерты - Рэп</option>
-              <option value='Концерты - Выступления в барах'>
-                Концерты - Выступления в барах
-              </option>
-              <option value='Концерты - Разное'>Концерты - Разное</option>
-              <option value='Экскурсии'>Экскурсии</option>
-              <option value='Обучение - Лекции'>Экскурсии</option>
-              <option value='Обучение - Мастер классы'>Экскурсии</option>
-              <option value='Обучение - Разное'>Экскурсии</option>
+              <option value='Лекции'>Обучение - Лекции</option>
+              <option value='Другое'>Обучение - Другое</option>
+              <option value='Мастер-классы'>Обучение - Мастер-классы</option>
+              <option value='Танцевальные'>Вечеринки - Танцевальные</option>
+              <option value='Концерты'>Вечеринки - Концерты</option>
+              <option value='18 +'>Вечеринки - 18 +</option>
+              <option value='Кинопоказы'>Бары - Кинопоказы</option>
+              <option value='Лекции'>Бары - Лекции</option>
+              <option value='Дегустации'>Бары - Дегустации</option>
             </select>{' '}
-            <br />LocationId
+            <br />
             Цена события (price):
             <input type='text' name='price'  placeholder='от 1700 рублей ли "бесплатно"'/> <br />
             </div>
@@ -140,20 +130,21 @@ function AddEvent() {
               <input type='text' name='linkToEvent' /> <br />
             
           </div>
-          {/* <div className={styles.multer}>
-            фото: ТУТ БУДЕТ МУЛЬТЕР <br />
+          <div className={styles.multer}>
+            {/* фото: ТУТ БУДЕТ МУЛЬТЕР <br /> */}
+            Фото: <br />
             <input type='text' name='url1' />
             <input type='text' name='url2' />
             <input type='text' name='url3' />
             <input type='text' name='url4' />
             <input type='text' name='url5' />
             <input type='text' name='url6' />
-            <p>
+            {/* <p>
               ТУТ БУДУТ ВСЕ СОБЫТИЯ В ЭТОМ МЕСТЕ, ЧТОБЫ НЕ ОШИБИТЬСЯ И НЕ ДОБАВИТЬ ДВА
               ОДИНАКОВЫХ СОБЫТИЯ
-            </p>
+            </p> */}
             <br />
-          </div> */}
+          </div>
         </div>
         <button> Сохранить </button>
       </form>
