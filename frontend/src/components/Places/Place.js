@@ -7,6 +7,7 @@ function Place({ place }) {
       <p>{place.title}</p>
       <p>{place.description}</p>
       <Link to={`place/${place.id}`}><span>  ...читать далее</span></Link>
+     
     </li>
   );
 }
