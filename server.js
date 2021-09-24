@@ -27,7 +27,7 @@ const addEventRouter = require('./src/routes/addEvent.router');
 const addLocationRouter = require('./src/routes/addLocation.router');
 
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -50,6 +50,9 @@ app.use('/getLocation', getLocationRouter);
 app.use('/addEvent', addEventRouter);
 app.use('/addLocation', addLocationRouter);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
+ })
 // saved from dev
 
 app.listen(PORT, async () => {
