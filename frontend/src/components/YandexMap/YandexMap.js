@@ -16,7 +16,7 @@ import style from './ymaps.module.css'
   // для кнопок навигации
 import { PUSH_BUTOON } from '../../redux/actionTypes'
 import { useDispatch } from 'react-redux';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function YandexMap() {
 
@@ -34,63 +34,66 @@ function YandexMap() {
 
   const events = useSelector((store) => store.eventsReducer.events);
 
-  const eventsIdArr = [];
-  events.map((el) => eventsIdArr.push(el.id));
-  const eventsTitleArr = [];
-  events.map((el) => eventsTitleArr.push(el.title));
-  const eventsDescArr = [];
-  events.map((el) => eventsDescArr.push(el.description));
+  // const eventsIdArr = [];
+  // events.map((el) => eventsIdArr.push(el.id));
+  // const eventsTitleArr = [];
+  // events.map((el) => eventsTitleArr.push(el.title));
+  // const eventsDescArr = [];
+  // events.map((el) => eventsDescArr.push(el.description));
 
-  const eventsProperties = [];
-  for (let i = 0; i < eventsIdArr.length; i += 1) {
-    const a = eventsIdArr[i];
-    const b = eventsTitleArr[i];
-    const c = eventsDescArr[i];
-    eventsProperties.push(a, b, c);
-  }
+  // const eventsProperties = [];
+  // for (let i = 0; i < eventsIdArr.length; i += 1) {
+  //   const a = eventsIdArr[i];
+  //   const b = eventsTitleArr[i];
+  //   const c = eventsDescArr[i];
+  //   eventsProperties.push(a, b, c);
+  // }
 
   const locations = useSelector((state) => state.eventsReducer.locations);
+  // console.log(locations, 'fjfjfk');
 
-  const coordsArrX = [];
-  locations.map((el) => coordsArrX.push(el.coordX));
-  const coordsArrY = [];
-  locations.map((el) => coordsArrY.push(el.coordY));
+  // const coordsArrX = [];
+  // locations.map((el) => coordsArrX.push(el.coordX));
+  // const coordsArrY = [];
+  // locations.map((el) => coordsArrY.push(el.coordY));
 
-  const coordsForMap = [];
-  for (let i = 0; i < coordsArrX.length; i += 1) {
-    const a = coordsArrX[i];
-    const b = coordsArrY[i];
-    coordsForMap.push(a, b);
-  }
+  // const coordsForMap = [];
+  // for (let i = 0; i < coordsArrX.length; i += 1) {
+  //   const a = coordsArrX[i];
+  //   const b = coordsArrY[i];
+  //   coordsForMap.push(a, b);
+  // }
 
   // const h =['../iconsForYMaps/quests.png', '../iconsForYMaps/bars.png', '../iconsForYMaps/bars.png']
 
 
   const arr =[]
   events.map(el => 
-    arr.push({
+    locations.map(ell=>{
+      if(el.LocationId==ell.id){
+         arr.push({
       id:el.id,
       title: el.title,
       desc: el.description,
-      coordX: coordsForMap[el.LocationId*2-2],
-      coordY: coordsForMap[el.LocationId*2-1]
+      // coordX: coordsForMap[el.LocationId*2-2],
+      // coordY: coordsForMap[el.LocationId*2-1]
+       coordX: ell.coordX,
+       coordY: ell.coordY,
     })
+      }
+    })
+   
   )
-    console.log(arr);
   const mapState = {
     center: [lat, lng],
     zoom: 11.5,
   };
 
-  function goTo(a) {
-    return <Link to={`/events/${a}`}></Link>
-  }
-
-  const getPointData = (title, desc, id, goTo) => {
+  const getPointData = (title, desc, id) => {
     return {
       balloonContentHeader: title,
       balloonContentBody: desc,
-      balloonContentFooter: `<p onClick={goTo(id)}> guh</p>`,
+      balloonContentFooter: `<a  style='color: violet, font-weight: 900' href='/events/${id}'> ${title} </a>`,
       clusterCaption: `<p style='color: voilet, font-weight: 900' >${title}</p>`,
     };
   };

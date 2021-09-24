@@ -70,16 +70,17 @@ function Main() {
   // }
 
   const subCat={lections:"Лекции",
-    // masterClass:"Мастер-классы ",
-    masterClass:"Ограниченный прокат",
+    masterClass:"Мастер-классы",
+    // masterClass:"Ограниченный прокат",
     educationOthers:"Другое",
     dances:"Танцевальные",
     concerts:"Концерты",
-    adults:"18+",
-    // lections:"Лекции",
-    lections:"Рок",
+    adults:"Для взрослых",
+    lections:"Лекции",
+    degustations:"Дегустации",
+    // lections:"Рок",
     // masterClass:"Ограниченный прокат",
-    // filmScreeningsInBars:"Кинопоказы в барах"
+    filmScreeningsInBars:"Кинопоказы в барах"
     // barCinema:"",
     // barLections:"",
     // degustations:"",
@@ -242,9 +243,14 @@ function Main() {
                   name="educationOthers"
                   id="educationOthers"
                   className={style.subcat__checkbox}
+                  // onClick={() => {
+                  //   checkboxHandle('educationOthers')
+                  // }}
                   onClick={() => {
-                    checkboxHandle('educationOthers')
-                  }}
+                    filterBySubcategory(
+                      
+                      "educationOthers"
+                    );}}
                   defaultChecked={subcategories.educationOthers}
                 />
                 <label htmlFor="educationOthers" className={style.subcat__name}>
@@ -313,8 +319,13 @@ function Main() {
                   name="dances"
                   id="dances"
                   className={style.subcat__checkbox}
-                  onClick={() => checkboxHandle('dances')}
+                  // onClick={() => checkboxHandle('dances')}
                   defaultChecked={subcategories.dances}
+                  onClick={() => {
+                    filterBySubcategory(
+                      
+                      "dances"
+                    );}}
                 />
                 <label htmlFor="dances" className={style.subcat__name}>
                   Танцевальные
@@ -328,7 +339,12 @@ function Main() {
                   name="concerts"
                   id="concerts"
                   className={style.subcat__checkbox}
-                  onClick={() => checkboxHandle('concerts')}
+                  // onClick={() => checkboxHandle('concerts')}
+                  onClick={() => {
+                    filterBySubcategory(
+                      
+                      "concerts"
+                    );}}
                   defaultChecked={subcategories.concerts}
                 />
                 <label htmlFor="concerts" className={style.subcat__name}>
@@ -345,6 +361,9 @@ function Main() {
                   className={style.subcat__checkbox}
                   onClick={() => checkboxHandle('adults')}
                   defaultChecked={subcategories.adults}
+                  onClick={() => {
+                    filterBySubcategory('adults')
+                  }}
                 />
                 <label htmlFor="adults" className={style.subcat__name}>
                   18 +
@@ -415,9 +434,9 @@ function Main() {
                   onClick={() => {
                     filterBySubcategory(
                       
-                      "lections"
+                      "filmScreeningsInBars"
                     );
-                    checkboxHandle('barCinema');
+                    // checkboxHandle('barCinema');
                   }}
                   defaultChecked={subcategories.barCinema}
                 />
@@ -436,11 +455,11 @@ function Main() {
                   onClick={() => {
                     filterBySubcategory(
                       
-                      "masterClass"
+                      "lections"
                     );
-                    checkboxHandle('barLections');
+                    // checkboxHandle('barLections');
                   }}
-                  defaultChecked={subcategories.barLections}
+                  defaultChecked={subcategories.lections}
                 />
                 <label htmlFor="barLections" className={style.subcat__name}>
                   Лекции
@@ -455,7 +474,11 @@ function Main() {
                   id="degustations"
                   className={style.subcat__checkbox}
                   onClick={() => {
-                    checkboxHandle('degustations')
+                    // checkboxHandle('degustations')
+                    filterBySubcategory(
+                      
+                      "degustations"
+                    );
                   }}
                   defaultChecked={subcategories.degustations}
                 />
