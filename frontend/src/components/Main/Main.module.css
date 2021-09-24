@@ -30,7 +30,11 @@
 }
 
 .icon {
-  width: 10vw;
+  width: 10.5vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .category__name {
