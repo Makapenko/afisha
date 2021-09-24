@@ -9,10 +9,10 @@ function EventInfo(props) {
   const { events } = useSelector((store) => store.eventsReducer);
   const { locations } = useSelector((store) => store.eventsReducer);
   const event = events[id - 1]
-  console.log(event,'aaa');
-  console.log(event.LocationId, 'bbb');
+  console.log(event, 'aaa');
+  // console.log(event.LocationId, 'bbb');
   const location = locations.find(el => el.id === +event.LocationId)
-  
+
   const history = useHistory();
   return (
     <div className={style.globalContainer}>
@@ -21,14 +21,16 @@ function EventInfo(props) {
           &#215;
         </div>
         <div className={style.cardImageDiv}>
-        <img className={style.cardImage} src='http://localhost:3001/img/eventsPic/todd.jpg' alt='TODD' />
-        {/* <img src={favoritesCardSvg} className={style.icon} alt="favorites" /> */}
-        {/* Это сердечко для лайка на картинке. Реализацию временно отложили. Пусть полежит здесь, чтобы не забыть. */}
+          <img className={style.cardImage} src='http://localhost:3001/img/eventsPic/todd.jpg' alt='TODD' />
+          {/* <img src={favoritesCardSvg} className={style.icon} alt="favorites" /> */}
+          {/* Это сердечко для лайка на картинке. Реализацию временно отложили. Пусть полежит здесь, чтобы не забыть. */}
         </div>
         <div className={style.subMenuContainer}>
           <div className={style.infoBlock}>
             <div className={style.infoBlock__eventTitle}>{event.title}</div>
-            <div className={style.infoBlock__eventLocation}>{location.title}</div>
+            <Link to={`/events/place/${location.id}`}>
+              <div className={style.infoBlock__eventLocation}>{location.title}</div>
+            </Link>
             <div>{event.startDate || "24 сентября"} {event.startTime || "17:00"}</div>
           </div>
           <div className={style.buttonsBlock}>
@@ -38,7 +40,7 @@ function EventInfo(props) {
               так как в {event.price} вместо символа рубля &#8381 выводится слово "рублей" */}
             </div>
             <div className={style.buttonsBlock__buttonsRouteContainer}>
-            <img src={mapSvg} className={style.buttonsBlock__locationIcon} alt="location icon" />
+              <img src={mapSvg} className={style.buttonsBlock__locationIcon} alt="location icon" />
               <div className={style.buttonsBlock__buttonRoute}>
                 Построить маршрут
               </div>
@@ -50,7 +52,7 @@ function EventInfo(props) {
             О концерте
           </div>
           <div className={style.eventInfoContainer__description}>
-          {event.description}
+            {event.description}
           </div>
         </div>
         {/* <Link to={`place/${idPlace}`}>{place.title}</Link> */}
