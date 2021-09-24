@@ -8,6 +8,7 @@ function PlaceInfo(props) {
   const { id } = useParams();
   const { locations } = useSelector((store) => store.eventsReducer);
   const location = locations.find(el => el.id === +id)
+  console.log("location", location.LocationPhotos[0].url);
   const history = useHistory();
 
   return (
@@ -18,7 +19,7 @@ function PlaceInfo(props) {
           &#215;
         </div>
         <div className={style.cardImageDiv}>
-          <img className={style.cardImage} src='http://localhost:3001/img/eventsPic/todd.jpg' alt={location.title} />
+          <img className={style.cardImage} src={`http://localhost:3001${location.LocationPhotos[0].url}`} alt={location.title} />
           {/* <img src={favoritesCardSvg} className={style.icon} alt="favorites" /> */}
           {/* Это сердечко для лайка на картинке. Реализацию временно отложили. Пусть полежит здесь, чтобы не забыть. */}
         </div>

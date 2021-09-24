@@ -8,6 +8,7 @@ function EventInfo(props) {
   const { id } = useParams();
   const { events } = useSelector((store) => store.eventsReducer);
   const { locations } = useSelector((store) => store.eventsReducer);
+
     let event = {}
 
   events.map(el=>{
@@ -17,6 +18,7 @@ function EventInfo(props) {
   })
   console.log(event, 'aaa');
   // console.log(event.LocationId, 'bbb');
+
   const location = locations.find(el => el.id === +event.LocationId)
 
   const history = useHistory();
@@ -27,14 +29,14 @@ function EventInfo(props) {
           &#215;
         </div>
         <div className={style.cardImageDiv}>
-          <img className={style.cardImage} src='http://localhost:3001/img/eventsPic/todd.jpg' alt='TODD' />
+          <img className={style.cardImage} src={`http://localhost:3001${event.EventPhotos[0].url}`} alt='TODD' />
           {/* <img src={favoritesCardSvg} className={style.icon} alt="favorites" /> */}
           {/* Это сердечко для лайка на картинке. Реализацию временно отложили. Пусть полежит здесь, чтобы не забыть. */}
         </div>
         <div className={style.subMenuContainer}>
           <div className={style.infoBlock}>
             <div className={style.infoBlock__eventTitle}>{event.title}</div>
-            <Link to={`/events/place/${location.id}`}>
+            <Link to={`/events/place/${location.id}`} style={{ textDecoration: 'none', color: 'black'}}>
               <div className={style.infoBlock__eventLocation}>{location.title}</div>
             </Link>
             <div>{event.startDate || "24 сентября"} {event.startTime || "17:00"}</div>

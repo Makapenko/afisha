@@ -43,7 +43,7 @@ function Event({ event }) {
               </Link> */}
               </div>
               <div className={style.bottom__bottom__right}>
-                Билеты от 1500р
+                Билеты {event.price}
               </div>
             </div>
           </div>

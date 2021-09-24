@@ -75,15 +75,15 @@
 }
 
 .buttonsBlock__locationIcon {
-  filter: invert(36%) sepia(86%) saturate(2195%) hue-rotate(268deg) brightness(79%) contrast(86%);
+  filter: invert(41%) sepia(7%) saturate(7193%) hue-rotate(288deg) brightness(85%) contrast(91%);
   height: 3.4vh;
   padding-right: 1vw;
 }
 
 .buttonsBlock__buttonRoute {
-  color: #AF41C0;
+  color: #C04177;
   border-radius: 2vh;
-  border: 0.1vw solid #AF41C0;
+  border: 0.1vw solid #C04177;
   min-width: 22vw;
   min-height: 3vh;
   text-align: center;
@@ -108,7 +108,6 @@
   height: 38vh;
   overflow: scroll;
   overflow-x: hidden;
-  scrollbar-color: #D4AA70 #E4E4E4;
   padding-right: 4vw;
   text-align: justify;
 }
@@ -118,11 +117,11 @@
 }
 
 .eventInfoContainer__description::-webkit-scrollbar-track {
-  border: 1px solid #AF41C0;
+  border: 1px solid #C04177;
   border-radius: 5vw;
 }
 
 .eventInfoContainer__description::-webkit-scrollbar-thumb {
-  background-color: #AF41C0;
+  background-color: #C04177;
   border-radius: 5vw;
 }

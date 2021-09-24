@@ -10,6 +10,9 @@ import concertPNG from "../../icons/filters/3concert.png";
 // import arrowWhitePng from '../../icons/navigation/arrowWhite.png'
 import arrowBlackDownPng from "../../icons/navigation/arrowBlackDown.png";
 import arrowBlackUpPng from "../../icons/navigation/arrowBlackUp.png";
+import educationPng from "../../icons/filters/5education.png";
+import partyPng from "../../icons/filters/9party.png";
+import barPng from "../../icons/filters/8bar.png";
 
 // для кнопок навигации
 import { PUSH_BUTOON } from '../../redux/actionTypes';
@@ -128,7 +131,9 @@ function Main() {
   useEffect(() => {
     fetch("http://localhost:3001/")
       .then((res) => res.json())
-      .then((data) => setAll(data));
+      .then((data) => {
+        setAll(data);
+      console.log("data", data);});
   }, []);
 
   function checkboxHandle(data) {
@@ -145,7 +150,7 @@ function Main() {
         <div className={style.category__left}>
           <div className={style.category__img}>
             <img
-              src={moviePng}
+              src={educationPng}
               alt="favorites"
               className={style.icon}
               name="cat_movie"
@@ -264,7 +269,7 @@ function Main() {
         <div className={style.category__left}>
           <div className={style.category__img}>
             <img
-              src={theatrePng}
+              src={partyPng}
               alt="favorites"
               className={style.icon}
               name="cat_theatre"
@@ -374,7 +379,7 @@ function Main() {
         <div className={style.category__left}>
           <div className={style.category__img}>
             <img
-              src={concertPNG}
+              src={barPng}
               alt="favorites"
               className={style.icon}
               name="cat_movie"
