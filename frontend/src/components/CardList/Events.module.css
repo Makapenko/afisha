@@ -5,3 +5,14 @@
 
   margin-top: 8vh;
 }
+
+.header{
+  padding-top: 2vh;
+  display:flex;
+  justify-content: space-around;
+}
+
+.active{
+  font-weight: 500;
+  border-bottom: 1px solid black;
+}
