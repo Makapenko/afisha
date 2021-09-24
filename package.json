@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "npx nodemon --ignore ./sessions server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd frontend && npm install --include=dev && npm run build"
   },
   "keywords": [],
   "author": "",
