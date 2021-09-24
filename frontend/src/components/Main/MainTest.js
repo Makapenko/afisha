@@ -76,7 +76,7 @@ function Main() {
     dances:"Танцевальные",
     concerts:"Концерты",
     adults:"Для взрослых",
-    lections:"Лекции",
+    // lections:"Лекции",
     degustations:"Дегустации",
     // lections:"Рок",
     // masterClass:"Ограниченный прокат",
