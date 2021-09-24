@@ -44,8 +44,10 @@
   text-transform: uppercase;
   font-weight: 500;
 }
+
 .infoBlock__eventLocation{
   text-transform: uppercase;
+ 
 }
 .buttonsBlock {
   display: flex;

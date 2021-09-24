@@ -127,7 +127,9 @@ function Main() {
   useEffect(() => {
     fetch("http://localhost:3001/")
       .then((res) => res.json())
-      .then((data) => setAll(data));
+      .then((data) => {
+        setAll(data);
+      console.log("data", data);});
   }, []);
 
   function checkboxHandle(data) {
