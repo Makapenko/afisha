@@ -54,11 +54,11 @@ function AddPlace() {
           <div className={styles.wrapp}>
             
             Название места (title):
-            <input className={styles.inputs} type='text' name='title' /> <br />
+            <input className={styles.inputs} type='text' name='title' placeholder='Юбилейный'/> <br />
             Описание места (description):
-            <textarea name='description'></textarea> <br />
+            <textarea name='description' placeholder='Дворец спорта «Юбилейный» —  замечательное место'></textarea> <br />
             Адрес (address):
-            <input type='text' name='address' /> <br />
+            <input type='text' name='address' placeholder='просп. Добролюбова, 18'/> <br />
             Тип (type):
             <input type='text' name='type' /> <br />
             <p>coordX</p>

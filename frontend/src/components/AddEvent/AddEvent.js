@@ -91,9 +91,9 @@ function AddEvent() {
               }
             </select><br /><br />
             <b>Название события (title):</b>
-            <input type='text' name='title' /> <br />
+            <input type='text' name='title' placeholder='Северный флот'/> <br />
             Описание события (description):
-            <textarea name='description'></textarea> <br />
+            <textarea name='description' placeholder='Описание'></textarea> <br />
             Подкатегория (subcategory):
             <select name='subcategory'>
               <option value='Широкий прокат'>Кино - Широкий прокат</option>
@@ -118,20 +118,20 @@ function AddEvent() {
             </select>{' '}
             <br />LocationId
             Цена события (price):
-            <input type='text' name='price' /> <br />
+            <input type='text' name='price'  placeholder='от 1700 рублей ли "бесплатно"'/> <br />
             </div>
             <div className={styles.wrapp}>
 
               Время начала (startTime):
-              <input type='text' name='startTime' /> <br />
+              <input type='text' name='startTime'  placeholder=''/> <br />
               Время окончания (endTime):
               <input type='text' name='endTime' /> <br />
               Двери открыты до (для концертов) (doorsOpen):
               <input type='text' name='doorsOpen' /> <br />
               Дата начала (startDate):
-              <input type='text' name='startDate' /> <br />
+              <input type='text' name='startDate'  placeholder='2021-09-24'/> <br />
               Дата окончания (endDate):
-              <input type='text' name='endDate' /> <br />
+              <input type='text' name='endDate' placeholder='2021-09-24' /> <br />
               Ссылка на регистрацию (linkToRegister):
               <input type='text' name='linkToRegister' /> <br />
               Ссылка на покупку билета (linkToBuy):
