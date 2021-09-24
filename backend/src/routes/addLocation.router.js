@@ -36,7 +36,6 @@ router.route('/')
           url: link,
         });
       }
-      console.log('added photo');
     });
 
     res

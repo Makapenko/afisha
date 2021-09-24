@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
 import styles from './AddEvent.module.css';
 
 function AddEvent() {
   const dispatch = useDispatch()
-  const renderNav = useSelector(store => store.navigationReducer.renderNav)
+  // const renderNav = useSelector(store => store.navigationReducer.renderNav)
   const [locations, setLocations] = useState([]);
   const [sessionUserId, setsessionUserId] = useState(null);
 
@@ -18,6 +18,8 @@ function AddEvent() {
       .then(data => {
         setLocations(data.location);
         setsessionUserId(data.userId);
+        alert(data.message, data.location, data.userId);
+
       })
       .catch((err) => err.message);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,7 +93,7 @@ function AddEvent() {
               }
             </select><br /><br />
             <b>Название события (title):</b>
-            <input type='text' name='title' placeholder='Северный флот'/> <br />
+            <input type='text' name='title' placeholder='Северный флот' /> <br />
             Описание события (description):
             <textarea name='description' placeholder='Описание'></textarea> <br />
             Подкатегория (subcategory):
@@ -108,27 +110,27 @@ function AddEvent() {
             </select>{' '}
             <br />
             Цена события (price):
-            <input type='text' name='price'  placeholder='от 1700 рублей ли "бесплатно"'/> <br />
-            </div>
-            <div className={styles.wrapp}>
+            <input type='text' name='price' placeholder='от 1700 рублей ли "бесплатно"' /> <br />
+          </div>
+          <div className={styles.wrapp}>
 
-              Время начала (startTime):
-              <input type='text' name='startTime'  placeholder=''/> <br />
-              Время окончания (endTime):
-              <input type='text' name='endTime' /> <br />
-              Двери открыты до (для концертов) (doorsOpen):
-              <input type='text' name='doorsOpen' /> <br />
-              Дата начала (startDate):
-              <input type='text' name='startDate'  placeholder='2021-09-24'/> <br />
-              Дата окончания (endDate):
-              <input type='text' name='endDate' placeholder='2021-09-24' /> <br />
-              Ссылка на регистрацию (linkToRegister):
-              <input type='text' name='linkToRegister' /> <br />
-              Ссылка на покупку билета (linkToBuy):
-              <input type='text' name='linkToBuy' /> <br />
-              Ссылка на событие (linkToEvent):
-              <input type='text' name='linkToEvent' /> <br />
-            
+            Время начала (startTime):
+            <input type='text' name='startTime' placeholder='' /> <br />
+            Время окончания (endTime):
+            <input type='text' name='endTime' /> <br />
+            Двери открыты до (для концертов) (doorsOpen):
+            <input type='text' name='doorsOpen' /> <br />
+            Дата начала (startDate):
+            <input type='text' name='startDate' placeholder='2021-09-24' /> <br />
+            Дата окончания (endDate):
+            <input type='text' name='endDate' placeholder='2021-09-24' /> <br />
+            Ссылка на регистрацию (linkToRegister):
+            <input type='text' name='linkToRegister' /> <br />
+            Ссылка на покупку билета (linkToBuy):
+            <input type='text' name='linkToBuy' /> <br />
+            Ссылка на событие (linkToEvent):
+            <input type='text' name='linkToEvent' /> <br />
+
           </div>
           <div className={styles.multer}>
             {/* фото: ТУТ БУДЕТ МУЛЬТЕР <br /> */}
