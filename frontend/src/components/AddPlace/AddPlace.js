@@ -54,11 +54,11 @@ function AddPlace() {
           <div className={styles.wrapp}>
             
             Название места (title):
-            <input className={styles.inputs} type='text' name='title' /> <br />
+            <input className={styles.inputs} type='text' name='title' placeholder='Юбилейный'/> <br />
             Описание места (description):
-            <textarea name='description'></textarea> <br />
+            <textarea name='description' placeholder='Дворец спорта «Юбилейный» —  замечательное место'></textarea> <br />
             Адрес (address):
-            <input type='text' name='address' /> <br />
+            <input type='text' name='address' placeholder='просп. Добролюбова, 18'/> <br />
             Тип (type):
             <input type='text' name='type' /> <br />
             <p>coordX</p>
@@ -90,16 +90,17 @@ function AddPlace() {
             <input type='text' name='tel2' /> <br />
             <hr />
           </div>
-          {/* <div className={styles.multer}>
-            <p>фото: ТУТ БУДЕТ МУЛЬТЕР </p>
+          <div className={styles.multer}>
+            {/* <p>фото: ТУТ БУДЕТ МУЛЬТЕР </p> */}
+            Фото: <br />
             <input type='text' name='url0' />
             <input type='text' name='url1' />
             <input type='text' name='url2' />
             <input type='text' name='url3' />
             <input type='text' name='url4' />
             <input type='text' name='url5' />
-            <p>Координаты: тут будет карта </p>
-          </div> */}
+            {/* <p>Координаты: тут будет карта </p> */}
+          </div>
           
         </div>
         <button> Сохранить </button>
