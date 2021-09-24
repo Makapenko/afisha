@@ -25,15 +25,13 @@ function Favorites(props) {
   // console.log(favorites);
   return (
     <div>
-      <Link to="/addEventAndPlace">
-        <li className="margin-1 padding-1">Добавить Событие</li>
-      </Link>
+
       {events
 
         ? <div className={style.cardlist}>{events.map(event => {
           if ((favorites.indexOf(event.id)) >= 0) {
             // console.log("должно работать");
-            return <div><Event key={event.id} event={event} /></div>
+            return <Event key={event.id} event={event} />
 
           }
         })}</div>

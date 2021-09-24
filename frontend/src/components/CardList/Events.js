@@ -88,11 +88,13 @@ function CardList(props) {
         <img src={calendar} alt="" height='20vh' />
       </div>
 
-      {events
-        ? <div className={style.cardlist}>{events.map(event =>
-          <Event key={event.id} event={event} />)}</div>
-        : <p>упс</p>
-      }
+
+        {events
+          ? <div className={style.cardlist}>{events.map(event =>
+            <Event key={event.id} event={event} />)}</div>
+          : <p>упс</p>
+        }
+
 
     </>
   );
